@@ -1,33 +1,80 @@
 import React, { Component } from 'react';
 import '../App/App.scss';
+// import { Redirect } from 'react-router-dom';
 
 export default class LoginForm extends Component {
   constructor() {
     super()
     this.state = {
       email: '', 
-      password: ''
+      password: '', 
+      loggedIn: false,
+      isPasswordShown: false
     }
   }
+  
+  togglePasswordVisibility = () => {
+    const { isPasswordShown } = this.state;
+    this.setState({ isPasswordShown: !isPasswordShown})
+  }
 
-  handleSubmit = e => {
+  handleChange = e => {
     this.setState({[e.target.name] : e.target.value })
   }
 
+    // if(this.state.loggedIn === true){
+    //   return <Redirect to="/movies" />;
+    // }
+
   render() {
+    const { isPasswordShown } = this.state;
     return (
-      <section className="loginForm-body">
-        <h1 className="loginForm-body-header">Please login to see your personalized movie list!</h1>
-        <section className="loginForm-inputSection-email">
-          <label className="inputSection-email-label"></label>
-          <input type="text" name="email" className="inputSection-email-input"></input>
-        </section>
-        <section className="loginForm-inputSection-password">
-          <label className="inputSection-password-label"></label>
-          <input type="text" name="password" className="inputSection-password-input"></input>
-        </section>
-        <a href='/login' className="loginForm-inputSection-button">Login</a>
+      <section className="section-form">
+        <div className="user-info">
+          <div className="user-info__form">
+            <form className="loginForm">
+              <h1 className="heading">
+                Please login to see your personalized movie list!
+              </h1>
+              <div className="loginForm__group">
+                <input 
+                  name="email"
+                  value={this.state.email}
+                  className="loginForm__input"
+                  onChange={(e)=> this.handleChange(e)}
+                  id="email"
+                  placeholder="email"
+                  type="email"
+                  />
+                <label 
+                  for="email"
+                  className="loginForm__label">email
+                </label>
+                <div className="loginForm__group">
+                  <input
+                    name="password"
+                    value={this.state.password}
+                    className="loginForm__input"
+                    onChange={(e) => this.handleChange(e)}
+                    id="password"
+                    placeholder="password"
+                    type={(isPasswordShown) ? "text" : "password"}
+                  />
+                  <label
+                    for="password"
+                    className="loginForm__label">password
+                  </label>
+                  <i 
+                  className={`fa ${isPasswordShown ? "fa-eye-slash" : "fa-eye"} password-icon`} onClick={this.togglePasswordVisibility} />
+                  <a className="btn btn-grey" href='/login'>Login &rarr;</a>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
       </section>
+      
     )
   }
 }
+
