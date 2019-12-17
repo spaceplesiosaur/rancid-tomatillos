@@ -3,11 +3,13 @@ import React, { Component } from 'react';
 import { getMovieData } from '../../util/apiCalls'
 import UserProfile from '../UserProfile/UserProfile';
 import MoviesContainer from '../MoviesContainer/MoviesContainer';
+import { addMovies } from '../../actions/index';
 // import ShowPage from '../../components/ShowPage/ShowPage';
 // import MovieRatings from '../MovieRatings/MovieRatings';
 import './App.scss';
+import { connect } from 'react-redux';
 
-export default class App extends Component {
+export class App extends Component {
   constructor() {
     super()
     this.state = {
@@ -16,8 +18,8 @@ export default class App extends Component {
   }
 
   componentDidMount() {
-    getMovieData('https://rancid-tomatillos.herokuapp.com/api/v1/movies')
-    .then(data => console.log(data.movies))
+    return getMovieData('https://rancid-tomatillos.herokuapp.com/api/v1/movies')
+    .then(data => this.props.addMovies(data))
   }
 
   render() {
@@ -33,6 +35,8 @@ export default class App extends Component {
   }
 }
 
-// const mapDispatchToProps = dispatch => ({
-//   data: 
-// })
+const mapDispatchToProps = dispatch => ({
+  addMovies: data => dispatch(addMovies(data))
+})
+
+export default connect(null, mapDispatchToProps)(App)
