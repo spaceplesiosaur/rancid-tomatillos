@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import '../App/App.scss';
+import { connect } from 'net';
 // import { Redirect } from 'react-router-dom';
 
-export default class LoginForm extends Component {
+export class LoginForm extends Component {
   constructor() {
     super()
     this.state = {
@@ -77,4 +78,10 @@ export default class LoginForm extends Component {
     )
   }
 }
+
+const mapDispatchToProps = dispatch => ({
+  getUser: user => dispatch(getUser(user))
+})
+
+export default connect(null, mapDispatchToProps)(LoginForm)
 
