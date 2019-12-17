@@ -1,49 +1,42 @@
 import React, { Component } from 'react';
-import LoginForm from '../LoginForm/LoginForm';
+// import LoginForm from '../LoginForm/LoginForm';
+import { getMovieData } from '../../util/apiCalls'
 import UserProfile from '../UserProfile/UserProfile';
 import MoviesContainer from '../MoviesContainer/MoviesContainer';
-import ShowPage from '../../components/ShowPage/ShowPage';
-import MovieRatings from '../MovieRatings/MovieRatings';
+import { addMovies } from '../../actions/index';
+// import ShowPage from '../../components/ShowPage/ShowPage';
+// import MovieRatings from '../MovieRatings/MovieRatings';
 import './App.scss';
+import { connect } from 'react-redux';
 
-export default class App extends Component {
+export class App extends Component {
   constructor() {
     super()
     this.state = {
 
     }
   }
+
+  componentDidMount() {
+    return getMovieData('https://rancid-tomatillos.herokuapp.com/api/v1/movies')
+    .then(data => this.props.addMovies(data))
+  }
+
   render() {
     return (
       <main className="app-main">
-        <LoginForm />
+        {/* <LoginForm /> */}
         <UserProfile />
         <MoviesContainer />
-        <ShowPage />
-        <MovieRatings />
+        {/* <ShowPage /> */}
+        {/* <MovieRatings /> */}
       </main>
     )
   }
 }
-// function App() {
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-//         <img src={logo} className="App-logo" alt="logo" />
-//         <p>
-//           Edit <code>src/App.js</code> and save to reload.
-//         </p>
-//         <a
-//           className="App-link"
-//           href="https://reactjs.org"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//         >
-//           Learn React
-//         </a>
-//       </header>
-//     </div>
-//   );
-// }
-//
-// export default App;
+
+const mapDispatchToProps = dispatch => ({
+  addMovies: data => dispatch(addMovies(data))
+})
+
+export default connect(null, mapDispatchToProps)(App)
