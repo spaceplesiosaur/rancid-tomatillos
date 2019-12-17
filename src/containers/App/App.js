@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 // import LoginForm from '../LoginForm/LoginForm';
-import { getMovieData } from '../../util/apiCalls/apiCalls'
+import { getMovieData } from '../../util/apiCalls'
 import UserProfile from '../UserProfile/UserProfile';
 import MoviesContainer from '../MoviesContainer/MoviesContainer';
 // import ShowPage from '../../components/ShowPage/ShowPage';
@@ -17,7 +17,7 @@ export default class App extends Component {
 
   componentDidMount() {
     getMovieData('https://rancid-tomatillos.herokuapp.com/api/v1/movies')
-    .then(data => console.log(data))
+    .then(data => console.log(data.movies))
   }
 
   render() {
