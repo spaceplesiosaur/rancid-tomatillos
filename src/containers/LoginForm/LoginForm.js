@@ -5,8 +5,13 @@ export default class LoginForm extends Component {
   constructor() {
     super()
     this.state = {
-
+      email: '', 
+      password: ''
     }
+  }
+
+  handleSubmit = e => {
+    this.setState({[e.target.name] : e.target.value })
   }
 
   render() {
@@ -21,7 +26,7 @@ export default class LoginForm extends Component {
           <label className="inputSection-password-label"></label>
           <input type="text" name="password" className="inputSection-password-input"></input>
         </section>
-        <button className="loginForm-inputSection-button">Login</button>
+        <a href='/login' className="loginForm-inputSection-button">Login</a>
       </section>
     )
   }
