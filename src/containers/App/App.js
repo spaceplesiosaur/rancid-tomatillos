@@ -32,3 +32,7 @@ export default class App extends Component {
     )
   }
 }
+
+// const mapDispatchToProps = dispatch => ({
+//   data: 
+// })
