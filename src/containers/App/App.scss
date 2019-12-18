@@ -201,17 +201,32 @@ html {
   }
 }
 
+
+h1 {
+  background-color: slategrey;
+  border: 2px solid black;
+  font-size: 5em;
+  text-align-last: center;
+}
+
 .moviesContainer {
   display: flex;
   flex-direction: row;
+  flex-wrap: nowrap;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  padding: 5%
 }
 
 .moviesContainer-movieCard-cardContainer {
+  background-color: slategrey;
   display: flex;
   flex-direction: column;
-  flex-direction: column;
   justify-content: center;
-  height: 100%;
+  margin: 1%;
+  padding: 1%;
+  align-items: center;
+  border-radius: 29px;
 }
 
 .movieCard-cardContainer-title {
@@ -222,4 +237,9 @@ html {
   align-items: center;
   height: 300px;
   width: 250px;
+}
+
+h4 {
+  font-size: 2em;
+  padding: 2%;
 }
