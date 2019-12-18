@@ -2,6 +2,7 @@ import React from 'react';
 import MoviesCard from "../../components/MoviesCard/MoviesCard";
 import { connect } from 'react-redux';
 import '../App/App.scss';
+import UserProfile from '../UserProfile/UserProfile';
 
 const MoviesContainer = ({ movies }) => {
   const displayCards = movies.map(movie => {
@@ -15,6 +16,7 @@ const MoviesContainer = ({ movies }) => {
   return (
     <>
       <h1>Rancid Tomatillos</h1>
+      <UserProfile />
        <section className="moviesContainer">
          {displayCards}
        </section>
