@@ -13,7 +13,7 @@ const MoviesContainer = ({ movies }) => {
          key={movie.id}
          title={movie.title}
          poster={movie.poster_path}
-         rating={movie.rating}
+         avgRating={movie.rating}
        />
       )
      })}
