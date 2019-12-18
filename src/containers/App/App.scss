@@ -82,6 +82,7 @@ html {
     transition: all .2s;
     border: none;
     cursor: pointer;
+    font-size: 1.5em;
     }
 
   &:hover {
@@ -227,6 +228,11 @@ h1 {
   padding: 1%;
   align-items: center;
   border-radius: 29px;
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.1);
+      transition: all .4s ease-in-out;
+    }
 }
 
 .movieCard-cardContainer-title {
