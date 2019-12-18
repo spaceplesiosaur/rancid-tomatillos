@@ -1,14 +1,31 @@
 import React from 'react';
-import MoviesCard from "../../components/MoviesCard/MoviesCard"
+import MoviesCard from "../../components/MoviesCard/MoviesCard";
+import { connect } from 'react-redux';
 import '../App/App.scss';
+import UserProfile from '../UserProfile/UserProfile';
 
-const MoviesContainer = () => {
+const MoviesContainer = ({ movies }) => {
+  const displayCards = movies.map(movie => {
+    return (
+    <MoviesCard
+      {...movie}
+      key={movie.id}
+    />
+    )
+  })
   return (
-    <section className="moviesContainer">
-      <MoviesCard />
-      //placeholder
-    </section>
+    <>
+      <h1>Rancid Tomatillos</h1>
+      <UserProfile />
+       <section className="moviesContainer">
+         {displayCards}
+       </section>
+    </>
   )
 }
 
-export default MoviesContainer;
+const mapStateToProps = state => ({
+  movies: state.movies
+});
+
+export default connect(mapStateToProps)(MoviesContainer);
