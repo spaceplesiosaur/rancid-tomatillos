@@ -1,9 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import { shallow } from 'enzyme';
-import { dive } from 'enzyme';
-import { createStore } from 'redux';
-import { rootReducer } from '../../reducers/index';
 import { LoginForm } from './LoginForm';
 import { Provider } from 'react-redux';
 
