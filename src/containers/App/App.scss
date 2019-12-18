@@ -200,3 +200,26 @@ html {
     margin-top: .7em
   }
 }
+
+.moviesContainer {
+  display: flex;
+  flex-direction: row;
+}
+
+.moviesContainer-movieCard-cardContainer {
+  display: flex;
+  flex-direction: column;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+
+.movieCard-cardContainer-title {
+  font-size: 2em;
+}
+
+.movieCard-cardContainer-poster {
+  align-items: center;
+  height: 300px;
+  width: 250px;
+}
