@@ -14,7 +14,7 @@ const MoviesContainer = ({ movies }) => {
   })
   return (
     <>
-      <h1>Movie Homepage</h1>
+      <h1>Rancid Tomatillos</h1>
        <section className="moviesContainer">
          {displayCards}
        </section>
