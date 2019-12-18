@@ -4,10 +4,10 @@ export const getMovieData = async (url) => {
     return data;
 }
 
-export const getUser = async (email, password) => {
+export const fetchUser = async (email, password) => {
     const userLogin = { email: `${email}`, password: `${password}`};
     const options = {
-        method: POST,
+        method: 'POST',
         body: JSON.stringify(userLogin),
         headers: {
             'Content-Type': 'application/json'
