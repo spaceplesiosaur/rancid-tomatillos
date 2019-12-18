@@ -1,3 +1,27 @@
+$dark-grey-color: #777;
+$color-white: #ffffff;
+$color-black: #000;
+$color-dark-grey-2: #999;
+$primary-color: #7ed56f;
+$color-secondary-light: #ffb900;
+$color-secondary-dark: #ff7730;
+$color-card-light: #2998ff;
+$color-card-dark: #1000a2;
+$font-Bebas: 'Bebas Neue', cursive;
+
+@import url('https://fonts.googleapis.com/css?family=Rubik:300,400,500,700,900&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Bebas+Neue&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  font-size:62.5%
+}
+
+
 .App {
   text-align: center;
 }
@@ -34,5 +58,145 @@
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+.btn-grey {
+  font-weight: 700;
+  color: $color-black;
+  background-color: rgba(220, 220, 220, 0.564);
+  margin-left: 2rem;
+  margin-top: .7em;
+  width: 12rem;
+}
+
+.btn {
+  &,
+  &:link,
+  &:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1.5rem 2.5rem;
+    border-radius: 10rem;
+    display: inline-block;
+    transition: all .2s;
+    border: none;
+    cursor: pointer;
+    }
+
+  &:hover {
+    transform: translateY(-2px);
+    background-color: rgba($color-white, 0.023);
+    box-shadow: 0 1rem 2em rgba(0
+    ,0,0,.2);
+    }
+
+  &:focus,
+  &:active {
+    transform: translateY(-1px);
+    box-shadow: 0 .5rem 1rem rgba(0
+    ,0,0,.2);
+  }
+}
+
+.loginForm {
+  width: 85vw;
+  height: 55vh;
+  font-family: $font-Bebas;
+
+  &__label {
+     font-family: $font-Bebas;
+     color: #333;
+     -webkit-font-smoothing: antialiased;
+     -moz-osx-font-smoothing: grayscale;
+     cursor: pointer;
+  }
+}
+
+.heading {
+  font-size: 3rem;
+  font-weight: 400;
+  margin-left: 2rem;
+  margin-top: .7em;
+}
+
+.section-form {
+  padding: 15rem 0;
+  background-Image: linear-gradient( to right bottom, $color-white, $color-black);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+
+.user-info {
+  background-image: linear-gradient(105deg,
+                                    rgb( 255, 255, 255) 0%,
+                                    rgba(255, 255, 255, .9) 70%,
+                                     transparent 100%);
+  border-radius: 3px;
+  box-shadow: 0 1.5rem 4rem rgba($color-black, .15);
+  width: 95rem;
+  height: 55rem;
+  margin: auto;
+  &__form {
+    width: 50%;
+    padding: 3rem;
+
+  }
+}
+
+
+.loginForm {
+  &__group:not(:last-child) {
+    margin-bottom: 2rem;
+
+  }
+  &__input {
+    font-family: inherit;
+    font-size: 1.5rem;
+    color: $dark-grey-color;
+    padding: 1.5rem 2rem;
+    border-radius: 2px;
+    background-color: rgba( 255, 255, 255, .5);
+    border: none;
+    border-bottom: 3px solid transparent;
+    width: 40%;
+    display:block;
+    transition: all .3s;
+
+   &::-webkit-input-placeholder {
+    color: $color-dark-grey-2;
+    }
+
+   &:focus {
+    outline:none;
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, .1);
+    border-bottom: 3px solid $primary-color;
+    }
+
+  &:focus:invalid {
+    border-bottom: 3px solid $color-secondary-dark;
+    }
+
+  }
+
+  &__label {
+    font-size: 1.2rem;
+    font-weight: 400;
+    margin-left: 2rem;
+    margin-top: .7em;
+    display: block;
+    transition: all .3s;
+  }
+
+  &__input:placeholder-shown + &__label {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-4rem);
+  }
+
+  &__group {
+    margin-left: 2rem;
+    margin-top: .7em
   }
 }
