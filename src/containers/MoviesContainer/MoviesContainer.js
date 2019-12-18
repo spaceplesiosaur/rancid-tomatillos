@@ -5,18 +5,18 @@ import '../App/App.scss';
 
 const MoviesContainer = ({ movies }) => {
   console.log(movies)
-  return(
+  const displayCards = movies.map(movie => {
+    console.log({...movie})
+    return (
+    <MoviesCard
+      {...movie}
+      key={movie.id}
+    />
+    )
+  })
+  return (
     <section className="moviesContainer">
-    {movies[0] && movies.map(movie => {
-      return (
-       <MoviesCard
-         key={movie.id}
-         title={movie.title}
-         poster={movie.poster_path}
-         avgRating={movie.average_rating}
-       />
-      )
-     })}
+      {displayCards}
     </section>
   )
 }
