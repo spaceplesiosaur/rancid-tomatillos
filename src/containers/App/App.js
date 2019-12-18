@@ -8,6 +8,7 @@ import { addMovies } from '../../actions/index';
 // import MovieRatings from '../MovieRatings/MovieRatings';
 import './App.scss';
 import { connect } from 'react-redux';
+import { Route } from 'react-router-dom'
 
 export class App extends Component {
   constructor() {
@@ -16,7 +17,7 @@ export class App extends Component {
 
     }
   }
-
+ 
   componentDidMount() {
     return getMovieData('https://rancid-tomatillos.herokuapp.com/api/v1/movies')
     .then(data => this.props.addMovies(data))
@@ -25,8 +26,8 @@ export class App extends Component {
   render() {
     return (
       <main className="app-main">
-        <LoginForm />
-        <UserProfile />
+        <Route path='/login' render={()=> <LoginForm />} />
+        <Route path='/user-profile' render={()=> <UserProfile />} />
         <MoviesContainer />
         {/* <ShowPage /> */}
         {/* <MovieRatings /> */}
