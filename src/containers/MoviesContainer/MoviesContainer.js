@@ -4,9 +4,7 @@ import { connect } from 'react-redux';
 import '../App/App.scss';
 
 const MoviesContainer = ({ movies }) => {
-  console.log(movies)
   const displayCards = movies.map(movie => {
-    console.log({...movie})
     return (
     <MoviesCard
       {...movie}
@@ -15,9 +13,12 @@ const MoviesContainer = ({ movies }) => {
     )
   })
   return (
-    <section className="moviesContainer">
-      {displayCards}
-    </section>
+    <>
+      <h1>Movie Homepage</h1>
+       <section className="moviesContainer">
+         {displayCards}
+       </section>
+    </>
   )
 }
 
