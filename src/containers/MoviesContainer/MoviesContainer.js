@@ -3,24 +3,25 @@ import MoviesCard from "../../components/MoviesCard/MoviesCard";
 import { connect } from 'react-redux';
 import '../App/App.scss';
 
-export const MoviesContainer = ({ movies }) => {
-  const displayMovies = movies.map(movie => {
-    return ( 
-      <MoviesCard 
-        {...movies}
-        key={movie.id}
-      />
-    )
-  });
-
-  return (
+const MoviesContainer = ({ movies }) => {
+  console.log(movies)
+  return(
     <section className="moviesContainer">
-      {displayMovies}
+    {movies[0] && movies.map(movie => {
+      return (
+       <MoviesCard
+         key={movie.id}
+         title={movie.title}
+         poster={movie.poster_path}
+         rating={movie.rating}
+       />
+      )
+     })}
     </section>
   )
 }
 
-export const mapStateToProps = state => ({
+const mapStateToProps = state => ({
   movies: state.movies
 });
 
