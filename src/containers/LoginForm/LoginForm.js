@@ -11,12 +11,12 @@ export class LoginForm extends Component {
     super()
     this.state = {
       email: '',
-      password: '', 
+      password: '',
       loggedIn: false,
       isPasswordShown: false
     }
   }
-  
+
   togglePasswordVisibility = () => {
     const { isPasswordShown } = this.state;
     this.setState({ isPasswordShown: !isPasswordShown})
@@ -47,7 +47,7 @@ export class LoginForm extends Component {
                 Please login to see your personalized movie list!
               </h1>
               <div className="loginForm__group">
-                <input 
+                <input
                   name="email"
                   value={this.state.email}
                   className="loginForm__input"
@@ -56,7 +56,7 @@ export class LoginForm extends Component {
                   placeholder="email"
                   type="text"
                   />
-                <label 
+                <label
                   for="email"
                   className="loginForm__label">email
                 </label>
@@ -74,7 +74,7 @@ export class LoginForm extends Component {
                     for="password"
                     className="loginForm__label">password
                   </label>
-                  <i 
+                  <i
                   className={`fa ${isPasswordShown ? "fa-eye-slash" : "fa-eye"} password-icon`} onClick={this.togglePasswordVisibility} />
                   <a className="btn btn-grey" href='/login' onClick={(e)=> this.handleSubmit(e)}>Login &rarr;</a>
                 </div>
@@ -83,7 +83,7 @@ export class LoginForm extends Component {
           </div>
         </div>
       </section>
-      
+
     )
   }
 }
@@ -93,4 +93,3 @@ const mapDispatchToProps = dispatch => ({
 })
 
 export default connect(null, mapDispatchToProps)(LoginForm)
-
