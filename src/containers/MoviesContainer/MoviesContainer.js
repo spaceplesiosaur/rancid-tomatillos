@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import '../App/App.scss';
 import UserProfile from '../UserProfile/UserProfile';
 
-const MoviesContainer = ({ movies }) => {
+export const MoviesContainer = ({ movies }) => {
   const displayCards = movies.map(movie => {
     return (
     <MoviesCard
@@ -24,7 +24,7 @@ const MoviesContainer = ({ movies }) => {
   )
 }
 
-const mapStateToProps = state => ({
+export const mapStateToProps = state => ({
   movies: state.movies
 });
 
