@@ -63,7 +63,7 @@ export class LoginForm extends Component {
                 </label>
                 <div className="loginForm__group">
                   <i
-                    className={`fa ${isPasswordShown ? "fa-eye-slash" : "fa-eye"} password-icon`} onClick={this.togglePasswordVisibility} />
+                      className={`fa ${isPasswordShown ? "fa-eye" : "fa-eye-slash"} password-icon`} onClick={this.togglePasswordVisibility} />
                   <input
                     name="password"
                     value={this.state.password}

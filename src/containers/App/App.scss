@@ -65,7 +65,8 @@ html {
   color: $color-white;
   background-color: rgba(220, 220, 220, 0.564);
   width: 15rem;
-  font-size: 1.4rem;
+  font-size: 1.7rem;
+  margin-top: 1rem;
 }
 
 .btn {
@@ -84,7 +85,7 @@ html {
 
   &:hover {
     transform: translateY(-1.5px);
-    background-color: rgba(#240066e8), 0.023);
+    background-color: rgba(35, 0, 102, 0.91);
     box-shadow: 0 1rem 2em rgba(0
     ,0,0,.2);
     }
@@ -150,9 +151,9 @@ html {
   }
   &__input {
     font-family: inherit;
-    font-size: 1.5rem;
+    font-size: 1.7rem;
     color: $dark-grey-color;
-    padding: 1.5rem 2rem;
+    padding: 2rem;
     border-radius: 2px;
     background-color: rgba( 255, 255, 255, .5);
     border: none;
@@ -203,8 +204,9 @@ html {
 }
 
 .password-icon {
-  position: absolute;
-  top: 332px;
-  right: 362px;
+    position: absolute;
+    right: 24px;
+    top: 20px;
+    font-size: 20px;
   cursor: pointer;
 }
