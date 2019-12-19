@@ -9,6 +9,7 @@ import { addMovies } from '../../actions/index';
 import './App.scss';
 import { connect } from 'react-redux';
 import { Route } from 'react-router-dom'
+import PropTypes from 'prop-types';
 
 export class App extends Component {
   constructor() {
@@ -40,4 +41,8 @@ const mapDispatchToProps = dispatch => ({
   addMovies: data => dispatch(addMovies(data))
 })
 
-export default connect(null, mapDispatchToProps)(App)
+export default connect(null, mapDispatchToProps)(App);
+
+App.propTypes = {
+  movies: PropTypes.array
+}  
