@@ -27,16 +27,17 @@ export class LoginForm extends Component {
   }
 
   handleSubmit = (e) => {
-    const { email, password } = this.state
+    const { email, password, loggedIn } = this.state
     e.preventDefault()
     fetchUser(email, password)
     .then(user => this.props.getUser(user))
+    .then(this.setState({ loggedIn: true}))
   }
-    // if(this.state.loggedIn === true){
-    //   return <Redirect to="/movies" />;
-    // }
 
   render() {
+      if(this.state.loggedIn){
+      return <Redirect to="/movies" />;
+    }
     const { isPasswordShown } = this.state;
     return (
       <section className="section-form">
