@@ -1,23 +1,23 @@
 import React, { Component } from 'react';
 import LoginForm from '../LoginForm/LoginForm';
+import Header from '../../containers/Header/Header'
 import { getMovieData } from '../../util/apiCalls'
 import UserProfile from '../UserProfile/UserProfile';
 import MoviesContainer from '../MoviesContainer/MoviesContainer';
 import { addMovies } from '../../actions/index';
+import { Route } from 'react-router-dom'
 // import ShowPage from '../../components/ShowPage/ShowPage';
 // import MovieRatings from '../MovieRatings/MovieRatings';
 import './App.scss';
 import { connect } from 'react-redux';
+<<<<<<< HEAD
+=======
+import { Route } from 'react-router-dom'
+>>>>>>> 34798dc661e9c65cfd7fe0a761f2ff2ff8af8bd5
 import PropTypes from 'prop-types';
 
 export class App extends Component {
-  constructor() {
-    super()
-    this.state = {
-
-    }
-  }
-
+ 
   componentDidMount() {
     return getMovieData('https://rancid-tomatillos.herokuapp.com/api/v1/movies')
     .then(data => this.props.addMovies(data))
@@ -26,9 +26,10 @@ export class App extends Component {
   render() {
     return (
       <main className="app-main">
-        <LoginForm />
-        <UserProfile />
-        <MoviesContainer />
+        <Header /> 
+        <Route path='/login' render={() => <LoginForm />} />
+        <Route path='/profile' render={() => <UserProfile />} />
+        <Route path='/' render={() => <MoviesContainer />} />
         {/* <ShowPage /> */}
         {/* <MovieRatings /> */}
       </main>

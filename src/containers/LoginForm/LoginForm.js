@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import '../App/App.scss';
-// import { Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { fetchUser } from '../../util/apiCalls';
 import { connect } from 'react-redux';
 import { getUser } from '../../actions/index';
@@ -31,20 +31,22 @@ export class LoginForm extends Component {
     e.preventDefault()
     fetchUser(email, password)
     .then(user => this.props.getUser(user))
+    .then(this.setState({ loggedIn: true}))
   }
-    // if(this.state.loggedIn === true){
-    //   return <Redirect to="/movies" />;
-    // }
 
   render() {
+      if(this.state.loggedIn){
+      return <Redirect to="/" />;
+    }
     const { isPasswordShown } = this.state;
     return (
       <section className="section-form">
+        <div className="section-form__header">
         <div className="user-info">
           <div className="user-info__form">
             <form className="loginForm">
               <h1 className="heading">
-                Please login to see your personalized movie list!
+                Please login!
               </h1>
               <div className="loginForm__group">
                 <input
@@ -61,6 +63,8 @@ export class LoginForm extends Component {
                   className="loginForm__label">email
                 </label>
                 <div className="loginForm__group">
+                  <i
+                      className={`fa ${isPasswordShown ? "fa-eye" : "fa-eye-slash"} password-icon`} onClick={this.togglePasswordVisibility} />
                   <input
                     name="password"
                     value={this.state.password}
@@ -74,13 +78,17 @@ export class LoginForm extends Component {
                     htmlFor="password"
                     className="loginForm__label">password
                   </label>
+<<<<<<< HEAD
+=======
                   <i
                   className={`fa ${isPasswordShown ? "fa-eye-slash" : "fa-eye"} password-icon`} onClick={this.togglePasswordVisibility} />
+>>>>>>> 34798dc661e9c65cfd7fe0a761f2ff2ff8af8bd5
                   <a className="btn btn-grey" href='/login' onClick={(e)=> this.handleSubmit(e)}>Login &rarr;</a>
                 </div>
               </div>
             </form>
           </div>
+        </div>
         </div>
       </section>
 

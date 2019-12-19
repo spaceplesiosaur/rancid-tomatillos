@@ -7,3 +7,4 @@ export const getUser = user => ({
     type: 'ADD_USER',
     user
 })
+
