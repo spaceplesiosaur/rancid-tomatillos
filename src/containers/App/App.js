@@ -24,7 +24,7 @@ export class App extends Component {
       <main className="app-main">
         <Header />
         <Route path='/login' render={() => <LoginForm />} />
-        <Route path='/profile' render={() => <UserProfile />} />
+        
         <Route exact path='/' render={() => <MoviesContainer />} />
         {/* <ShowPage /> */}
         {/* <MovieRatings /> */}
