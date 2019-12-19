@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import LoginForm from '../LoginForm/LoginForm';
-import Home from '../../containers/Home/Home'
+import Header from '../../containers/Header/Header'
 import { getMovieData } from '../../util/apiCalls'
 import UserProfile from '../UserProfile/UserProfile';
 import MoviesContainer from '../MoviesContainer/MoviesContainer';
@@ -13,12 +13,6 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 export class App extends Component {
-  constructor() {
-    super()
-    this.state = {
-
-    }
-  }
  
   componentDidMount() {
     return getMovieData('https://rancid-tomatillos.herokuapp.com/api/v1/movies')
@@ -26,13 +20,12 @@ export class App extends Component {
   }
 
   render() {
-    const { user } = this.props
     return (
       <main className="app-main">
-        <Route path='/' render={()=> <Home /> } />
+        <Header /> 
         <Route path='/login' render={() => <LoginForm />} />
         <Route path='/profile' render={() => <UserProfile />} />
-        <Route path='/movies' render={() => <MoviesContainer />} />
+        <Route path='/' render={() => <MoviesContainer />} />
         {/* <ShowPage /> */}
         {/* <MovieRatings /> */}
       </main>
@@ -44,11 +37,7 @@ const mapDispatchToProps = dispatch => ({
   addMovies: data => dispatch(addMovies(data))
 })
 
-export const mapStateToProps = state => ({
-  user: state.user
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(null, mapDispatchToProps)(App);
 
 App.propTypes = {
   movies: PropTypes.array

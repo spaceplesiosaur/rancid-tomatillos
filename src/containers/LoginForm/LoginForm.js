@@ -27,7 +27,7 @@ export class LoginForm extends Component {
   }
 
   handleSubmit = (e) => {
-    const { email, password, loggedIn } = this.state
+    const { email, password } = this.state
     e.preventDefault()
     fetchUser(email, password)
     .then(user => this.props.getUser(user))
@@ -36,7 +36,7 @@ export class LoginForm extends Component {
 
   render() {
       if(this.state.loggedIn){
-      return <Redirect to="/movies" />;
+      return <Redirect to="/" />;
     }
     const { isPasswordShown } = this.state;
     return (
