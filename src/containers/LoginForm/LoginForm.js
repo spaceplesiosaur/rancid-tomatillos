@@ -78,8 +78,6 @@ export class LoginForm extends Component {
                     htmlFor="password"
                     className="loginForm__label">password
                   </label>
-                  <i
-                  className={`fa ${isPasswordShown ? "fa-eye-slash" : "fa-eye"} password-icon`} onClick={this.togglePasswordVisibility} />
                   <a className="btn btn-grey" href='/login' onClick={(e)=> this.handleSubmit(e)}>Login &rarr;</a>
                 </div>
               </div>

@@ -5,7 +5,9 @@ import { NavLink } from 'react-router-dom';
 export const Home = ({user}) => {
   return (
     <div>
-     {!user ? <NavLink to='/login' className="btn login">Login</NavLink> :
+      {console.log("user", user.user)}
+     {!user.user ? 
+        <NavLink to='/login' className="btn login">Login</NavLink> :
         <NavLink to='/profile' className="btn logout">Logout</NavLink> }
     </div>
   )
