@@ -4,10 +4,10 @@ import { NavLink } from 'react-router-dom';
 
 export const Home = ({user}) => {
   return (
-    <div>
+    <div className="header-div">
       {console.log("user", user.user)}
      {!user.user ? 
-        <NavLink to='/login' className="btn login">Login</NavLink> :
+        <NavLink to='/login' className="login-btn">Login</NavLink> :
         <NavLink to='/profile' className="btn logout">Logout</NavLink> }
     </div>
   )
