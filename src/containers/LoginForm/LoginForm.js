@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import '../App/App.scss';
-import { Redirect } from 'react-router-dom';
+// import { Redirect } from 'react-router-dom';
 import { fetchUser } from '../../util/apiCalls';
 import { connect } from 'react-redux';
-import { getUser } from '../../actions/index'
-
+import { getUser } from '../../actions/index';
+import PropTypes from 'prop-types';
 
 export class LoginForm extends Component {
   constructor() {
@@ -57,7 +57,7 @@ export class LoginForm extends Component {
                   type="text"
                   />
                 <label
-                  for="email"
+                  htmlFor="email"
                   className="loginForm__label">email
                 </label>
                 <div className="loginForm__group">
@@ -71,7 +71,7 @@ export class LoginForm extends Component {
                     type={(isPasswordShown) ? "text" : "password"}
                   />
                   <label
-                    for="password"
+                    htmlFor="password"
                     className="loginForm__label">password
                   </label>
                   <i
@@ -90,6 +90,16 @@ export class LoginForm extends Component {
 
 const mapDispatchToProps = dispatch => ({
   getUser: user => dispatch(getUser(user))
-})
+});
 
+export default connect(null, mapDispatchToProps)(LoginForm);
+
+<<<<<<< HEAD
 export default connect(null, mapDispatchToProps)(LoginForm)
+=======
+LoginForm.ropTypes = {
+  isPasswordShown: PropTypes.func,
+  getUser: PropTypes.func
+}
+
+>>>>>>> master
