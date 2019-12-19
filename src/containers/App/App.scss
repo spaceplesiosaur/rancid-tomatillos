@@ -10,7 +10,6 @@ $color-card-dark: #1000a2;
 $font-Bebas: 'Bebas Neue', cursive;
 
 %button-styling {
-  border-radius: 10rem;
   border: none;
   box-shadow: 2px 2px 2px 2px #00000063;
   cursor: pointer;
@@ -21,6 +20,7 @@ $font-Bebas: 'Bebas Neue', cursive;
 
 @import url('https://fonts.googleapis.com/css?family=Rubik:300,400,500,700,900&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab:300,400,500,600,700,800&display=swap');
 
 * {
   box-sizing: border-box;
@@ -85,6 +85,7 @@ html {
   &:link,
   &:visited {
     @extend %button-styling;
+    border-radius: 10rem;
     text-transform: uppercase;
     display: inline-block;
     transition: all .2s;
@@ -209,7 +210,8 @@ html {
 
 .userProfile-container {
   align-items: center;
-  background-color: slategray;
+  background-color: #7a49f2;
+  border-bottom: 8px dotted black;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -218,11 +220,16 @@ html {
 
 .userProfile-container-greeting {
   font-size: 4em;
+  margin-right: 50%;
 }
 
 .userProfile-container-btn {
   @extend %button-styling;
-  font-size: 2em;
+  background-color: white;
+  border-radius: 3px;
+  font-size: 2.5em;
+  font-weight: 600;
+  margin-left: 10%;
     &:hover {
       cursor: pointer;
       font-weight: 700;
@@ -232,13 +239,15 @@ html {
 }
 
 h1 {
-  background-color: slategrey;
+  background-color: #7a49f2;
+  font-family: 'Roboto Slab', serif;
   // border: 2px solid black;
   font-size: 10em;
   text-align-last: center;
 }
 
 .moviesContainer {
+  // background-color: #0000009e;    
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -249,14 +258,13 @@ h1 {
 
 .moviesContainer-movieCard-cardContainer {
   align-items: center;
-  background-color: slategrey;
-  border-radius: 29px;
-  box-shadow: 10px 10px 5px darkgrey;
+  // background-color: slategrey;
+  background: linear-gradient(#6e8194, #f7f3f3);
+  border-radius: 22px;
+  box-shadow: 10px 10px 5px #393636a8;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   margin: 2%;
-  padding: 1%;
     &:hover {
       font-weight: 700;
       transform: scale(1.1);
@@ -265,9 +273,15 @@ h1 {
 }
 
 .movieCard-cardContainer-title {
+  background-color: black;
+  border-bottom: 2px solid white;
+  border-radius: 22px 22px 0 0;
+  color: white;
   font-size: 2.25em;
   padding: 3%;
   text-align: center;
+  text-transform: uppercase;
+  width: 100%;
 }
 
 .movieCard-cardContainer-poster {
@@ -278,8 +292,11 @@ h1 {
 
 .movieCard-btn {
   @extend %button-styling;
-  // box-shadow: 2px 2px 2px 2px #00000063;
-  font-size: 1.5em;
+  background-color: #7a49f2;
+  border-radius: 3px;
+  box-shadow: 2px 2px 2px 2px #00000063;
+  font-size: 2.5em;
+  font-weight: 600;
   margin-bottom: 3%;
   width: 76%;
     &:hover {
@@ -294,4 +311,9 @@ h4 {
   font-size: 2em;
   padding: 2.5%;
   margin-bottom: 3%;
+  text-transform: uppercase;
+}
+
+#blockColorblindContent {
+  display: none;
 }
