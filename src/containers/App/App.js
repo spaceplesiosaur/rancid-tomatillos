@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
 import LoginForm from '../LoginForm/LoginForm';
+import Home from '../../components/Home'
 import { getMovieData } from '../../util/apiCalls'
 import UserProfile from '../UserProfile/UserProfile';
 import MoviesContainer from '../MoviesContainer/MoviesContainer';
 import { addMovies } from '../../actions/index';
+import { Route } from 'react-router-dom'
 // import ShowPage from '../../components/ShowPage/ShowPage';
 // import MovieRatings from '../MovieRatings/MovieRatings';
 import './App.scss';
 import { connect } from 'react-redux';
-import { Route } from 'react-router-dom'
+import PropTypes from 'prop-types';
 
 export class App extends Component {
   constructor() {
@@ -26,6 +28,7 @@ export class App extends Component {
   render() {
     return (
       <main className="app-main">
+        <Route path='/' render={() => <Home />} />
         <Route path='/login' render={()=> <LoginForm />} />
         <Route path='/user-profile' render={()=> <UserProfile />} />
         <Route path='/movies' render={() => <MoviesContainer />} />
@@ -40,4 +43,8 @@ const mapDispatchToProps = dispatch => ({
   addMovies: data => dispatch(addMovies(data))
 })
 
-export default connect(null, mapDispatchToProps)(App)
+export default connect(null, mapDispatchToProps)(App);
+
+App.propTypes = {
+  movies: PropTypes.array
+}  

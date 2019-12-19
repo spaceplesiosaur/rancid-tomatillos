@@ -15,7 +15,7 @@ describe('MoviesContainer', () => {
         average_rating: 4
        }
     ];
-    
+
 
     beforeEach(() => {
         wrapper = shallow(<MoviesContainer movies={mockMovies}/>)

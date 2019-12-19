@@ -1,0 +1,147 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LoginForm should render with correct data 1`] = `
+<section
+  className="section-form"
+>
+  <div
+    className="user-info"
+  >
+    <div
+      className="user-info__form"
+    >
+      <form
+        className="loginForm"
+      >
+        <h1
+          className="heading"
+        >
+          Please login to see your personalized movie list!
+        </h1>
+        <div
+          className="loginForm__group"
+        >
+          <input
+            className="loginForm__input"
+            id="email"
+            name="email"
+            onChange={[Function]}
+            placeholder="email"
+            type="text"
+            value=""
+          />
+          <label
+            className="loginForm__label"
+            htmlFor="email"
+          >
+            email
+          </label>
+          <div
+            className="loginForm__group"
+          >
+            <input
+              className="loginForm__input"
+              id="password"
+              name="password"
+              onChange={[Function]}
+              placeholder="password"
+              type="password"
+              value=""
+            />
+            <label
+              className="loginForm__label"
+              htmlFor="password"
+            >
+              password
+            </label>
+            <i
+              className="fa fa-eye password-icon"
+              onClick={[Function]}
+            />
+            <a
+              className="btn btn-grey"
+              href="/login"
+              onClick={[Function]}
+            >
+              Login →
+            </a>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+`;
+
+exports[`LoginForm should render with correct data when isPasswordShown is true 1`] = `
+<section
+  className="section-form"
+>
+  <div
+    className="user-info"
+  >
+    <div
+      className="user-info__form"
+    >
+      <form
+        className="loginForm"
+      >
+        <h1
+          className="heading"
+        >
+          Please login to see your personalized movie list!
+        </h1>
+        <div
+          className="loginForm__group"
+        >
+          <input
+            className="loginForm__input"
+            id="email"
+            name="email"
+            onChange={[Function]}
+            placeholder="email"
+            type="text"
+            value=""
+          />
+          <label
+            className="loginForm__label"
+            htmlFor="email"
+          >
+            email
+          </label>
+          <div
+            className="loginForm__group"
+          >
+            <input
+              className="loginForm__input"
+              id="password"
+              name="password"
+              onChange={[Function]}
+              placeholder="password"
+              type="text"
+              value=""
+            />
+            <label
+              className="loginForm__label"
+              htmlFor="password"
+            >
+              password
+            </label>
+            <i
+              className="fa fa-eye-slash password-icon"
+              onClick={[Function]}
+            />
+            <a
+              className="btn btn-grey"
+              href="/login"
+              onClick={[Function]}
+            >
+              Login →
+            </a>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+`;
