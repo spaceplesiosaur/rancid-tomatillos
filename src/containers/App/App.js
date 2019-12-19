@@ -10,6 +10,10 @@ import { Route } from 'react-router-dom'
 // import MovieRatings from '../MovieRatings/MovieRatings';
 import './App.scss';
 import { connect } from 'react-redux';
+<<<<<<< HEAD
+=======
+import { Route } from 'react-router-dom'
+>>>>>>> 34798dc661e9c65cfd7fe0a761f2ff2ff8af8bd5
 import PropTypes from 'prop-types';
 
 export class App extends Component {
