@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import LoginForm from '../LoginForm/LoginForm';
 import { getMovieData } from '../../util/apiCalls'
-import UserProfile from '../UserProfile/UserProfile';
+// import UserProfile from '../UserProfile/UserProfile';
 import MoviesContainer from '../MoviesContainer/MoviesContainer';
 import { addMovies } from '../../actions/index';
 // import ShowPage from '../../components/ShowPage/ShowPage';
@@ -26,7 +26,7 @@ export class App extends Component {
     return (
       <main className="app-main">
         <LoginForm />
-        <UserProfile />
+        {/* <UserProfile /> */}
         <MoviesContainer />
         {/* <ShowPage /> */}
         {/* <MovieRatings /> */}

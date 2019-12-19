@@ -9,9 +9,9 @@ const MoviesCard = ({ average_rating, id, backdrop_path, overview, poster_path, 
       <h2 className="movieCard-cardContainer-title">{title}</h2>
       <img className="movieCard-cardContainer-poster" src={poster_path}alt="Official movie poster for film"></img>
       <h4>Average Movie Rating: {average_rating}</h4>
-      <button className="btn">Add Rating</button>
+      <button className="movieCard-btn">Add Rating</button>
       {/* <Link to={'/showpage/'}> */}
-      <button className="btn">See More</button>
+      <button className="movieCard-btn">See More</button>
       {/* </Link> */}
       <MovieRatings />
     </section>
