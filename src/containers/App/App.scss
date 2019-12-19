@@ -21,7 +21,6 @@ html {
   font-size:62.5%
 }
 
-
 .App {
   text-align: center;
 }
@@ -63,11 +62,10 @@ html {
 
 .btn-grey {
   font-weight: 700;
-  color: $color-black;
+  color: $color-white;
   background-color: rgba(220, 220, 220, 0.564);
-  margin-left: 2rem;
-  margin-top: .7em;
-  width: 12rem;
+  width: 15rem;
+  font-size: 1.4rem;
 }
 
 .btn {
@@ -76,8 +74,8 @@ html {
   &:visited {
     text-transform: uppercase;
     text-decoration: none;
-    padding: 1.5rem 2.5rem;
-    border-radius: 10rem;
+    padding: 1.7rem 3.5rem;
+    border-radius: 3px;
     display: inline-block;
     transition: all .2s;
     border: none;
@@ -85,8 +83,8 @@ html {
     }
 
   &:hover {
-    transform: translateY(-2px);
-    background-color: rgba($color-white, 0.023);
+    transform: translateY(-1.5px);
+    background-color: rgba(#240066e8), 0.023);
     box-shadow: 0 1rem 2em rgba(0
     ,0,0,.2);
     }
@@ -100,53 +98,52 @@ html {
 }
 
 .loginForm {
-  width: 85vw;
   height: 55vh;
   font-family: $font-Bebas;
 
   &__label {
-     font-family: $font-Bebas;
-     color: #333;
-     -webkit-font-smoothing: antialiased;
-     -moz-osx-font-smoothing: grayscale;
-     cursor: pointer;
+    font-family: $font-Bebas;
+    color: #333;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    cursor: pointer;
   }
 }
 
 .heading {
+  color: $color-white;
   font-size: 3rem;
   font-weight: 400;
-  margin-left: 2rem;
   margin-top: .7em;
 }
 
 .section-form {
-  padding: 15rem 0;
-  background-Image: linear-gradient( to right bottom, $color-white, $color-black);
-  background-size: cover;
-  background-repeat: no-repeat;
+
+  &__header {
+  padding: 15rem;
+  top: 0;
+  width: 100%;
+  height: 85vh;
+  background: rgb(122, 25, 167);
+  clip-path: polygon(10% 78%, 0 91%, 0 0, 100% 0, 100% 78%, 94% 89%, 86% 80%, 75% 90%, 63% 79%, 50% 92%, 34% 82%, 21% 92%); 
+  background-image: linear-gradient(#a12fff, #7226ff);
 }
-
-
+}
 .user-info {
-  background-image: linear-gradient(105deg,
-                                    rgb( 255, 255, 255) 0%,
-                                    rgba(255, 255, 255, .9) 70%,
-                                     transparent 100%);
-  border-radius: 3px;
+  border-radius: 10px;
   box-shadow: 0 1.5rem 4rem rgba($color-black, .15);
-  width: 95rem;
-  height: 55rem;
+  width: 50vw;
+  height: 70vh;
   margin: auto;
+  
   &__form {
-    width: 50%;
-    padding: 3rem;
-
+    padding: 3.5rem;
+    background-image: linear-gradient(#9162ff, #6b4afd);
   }
 }
 
-
 .loginForm {
+
   &__group:not(:last-child) {
     margin-bottom: 2rem;
 
@@ -160,12 +157,11 @@ html {
     background-color: rgba( 255, 255, 255, .5);
     border: none;
     border-bottom: 3px solid transparent;
-    width: 40%;
     display:block;
     transition: all .3s;
 
    &::-webkit-input-placeholder {
-    color: $color-dark-grey-2;
+    color: $color-white;
     }
 
    &:focus {
@@ -181,6 +177,7 @@ html {
   }
 
   &__label {
+    color: $color-white;
     font-size: 1.2rem;
     font-weight: 400;
     margin-left: 2rem;
@@ -196,7 +193,18 @@ html {
   }
 
   &__group {
-    margin-left: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    // margin-left: 2rem;
+    position: relative;
     margin-top: .7em
   }
+}
+
+.password-icon {
+  position: absolute;
+  top: 332px;
+  right: 362px;
+  cursor: pointer;
 }

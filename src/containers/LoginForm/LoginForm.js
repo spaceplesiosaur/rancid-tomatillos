@@ -40,11 +40,12 @@ export class LoginForm extends Component {
     const { isPasswordShown } = this.state;
     return (
       <section className="section-form">
+        <div className="section-form__header">
         <div className="user-info">
           <div className="user-info__form">
             <form className="loginForm">
               <h1 className="heading">
-                Please login to see your personalized movie list!
+                Please login!
               </h1>
               <div className="loginForm__group">
                 <input 
@@ -61,6 +62,8 @@ export class LoginForm extends Component {
                   className="loginForm__label">email
                 </label>
                 <div className="loginForm__group">
+                  <i
+                    className={`fa ${isPasswordShown ? "fa-eye-slash" : "fa-eye"} password-icon`} onClick={this.togglePasswordVisibility} />
                   <input
                     name="password"
                     value={this.state.password}
@@ -74,13 +77,12 @@ export class LoginForm extends Component {
                     for="password"
                     className="loginForm__label">password
                   </label>
-                  <i 
-                  className={`fa ${isPasswordShown ? "fa-eye-slash" : "fa-eye"} password-icon`} onClick={this.togglePasswordVisibility} />
                   <a className="btn btn-grey" href='/login' onClick={(e)=> this.handleSubmit(e)}>Login &rarr;</a>
                 </div>
               </div>
             </form>
           </div>
+        </div>
         </div>
       </section>
       
