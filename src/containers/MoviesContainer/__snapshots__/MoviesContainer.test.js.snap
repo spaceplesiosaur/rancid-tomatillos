@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MovieRatings should render with correct data 1`] = `
+<section
+  className="moviesContainer"
+>
+  <MoviesCard />
+  //placeholder
+</section>
+`;

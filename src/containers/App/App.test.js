@@ -12,25 +12,6 @@ describe('App', () => {
 
   beforeEach(() => {
 
-    // wrapper = shallow(
-    //     <App
-    //     />
-    //   )
-    //
-    //
-    // let mockMovies= { movies:
-    //   [
-    //     {
-    //       id: 1,
-    //       title: "Squirrelzilla: The Reckoning"
-    //     },
-    //     {
-    //       id: 2,
-    //       title: "Child's Play IX: Elf on the Shelf"
-    //     }
-    //   ]
-    // }
-
     getMovieData.mockImplementation(() => {
       return Promise.resolve({ movies:
         [
