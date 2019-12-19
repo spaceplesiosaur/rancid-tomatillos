@@ -6,6 +6,6 @@ exports[`App should render with correct data 1`] = `
 >
   <Connect(LoginForm) />
   <UserProfile />
-  <MoviesContainer />
+  <Connect(MoviesContainer) />
 </main>
 `;

@@ -94,12 +94,8 @@ const mapDispatchToProps = dispatch => ({
 
 export default connect(null, mapDispatchToProps)(LoginForm);
 
-<<<<<<< HEAD
-export default connect(null, mapDispatchToProps)(LoginForm)
-=======
-LoginForm.ropTypes = {
+
+LoginForm.propTypes = {
   isPasswordShown: PropTypes.func,
   getUser: PropTypes.func
 }
-
->>>>>>> master

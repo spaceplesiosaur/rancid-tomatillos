@@ -32,7 +32,7 @@ exports[`LoginForm should render with correct data 1`] = `
           />
           <label
             className="loginForm__label"
-            for="email"
+            htmlFor="email"
           >
             email
           </label>
@@ -50,7 +50,7 @@ exports[`LoginForm should render with correct data 1`] = `
             />
             <label
               className="loginForm__label"
-              for="password"
+              htmlFor="password"
             >
               password
             </label>
@@ -105,7 +105,7 @@ exports[`LoginForm should render with correct data when isPasswordShown is true 
           />
           <label
             className="loginForm__label"
-            for="email"
+            htmlFor="email"
           >
             email
           </label>
@@ -123,7 +123,7 @@ exports[`LoginForm should render with correct data when isPasswordShown is true 
             />
             <label
               className="loginForm__label"
-              for="password"
+              htmlFor="password"
             >
               password
             </label>
