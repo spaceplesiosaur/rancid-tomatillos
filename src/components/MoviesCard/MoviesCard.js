@@ -2,6 +2,7 @@ import React from 'react';
 // import { Link } from 'react-router-dom';
 import MovieRatings from '../../containers/MovieRatings/MovieRatings'
 import '../../containers/App/App.scss';
+import PropTypes from 'prop-types';
 
 const MoviesCard = ({ average_rating, id, backdrop_path, overview, poster_path, release_date, title}) => {
   return (
@@ -20,3 +21,13 @@ const MoviesCard = ({ average_rating, id, backdrop_path, overview, poster_path, 
 }
 
 export default MoviesCard;
+
+MoviesCard.propTypes = {
+  average_rating: PropTypes.number,
+  id: PropTypes.number,
+  backdrop_path: PropTypes.string,
+  overview: PropTypes.string,
+  poster_path: PropTypes.string,
+  release_date: PropTypes.string,
+  title: PropTypes.string
+}

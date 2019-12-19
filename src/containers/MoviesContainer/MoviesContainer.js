@@ -1,6 +1,7 @@
 import React from 'react';
 import MoviesCard from "../../components/MoviesCard/MoviesCard";
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import '../App/App.scss';
 import UserProfile from '../UserProfile/UserProfile';
 
@@ -29,3 +30,7 @@ export const mapStateToProps = state => ({
 });
 
 export default connect(mapStateToProps)(MoviesContainer);
+
+MoviesContainer.propTypes = {
+  movies: PropTypes.array
+}
