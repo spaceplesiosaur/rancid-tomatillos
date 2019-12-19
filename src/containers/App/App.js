@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import LoginForm from '../LoginForm/LoginForm';
-import Home from '../../components/Home'
+import Home from '../../containers/Home/Home'
 import { getMovieData } from '../../util/apiCalls'
 import UserProfile from '../UserProfile/UserProfile';
 import MoviesContainer from '../MoviesContainer/MoviesContainer';
@@ -26,11 +26,12 @@ export class App extends Component {
   }
 
   render() {
+    const { user } = this.props
     return (
       <main className="app-main">
-        <Route path='/' render={() => <Home />} />
-        <Route path='/login' render={()=> <LoginForm />} />
-        <Route path='/user-profile' render={()=> <UserProfile />} />
+        <Route path='/' render={()=> <Home /> } />
+        <Route path='/login' render={() => <LoginForm />} />
+        <Route path='/profile' render={() => <UserProfile />} />
         <Route path='/movies' render={() => <MoviesContainer />} />
         {/* <ShowPage /> */}
         {/* <MovieRatings /> */}
@@ -43,7 +44,11 @@ const mapDispatchToProps = dispatch => ({
   addMovies: data => dispatch(addMovies(data))
 })
 
-export default connect(null, mapDispatchToProps)(App);
+export const mapStateToProps = state => ({
+  user: state.user
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
 
 App.propTypes = {
   movies: PropTypes.array
