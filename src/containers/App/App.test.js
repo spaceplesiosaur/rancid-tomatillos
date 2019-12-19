@@ -49,19 +49,35 @@ describe('App', () => {
   })
 
   it('should render with correct data', () => {
-    const wrapper = shallow( <App />);
+    const wrapper = shallow(
+      <App addMovies={jest.fn()}/>);
     expect(wrapper).toMatchSnapshot()
   })
 
   it('should call getMovieData when mounted', () => {
+    shallow( <App addMovies={jest.fn()}/>)
     expect(getMovieData).toHaveBeenCalled()
   })
 
   it('should call addMovies when mounted', async () => {
+    const wrapper = shallow(
+      <App addMovies={jest.fn()}/>);
 
+      let mockMovies= { movies:
+        [
+          {
+            id: 1,
+            title: "Squirrelzilla: The Reckoning"
+          },
+          {
+            id: 2,
+            title: "Child's Play IX: Elf on the Shelf"
+          }
+        ]
+      }
 
-    await getMovieData('https://rancid-tomatillos.herokuapp.com/api/v1/movies')
+    await wrapper.instance().componentDidMount()
 
-    expect(wrapper.instance().props.addMovies).toHaveBeenCalledWith(data)
+    expect(wrapper.instance().props.addMovies).toHaveBeenCalledWith(mockMovies)
   })
 })
