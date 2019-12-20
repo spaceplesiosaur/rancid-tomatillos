@@ -5,27 +5,28 @@ import '../../containers/App/App.scss';
 import PropTypes from 'prop-types';
 
 export default class MoviesCard extends Component {
-  constructor({ average_rating, id, backdrop_path, overview, poster_path, release_date, title}) {
-    super({ average_rating, id, backdrop_path, overview, poster_path, release_date, title})
+  constructor() {
+    super()
     this.state = {
       showPageOpen: false
     }
   }
 
-  redirect = () => {
+  redirect = (e) => {
+    e.preventDefault()
     this.setState({ showPageOpen: true })
   }
 
   render() {
     return (
       (this.state.showPageOpen)
-      ? <Redirect path={`movies:${this.props.id}`}/>
+      ? <Redirect to={`/movies/${this.props.id}`}/>
       : <section className="moviesContainer-movieCard-cardContainer">
-          <h2 className="movieCard-cardContainer-title">{title}</h2>
-          <img className="movieCard-cardContainer-poster" src={poster_path}alt="Official movie poster for film"></img>
-          <h4>Average Movie Rating: {average_rating}</h4>
+          <h2 className="movieCard-cardContainer-title">{this.props.title}</h2>
+          <img className="movieCard-cardContainer-poster" src={this.props.poster_path}alt="Official movie poster for film"></img>
+          <h4>Average Movie Rating: {this.props.average_rating}</h4>
           <button className="movieCard-btn">Add Rating</button>
-          <button className="movieCard-btn" onClick={this.redirect}>See More</button>
+          <button className="movieCard-btn" onClick={(e) => this.redirect(e)}>See More</button>
           <MovieRatings />
         </section>
     )

@@ -6,7 +6,7 @@ import UserProfile from '../UserProfile/UserProfile';
 import MoviesContainer from '../MoviesContainer/MoviesContainer';
 import { addMovies } from '../../actions/index';
 import { Route } from 'react-router-dom'
-// import ShowPage from '../../components/ShowPage/ShowPage';
+import ShowPage from '../../components/ShowPage/ShowPage';
 // import MovieRatings from '../MovieRatings/MovieRatings';
 import './App.scss';
 import { connect } from 'react-redux';
@@ -26,22 +26,28 @@ export class App extends Component {
         <Route path='/login' render={() => <LoginForm />} />
         <Route exact path='/' render={() => <MoviesContainer />} />
         <Route path='/movies:id' render={({match}) => {
-          const selectedShowpage = state.movies.find(movie => {
+          const selectedShowpage = this.props.movies.find(movie => {
+            {console.log(movie.id)}
             return movie.id === match.params.id
           });
-        <ShowPage movie={selectedShowpage} />
+          {console.log(selectedShowpage)}
+            return (<ShowPage movie={this.state.selectedShowpage} />)
         }}
-        {/* <MovieRatings /> */}
+        />
       </main>
     )
   }
 }
 
+const mapStateToProps = state => ({
+  movies: state.movies
+})
+
 const mapDispatchToProps = dispatch => ({
   addMovies: data => dispatch(addMovies(data))
 })
 
-export default connect(null, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);
 
 App.propTypes = {
   movies: PropTypes.array
