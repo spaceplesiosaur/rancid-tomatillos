@@ -6,14 +6,14 @@ import UserProfile from '../UserProfile/UserProfile';
 import MoviesContainer from '../MoviesContainer/MoviesContainer';
 import { addMovies } from '../../actions/index';
 import { Route } from 'react-router-dom'
-// import ShowPage from '../../components/ShowPage/ShowPage';
+import ShowPage from '../../components/ShowPage/ShowPage';
 // import MovieRatings from '../MovieRatings/MovieRatings';
 import './App.scss';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 export class App extends Component {
- 
+
   componentDidMount() {
     return getMovieData('https://rancid-tomatillos.herokuapp.com/api/v1/movies')
     .then(data => this.props.addMovies(data))
@@ -22,23 +22,34 @@ export class App extends Component {
   render() {
     return (
       <main className="app-main">
-        <Header /> 
+        <Header />
         <Route path='/login' render={() => <LoginForm />} />
-        <Route path='/profile' render={() => <UserProfile />} />
         <Route exact path='/' render={() => <MoviesContainer />} />
-        {/* <ShowPage /> */}
-        {/* <MovieRatings /> */}
+        <Route path='/movies/:id' render={({match}) => {
+          const selectedShowpage = this.props.movies.find(movie => {
+            return movie.id === parseInt(match.params.id)
+          });
+
+          {console.log('SHOWPAGE', selectedShowpage)}
+          return (!selectedShowpage) ? null : <ShowPage movie={selectedShowpage} />
+        }}
+        />
+
       </main>
     )
   }
 }
 
+const mapStateToProps = state => ({
+  movies: state.movies
+})
+
 const mapDispatchToProps = dispatch => ({
   addMovies: data => dispatch(addMovies(data))
 })
 
-export default connect(null, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);
 
 App.propTypes = {
   movies: PropTypes.array
-}  
+}

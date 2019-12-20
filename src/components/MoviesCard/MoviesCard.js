@@ -1,26 +1,39 @@
-import React from 'react';
-// import { Link } from 'react-router-dom';
+import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 import MovieRatings from '../../containers/MovieRatings/MovieRatings'
 import '../../containers/App/App.scss';
 import PropTypes from 'prop-types';
 
-const MoviesCard = ({ average_rating, id, backdrop_path, overview, poster_path, release_date, title}) => {
-  return (
-    <section className="moviesContainer-movieCard-cardContainer">
-      <h2 className="movieCard-cardContainer-title">{title}</h2>
-      <img className="movieCard-cardContainer-poster" src={poster_path}alt="Official movie poster for film"></img>
-      <h4>Average Movie Rating: {average_rating}</h4>
-      <button className="movieCard-btn">Add Rating</button>
-      {/* <Link to={'/showpage/'}> */}
-      <button className="movieCard-btn">See More</button>
-      {/* </Link> */}
-      <MovieRatings />
-    </section>
-  )
+export default class MoviesCard extends Component {
+  constructor() {
+    super()
+    this.state = {
+      showPageOpen: false
+    }
+  }
 
+  redirect = (e) => {
+    e.preventDefault()
+    this.setState({ showPageOpen: true })
+  }
+
+  render() {
+    return (
+      (this.state.showPageOpen)
+      ? <Redirect to={`/movies/${this.props.id}`}/>
+      : <section className="moviesContainer-movieCard-cardContainer">
+          <h2 className="movieCard-cardContainer-title">{this.props.title}</h2>
+          <img className="movieCard-cardContainer-poster" src={this.props.poster_path}alt="Official movie poster for film"></img>
+          <h4>Average Movie Rating: {this.props.average_rating}</h4>
+          <button className="movieCard-btn">Add Rating</button>
+          <button className="movieCard-btn" onClick={(e) => this.redirect(e)}>See More</button>
+          <MovieRatings />
+        </section>
+    )
+  }
 }
 
-export default MoviesCard;
+
 
 MoviesCard.propTypes = {
   average_rating: PropTypes.number,
