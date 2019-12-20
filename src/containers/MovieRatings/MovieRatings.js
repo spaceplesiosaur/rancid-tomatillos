@@ -5,7 +5,7 @@ import '../App/App.scss';
 
 export const MovieRatings = ({movieId, rating, user}) => {
   const getRating = (rate) => {
-    rating({
+    return rating({
       movieId: movieId,
       user: user,
       rate: rate
@@ -13,6 +13,8 @@ export const MovieRatings = ({movieId, rating, user}) => {
 }
   const  handleClick = (event) => {
     const rate = parseInt(event.target.id)
+    console.log('RATE', rate)
+    console.log('GETRAITING', getRating(rate))
     return  getRating(rate)
   }
 
