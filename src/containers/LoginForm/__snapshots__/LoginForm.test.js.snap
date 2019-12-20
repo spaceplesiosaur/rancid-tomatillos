@@ -5,69 +5,77 @@ exports[`LoginForm should render with correct data 1`] = `
   className="section-form"
 >
   <div
-    className="user-info"
+    className="section-form__header"
   >
     <div
-      className="user-info__form"
+      className="user-info"
     >
-      <form
-        className="loginForm"
+      <div
+        className="user-info__form"
       >
-        <h1
-          className="heading"
+        <form
+          className="loginForm"
         >
-          Please login to see your personalized movie list!
-        </h1>
-        <div
-          className="loginForm__group"
-        >
-          <input
-            className="loginForm__input"
-            id="email"
-            name="email"
-            onChange={[Function]}
-            placeholder="email"
-            type="text"
-            value=""
-          />
-          <label
-            className="loginForm__label"
-            htmlFor="email"
+          <h1
+            className="heading"
           >
-            email
-          </label>
+            Please login!
+          </h1>
           <div
             className="loginForm__group"
           >
             <input
               className="loginForm__input"
-              id="password"
-              name="password"
+              id="email"
+              name="email"
               onChange={[Function]}
-              placeholder="password"
-              type="password"
+              placeholder="email"
+              type="text"
               value=""
             />
             <label
               className="loginForm__label"
-              htmlFor="password"
+              htmlFor="email"
             >
-              password
+              email
             </label>
-            <i
-              className="fa fa-eye password-icon"
-              onClick={[Function]}
-            />
-            <a
-              className="btn btn-grey"
-              href="/login"
-              onClick={[Function]}
+            <div
+              className="loginForm__group"
             >
-              Login →
-            </a>
+              <i
+                className="fa fa-eye-slash password-icon"
+                onClick={[Function]}
+              />
+              <input
+                className="loginForm__input"
+                id="password"
+                name="password"
+                onChange={[Function]}
+                placeholder="password"
+                type="password"
+                value=""
+              />
+              <label
+                className="loginForm__label"
+                htmlFor="password"
+              >
+                password
+              </label>
+              <i
+                className="fa fa-eye password-icon"
+                onClick={[Function]}
+              />
+              <a
+                className="btn btn-grey"
+                href="/login"
+                onClick={[Function]}
+              >
+                Login →
+              </a>
+            </div>
           </div>
-        </div>
-      </form>
+        </form>
+      </div>
     </div>
   </div>
 </section>
@@ -78,69 +86,77 @@ exports[`LoginForm should render with correct data when isPasswordShown is true 
   className="section-form"
 >
   <div
-    className="user-info"
+    className="section-form__header"
   >
     <div
-      className="user-info__form"
+      className="user-info"
     >
-      <form
-        className="loginForm"
+      <div
+        className="user-info__form"
       >
-        <h1
-          className="heading"
+        <form
+          className="loginForm"
         >
-          Please login to see your personalized movie list!
-        </h1>
-        <div
-          className="loginForm__group"
-        >
-          <input
-            className="loginForm__input"
-            id="email"
-            name="email"
-            onChange={[Function]}
-            placeholder="email"
-            type="text"
-            value=""
-          />
-          <label
-            className="loginForm__label"
-            htmlFor="email"
+          <h1
+            className="heading"
           >
-            email
-          </label>
+            Please login!
+          </h1>
           <div
             className="loginForm__group"
           >
             <input
               className="loginForm__input"
-              id="password"
-              name="password"
+              id="email"
+              name="email"
               onChange={[Function]}
-              placeholder="password"
+              placeholder="email"
               type="text"
               value=""
             />
             <label
               className="loginForm__label"
-              htmlFor="password"
+              htmlFor="email"
             >
-              password
+              email
             </label>
-            <i
-              className="fa fa-eye-slash password-icon"
-              onClick={[Function]}
-            />
-            <a
-              className="btn btn-grey"
-              href="/login"
-              onClick={[Function]}
+            <div
+              className="loginForm__group"
             >
-              Login →
-            </a>
+              <i
+                className="fa fa-eye password-icon"
+                onClick={[Function]}
+              />
+              <input
+                className="loginForm__input"
+                id="password"
+                name="password"
+                onChange={[Function]}
+                placeholder="password"
+                type="text"
+                value=""
+              />
+              <label
+                className="loginForm__label"
+                htmlFor="password"
+              >
+                password
+              </label>
+              <i
+                className="fa fa-eye-slash password-icon"
+                onClick={[Function]}
+              />
+              <a
+                className="btn btn-grey"
+                href="/login"
+                onClick={[Function]}
+              >
+                Login →
+              </a>
+            </div>
           </div>
-        </div>
-      </form>
+        </form>
+      </div>
     </div>
   </div>
 </section>

@@ -19,12 +19,13 @@ exports[`MoviesCard should match a snapshot of data being passed in 1`] = `
     4
   </h4>
   <button
-    className="btn"
+    className="movieCard-btn"
   >
     Add Rating
   </button>
   <button
-    className="btn"
+    className="movieCard-btn"
+    onClick={[Function]}
   >
     See More
   </button>

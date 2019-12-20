@@ -10,7 +10,10 @@ exports[`UserProfile should render with correct data 1`] = `
     Hello, Name!
   </h2>
   <button
-    className="userProfile-container-button"
-  />
+    aria-label="user logout"
+    className="userProfile-container-btn"
+  >
+    Logout
+  </button>
 </section>
 `;
