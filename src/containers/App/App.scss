@@ -9,18 +9,27 @@ $color-card-light: #2998ff;
 $color-card-dark: #1000a2;
 $font-Bebas: 'Bebas Neue', cursive;
 
+%button-styling {
+  border: none;
+  box-shadow: 2px 2px 2px 2px #00000063;
+  cursor: pointer;
+  font-size: 1.5em;
+  padding: 1.5rem 2.5rem;
+  text-decoration: none;
+}
+
 @import url('https://fonts.googleapis.com/css?family=Rubik:300,400,500,700,900&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab:300,400,500,600,700,800&display=swap');
 
 * {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 html {
   font-size:62.5%
 }
-
 
 .App {
   text-align: center;
@@ -38,14 +47,14 @@ html {
 }
 
 .App-header {
+  align-items: center;
   background-color: #282c34;
-  min-height: 100vh;
+  color: white;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: center;
+  min-height: 100vh;
 }
 
 .App-link {
@@ -63,31 +72,30 @@ html {
 
 .btn-grey {
   font-weight: 700;
-  color: $color-black;
+  color: $color-white;
   background-color: rgba(220, 220, 220, 0.564);
-  margin-left: 2rem;
-  margin-top: .7em;
-  width: 12rem;
+  width: 15rem;
+  font-size: 1.7rem;
+  margin-top: 1rem;
 }
 
 .btn {
   &,
   &:link,
   &:visited {
+    @extend %button-styling;
+    border-radius: 10rem;
     text-transform: uppercase;
     text-decoration: none;
-    padding: 1.5rem 2.5rem;
-    border-radius: 10rem;
+    padding: 1.7rem 3.5rem;
+    border-radius: 3px;
     display: inline-block;
     transition: all .2s;
-    border: none;
-    cursor: pointer;
-    font-size: 1.5em;
     }
 
   &:hover {
-    transform: translateY(-2px);
-    background-color: rgba($color-white, 0.023);
+    transform: translateY(-1.5px);
+    background-color: rgba(35, 0, 102, 0.91);
     box-shadow: 0 1rem 2em rgba(0
     ,0,0,.2);
     }
@@ -101,72 +109,73 @@ html {
 }
 
 .loginForm {
-  width: 85vw;
   height: 55vh;
   font-family: $font-Bebas;
 
   &__label {
-     font-family: $font-Bebas;
-     color: #333;
-     -webkit-font-smoothing: antialiased;
-     -moz-osx-font-smoothing: grayscale;
-     cursor: pointer;
+    font-family: $font-Bebas;
+    color: #333;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    cursor: pointer;
   }
 }
 
 .heading {
+  color: $color-white;
   font-size: 3rem;
   font-weight: 400;
-  margin-left: 2rem;
   margin-top: .7em;
 }
 
 .section-form {
-  padding: 15rem 0;
-  background-Image: linear-gradient( to right bottom, $color-white, $color-black);
-  background-size: cover;
-  background-repeat: no-repeat;
+
+  &__header {
+  padding: 15rem;
+  top: 0;
+  width: 100%;
+  height: 85vh;
+  background: rgb(122, 25, 167);
+  clip-path: polygon(10% 78%, 0 91%, 0 0, 100% 0, 100% 78%, 94% 89%, 86% 80%, 75% 90%, 63% 79%, 50% 92%, 34% 82%, 21% 92%);
+  background-image: linear-gradient(#a12fff, #7226ff);
 }
-
-
+}
 .user-info {
-  background-image: linear-gradient(105deg,
-                                    rgb( 255, 255, 255) 0%,
-                                    rgba(255, 255, 255, .9) 70%,
-                                     transparent 100%);
-  border-radius: 3px;
+  border-radius: 10px;
   box-shadow: 0 1.5rem 4rem rgba($color-black, .15);
-  width: 95rem;
-  height: 55rem;
+  width: 50vw;
+  height: 70vh;
   margin: auto;
-  &__form {
-    width: 50%;
-    padding: 3rem;
 
+  &__form {
+    padding: 3.5rem;
+    background-image: linear-gradient(#9162ff, #6b4afd);
   }
 }
 
-
 .loginForm {
+
   &__group:not(:last-child) {
     margin-bottom: 2rem;
 
   }
   &__input {
     font-family: inherit;
-    font-size: 1.5rem;
+    font-size: 1.7rem;
     color: $dark-grey-color;
-    padding: 1.5rem 2rem;
+    padding: 2rem;
     border-radius: 2px;
     background-color: rgba( 255, 255, 255, .5);
-    border: none;
     border-bottom: 3px solid transparent;
-    width: 40%;
     display:block;
+    font-family: inherit;
+    font-size: 1.5rem;
+    padding: 1.5rem 2rem;
     transition: all .3s;
+    width: 40%;
 
    &::-webkit-input-placeholder {
-    color: $color-dark-grey-2;
+    color: $color-white;
     }
 
    &:focus {
@@ -182,11 +191,11 @@ html {
   }
 
   &__label {
+    color: $color-white;
     font-size: 1.2rem;
     font-weight: 400;
     margin-left: 2rem;
     margin-top: .7em;
-    display: block;
     transition: all .3s;
   }
 
@@ -197,20 +206,76 @@ html {
   }
 
   &__group {
-    margin-left: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    // margin-left: 2rem;
+    position: relative;
     margin-top: .7em
   }
 }
 
+.login-btn {
+  @extend %button-styling;
+  background-color: white;
+  border-radius: 3px;
+  color: black;
+  font-size: 2.5em;
+  font-weight: 600;
+  margin-left: 1%;
+}
+
+.header-div {
+  background-color: #7a49f2c7;
+}
+.userProfile-container {
+  align-items: center;
+  background-color: #7a49f2c7;
+  border-bottom: 8px dotted black;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 1%;
+}
+
+.userProfile-container-greeting {
+  font-size: 4em;
+  margin-right: 50%;
+}
+
+.userProfile-container-btn {
+  @extend %button-styling;
+  background-color: white;
+  border-radius: 3px;
+  font-size: 2.5em;
+  font-weight: 600;
+  margin-left: 10%;
+    &:hover {
+      cursor: pointer;
+      font-weight: 700;
+      transform: scale(1.1);
+      transition: all .4s ease-in-out;
+    }
+}
 
 h1 {
-  background-color: slategrey;
-  border: 2px solid black;
-  font-size: 5em;
+  background-color: #7a49f2c7;
+  font-family: 'Roboto Slab', serif;
+  // border: 2px solid black;
+  font-size: 10em;
   text-align-last: center;
 }
 
+.password-icon {
+    position: absolute;
+    right: 24px;
+    top: 20px;
+    font-size: 20px;
+  cursor: pointer;
+}
+
 .moviesContainer {
+  // background-color: #0000009e;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -220,32 +285,68 @@ h1 {
 }
 
 .moviesContainer-movieCard-cardContainer {
-  background-color: slategrey;
+  align-items: center;
+  // background-color: slategrey;
+  background: linear-gradient(#6e8194, #f7f3f3);
+  border-radius: 22px;
+  box-shadow: 10px 10px 5px #393636a8;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  margin: 1%;
-  padding: 1%;
-  align-items: center;
-  border-radius: 29px;
+  margin: 2%;
     &:hover {
-      cursor: pointer;
+      font-weight: 700;
       transform: scale(1.1);
       transition: all .4s ease-in-out;
     }
 }
 
 .movieCard-cardContainer-title {
-  font-size: 2em;
+  background-color: black;
+  border-bottom: 2px solid white;
+  border-radius: 22px 22px 0 0;
+  color: white;
+  font-size: 2.25em;
+  padding: 3%;
+  text-align: center;
+  text-transform: uppercase;
+  width: 100%;
 }
 
 .movieCard-cardContainer-poster {
   align-items: center;
-  height: 300px;
-  width: 250px;
+  height: 386px;
+  width: 325px;
+}
+
+.movieCard-btn {
+  @extend %button-styling;
+  background-color: #7a49f2;
+  border-radius: 3px;
+  box-shadow: 2px 2px 2px 2px #00000063;
+  font-size: 2.5em;
+  font-weight: 600;
+  margin-bottom: 3%;
+  width: 76%;
+    &:hover {
+      cursor: pointer;
+      font-weight: 700;
+      transform: scale(1.1);
+      transition: all .4s ease-in-out;
+    }
 }
 
 h4 {
   font-size: 2em;
-  padding: 2%;
+  padding: 2.5%;
+  margin-bottom: 3%;
+  text-transform: uppercase;
+}
+
+#blockColorblindContent {
+  display: none;
+}
+
+.showPage-container {
+  margin: 20%;
+  background-color: aqua;
 }
