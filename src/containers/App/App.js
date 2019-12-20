@@ -25,15 +25,20 @@ export class App extends Component {
         <Header />
         <Route path='/login' render={() => <LoginForm />} />
         <Route exact path='/' render={() => <MoviesContainer />} />
-        <Route path='/movies:id' render={({match}) => {
+        <Route path='/movies/:id' render={({match}) => {
+           {console.log('MOVIES',this.props.movies)}
           const selectedShowpage = this.props.movies.find(movie => {
-            {console.log(movie.id)}
-            return movie.id === match.params.id
+            {console.log('MOVIE ID', movie.id)}
+            {console.log(match.params.id)}
+            let selectMovie = movie.id === parseInt(match.params.id)
+            return {id: selectMovie.id}
           });
-          {console.log(selectedShowpage)}
-            return (<ShowPage movie={this.state.selectedShowpage} />)
+
+          {console.log('SHOWPAGE', selectedShowpage)}
+          return <ShowPage movie={selectedShowpage} />
         }}
         />
+
       </main>
     )
   }
