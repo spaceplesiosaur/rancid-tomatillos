@@ -30,7 +30,7 @@ export class App extends Component {
             return movie.id === parseInt(match.params.id)
           });
 
-          {console.log('SHOWPAGE', selectedShowpage)}
+          // {console.log('SHOWPAGE', selectedShowpage)}
           return (!selectedShowpage) ? null : <ShowPage movie={selectedShowpage} />
         }}
         />

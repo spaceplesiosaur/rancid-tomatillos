@@ -5,7 +5,6 @@ exports[`MoviesContainer should take a snapshot of the data coming in 1`] = `
   <h1>
     Rancid Tomatillos
   </h1>
-  <UserProfile />
   <section
     className="moviesContainer"
   >
