@@ -1,10 +1,33 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { setRating } from '../../actions/index';
 import '../App/App.scss';
 
-const MovieRatings = () => {
-  return (
-    null
+export const MovieRatings = ({movieId, rating, user}) => {
+  const getRating = (rate) => {
+    rating({
+      movieId: movieId,
+      user: user,
+      rate: rate
+    })
+}
+  const  handleClick = (event) => {
+    const rate = parseInt(event.target.id)
+    return  getRating(rate)
+  }
+
+return (
+    <button id="1" onClick={(event) => handleClick(event)}>star</button>
   )
+
 }
 
-export default MovieRatings;
+export const mapDispatchToProps = dispatch => ({
+  rating: ratingData => dispatch(setRating(ratingData))
+});
+
+export const mapStateToProps = state => ({
+  user: state.user.id
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(MovieRatings);
