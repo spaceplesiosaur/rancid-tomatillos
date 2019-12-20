@@ -9,17 +9,7 @@ describe('movies', () => {
     });
 
     it('should return the correct state with action type ADD_MOVIES', () => {
-        // const initialState = [];
-        // const movies =  [{
-        //             id: 13,
-        //             title: "Terminator: Dark Fate",
-        //             poster_path: "url",
-        //             backdrop_path: "url",
-        //             release_date: "2019-10-23",
-        //             overview: "Decades after Sarah Connor prevented Judgment Day",
-        //             average_rating: 3
-        //         }]
-                
+              
         const action = {
           type: 'ADD_MOVIES',
           movies: {
@@ -33,7 +23,7 @@ describe('movies', () => {
                 average_rating: 3
             }]
           }
-          };
+        };
 
           const result = movies([], action)
           const expectedState =  [{
