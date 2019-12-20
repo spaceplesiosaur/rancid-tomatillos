@@ -29,13 +29,12 @@ export class App extends Component {
            {console.log('MOVIES',this.props.movies)}
           const selectedShowpage = this.props.movies.find(movie => {
             {console.log('MOVIE ID', movie.id)}
-            {console.log(match.params.id)}
-            let selectMovie = movie.id === parseInt(match.params.id)
-            return {id: selectMovie.id}
+            {console.log('PARAMS ID', match.params.id)}
+            return movie.id === parseInt(match.params.id)
           });
 
           {console.log('SHOWPAGE', selectedShowpage)}
-          return <ShowPage movie={selectedShowpage} />
+          return (!selectedShowpage) ? null : <ShowPage movie={selectedShowpage} />
         }}
         />
 
