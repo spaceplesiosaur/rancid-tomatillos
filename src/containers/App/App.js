@@ -26,10 +26,7 @@ export class App extends Component {
         <Route path='/login' render={() => <LoginForm />} />
         <Route exact path='/' render={() => <MoviesContainer />} />
         <Route path='/movies/:id' render={({match}) => {
-           {console.log('MOVIES',this.props.movies)}
           const selectedShowpage = this.props.movies.find(movie => {
-            {console.log('MOVIE ID', movie.id)}
-            {console.log('PARAMS ID', match.params.id)}
             return movie.id === parseInt(match.params.id)
           });
 
