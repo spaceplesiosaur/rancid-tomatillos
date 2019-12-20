@@ -24,9 +24,13 @@ export class App extends Component {
       <main className="app-main">
         <Header />
         <Route path='/login' render={() => <LoginForm />} />
-        
         <Route exact path='/' render={() => <MoviesContainer />} />
-        {/* <ShowPage /> */}
+        <Route path='/movies:id' render={({match}) => {
+          const selectedShowpage = state.movies.find(movie => {
+            return movie.id === match.params.id
+          });
+        <ShowPage movie={selectedShowpage} />
+        }}
         {/* <MovieRatings /> */}
       </main>
     )
