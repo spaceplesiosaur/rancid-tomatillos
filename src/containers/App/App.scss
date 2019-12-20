@@ -347,6 +347,26 @@ h4 {
 }
 
 .showPage-container {
-  margin: 20%;
-  background-color: aqua;
+  display: flex;
+}
+
+.section-showpage-image {
+  animation: bounceIn 2s;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+}
+
+@keyframes bounceIn {
+  0% {
+    transform: scale(0.1);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+  }
 }
