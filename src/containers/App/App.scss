@@ -222,11 +222,15 @@ html {
   color: black;
   font-size: 2.5em;
   font-weight: 600;
-  margin-left: 1%;
+  margin: 1%;
 }
 
 .header-div {
   background-color: #7a49f2c7;
+  border-top: 7px dotted black;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 .userProfile-container {
   align-items: center;
@@ -260,6 +264,7 @@ html {
 
 h1 {
   background-color: #7a49f2c7;
+  border-bottom: 7px dotted black;
   font-family: 'Roboto Slab', serif;
   // border: 2px solid black;
   font-size: 10em;
@@ -349,6 +354,7 @@ h4 {
 .showPage-image-container {
   display: flex;
   position: absolute;
+  width: 100%;
 }
 
 .section-showPage-image {
@@ -356,6 +362,7 @@ h4 {
   background-position: center;
   background-repeat: no-repeat;
   height: 100vh;
+  width: 100%;
 }
 
 @keyframes slowIn {
@@ -368,7 +375,8 @@ h4 {
 }
 
 .showPage-info-container {
-  animation: info 2s ease-in 5s;
+  animation-duration: 3s;
+  animation-name: slideIn;
   background-color: #3a4290ba;
   border-radius: 13px;
   color: white;
@@ -380,12 +388,15 @@ h4 {
   width: 65%;
 }
 
-@keyframes info {
-  0% {
-    transform: scale(0.1);
+@keyframes slideIn {
+  from {
+    margin-left: 100%;
+    width: 100%; 
   }
-  100% {
-    transform: scale(1);
+
+  to {
+    margin-left: 0%;
+    width: 65%;
   }
 }
 
