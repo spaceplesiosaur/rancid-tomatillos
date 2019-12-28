@@ -7,17 +7,17 @@ export const MovieRatings = ({movieId, rating, user}) => {
 
   const setRating = (rate) => {
 
-    const rating = ({
-      movieId: movieId,
+    const userRating = ({
+      movie_id: movieId,
       rating: rate
     })
 
-    return postRating(rate, user)
+    return postRating(userRating, user)
 }
   const  handleClick = (event) => {
     const rate = parseInt(event.target.id)
     console.log('RATE', rate)
-    console.log('GETRAITING', getRating(rate))
+    console.log('SETRAITING', setRating(rate))
     return  setRating(rate)
   }
 
@@ -35,4 +35,4 @@ export const mapStateToProps = state => ({
   user: state.user.id
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(MovieRatings);
+export default connect(mapStateToProps, null)(MovieRatings);

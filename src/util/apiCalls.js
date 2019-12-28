@@ -19,17 +19,17 @@ export const fetchUser = async (email, password) => {
     return user;
 }
 
-export const postRating = async (rating, userID) => {
+export const postRating = async (userRating, userID) => {
   const options = {
       method: 'POST',
-      body: JSON.stringify(rating),
+      body: JSON.stringify(userRating),
       headers: {
           'Content-Type': 'application/json'
       }
   };
 
   const post = await fetch(`https://rancid-tomatillos.herokuapp.com/api/v1//users/${userID}/ratings`, options)
-  const rating = await response.json()
+  const rating = await post.json()
   console.log('RATING', rating)
   return rating;
 }
