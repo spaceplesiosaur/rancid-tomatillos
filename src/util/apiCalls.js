@@ -28,7 +28,7 @@ export const postRating = async (userRating, userID) => {
       }
   };
 
-  const post = await fetch(`https://rancid-tomatillos.herokuapp.com/api/v1//users/${userID}/ratings`, options)
+  const post = await fetch(`https://rancid-tomatillos.herokuapp.com/api/v1/users/${userID}/ratings`, options)
   const rating = await post.json()
   console.log('RATING', rating)
   return rating;

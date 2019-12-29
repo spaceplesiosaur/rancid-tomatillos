@@ -5,20 +5,20 @@ import '../App/App.scss';
 
 export const MovieRatings = ({movieId, rating, user}) => {
 
-  const setRating = (rate) => {
+  const setRating = async (rate) => {
 
-    const userRating = ({
+    const userRating = {
       movie_id: movieId,
       rating: rate
-    })
+    }
 
-    return postRating(userRating, user)
+    return await postRating(userRating, user)
 }
-  const  handleClick = (event) => {
+  const  handleClick = async (event) => {
     const rate = parseInt(event.target.id)
     console.log('RATE', rate)
     console.log('SETRAITING', setRating(rate))
-    return  setRating(rate)
+    return await setRating(rate)
   }
 
 return (

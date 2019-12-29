@@ -3,10 +3,10 @@ export const addMovies = movies => ({
     movies
 });
 
-// export const setRating = rating => ({
-//   type: 'SET_RATING',
-//   rating
-// })
+export const setRating = rating => ({
+  type: 'SET_RATING',
+  rating
+})
 
 export const getUser = user => ({
     type: 'ADD_USER',
