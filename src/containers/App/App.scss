@@ -138,8 +138,9 @@ html {
   background: rgb(122, 25, 167);
   clip-path: polygon(10% 78%, 0 91%, 0 0, 100% 0, 100% 78%, 94% 89%, 86% 80%, 75% 90%, 63% 79%, 50% 92%, 34% 82%, 21% 92%);
   background-image: linear-gradient(#a12fff, #7226ff);
+  }
 }
-}
+
 .user-info {
   border-radius: 10px;
   box-shadow: 0 1.5rem 4rem rgba($color-black, .15);
@@ -226,12 +227,19 @@ html {
 }
 
 .header-div {
+  align-items: center;
   background-color: #7a49f2c7;
-  border-top: 7px dotted black;
+  border: 7px dotted black;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  justify-content: space-evenly;
 }
+
+.header-username {
+  font-size: 3em;
+}
+
 .userProfile-container {
   align-items: center;
   background-color: #7a49f2c7;
@@ -262,12 +270,9 @@ html {
     }
 }
 
-.movies_heading {
-  background-color: #7a49f2c7;
-  border-bottom: 7px dotted black;
+.header-app-name {
   font-family: 'Roboto Slab', serif;
-  // border: 2px solid black;
-  font-size: 10em;
+  font-size: 9em;
   text-align-last: center;
 }
 
@@ -280,7 +285,6 @@ html {
 }
 
 .moviesContainer {
-  // background-color: #0000009e;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -291,7 +295,6 @@ html {
 
 .moviesContainer-movieCard-cardContainer {
   align-items: center;
-  // background-color: slategrey;
   background: linear-gradient(#6e8194, #f7f3f3);
   border-radius: 22px;
   box-shadow: 10px 10px 5px #393636a8;
