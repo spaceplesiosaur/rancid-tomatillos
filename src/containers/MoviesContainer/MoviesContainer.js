@@ -16,10 +16,9 @@ export const MoviesContainer = ({ movies }) => {
   })
   return (
     <>
-      <h1>Rancid Tomatillos</h1>
-       <section className="moviesContainer">
+      <section className="moviesContainer">
          {displayCards}
-       </section>
+      </section>
     </>
   )
 }

@@ -6,13 +6,14 @@ export const Home = ({user}) => {
   const username = user.name;
   return(
     <div className="header-div">
+      <h1 className="header-app-name">Rancid Tomatillos</h1>
       {console.log("USER", user.name)}
      {!user.name ?
         <NavLink to='/login' className="login-btn">Login</NavLink> :
-        <div>
+        <>
         <NavLink to='/' className="btn logout">Logout</NavLink>
-        <h2>{`Hello, ${username}!`}</h2>
-        </div> }
+        <h2 className="header-username">{`Hello, ${username}!`}</h2>
+        </> }
     </div>
   )
 
