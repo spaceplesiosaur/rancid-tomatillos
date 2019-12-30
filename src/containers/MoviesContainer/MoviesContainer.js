@@ -15,10 +15,10 @@ export class MoviesContainer extends Component {
     }
   }
 
-  componentDidMount() {
+  componentDidUpdate() {
     return this.props.user.id ?
-      getMovieData(`https://rancid-tomatillos.herokuapp.com/api/v1/users/${this.props.user.id}/ratings`)
-      .then(data => this.props.ratings(data.ratings)) : null
+    getMovieData(`https://rancid-tomatillos.herokuapp.com/api/v1/users/${this.props.user.id}/ratings`)
+      .then(data => this.props.getRatings(data.ratings)) : null
     }
 
   displayCards = () => {
@@ -52,7 +52,7 @@ export const mapStateToProps = state => ({
 });
 
 export const mapDispatchToProps = dispatch => ({
-  ratings: ratingData => dispatch(getRatings(ratingData))
+  getRatings: ratingData => dispatch(getRatings(ratingData))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(MoviesContainer);

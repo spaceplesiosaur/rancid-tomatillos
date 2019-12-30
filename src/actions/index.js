@@ -4,7 +4,7 @@ export const addMovies = movies => ({
 });
 
 export const getRatings = ratings => ({
-  type: 'GET_RATING',
+  type: 'GET_RATINGS',
   ratings
 })
 

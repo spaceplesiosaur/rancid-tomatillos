@@ -19,8 +19,6 @@ export const MovieRatings = ({movieId, rating, user, allRatings}) => {
 }
   const  handleClick = async (event) => {
     const rate = parseInt(event.target.id)
-    console.log('RATE', rate)
-    console.log('SETRAITING', setRating(rate))
     return await setRating(rate)
   }
 
@@ -30,12 +28,9 @@ export const MovieRatings = ({movieId, rating, user, allRatings}) => {
     })
   }
 
-console.log('CHECK RATINGS', checkAllRatings())
-
-console.log('RATINGS', allRatings)
 return (
   checkAllRatings().length ?
-  <p>{`Your rating: ${checkAllRatings().rating}`}</p> :
+  <p>{`Your rating: ${checkAllRatings()[0].rating}`}</p> :
   <section>
     <button id="1" onClick={(event) => handleClick(event)}>star1</button>
     <button id="2" onClick={(event) => handleClick(event)}>star2</button>
