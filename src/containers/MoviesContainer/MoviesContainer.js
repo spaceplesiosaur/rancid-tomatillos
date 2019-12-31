@@ -35,7 +35,6 @@ export class MoviesContainer extends Component {
     return (
 
           <>
-            <h1>Rancid Tomatillos</h1>
              <section className="moviesContainer">
                {this.displayCards()}
              </section>
