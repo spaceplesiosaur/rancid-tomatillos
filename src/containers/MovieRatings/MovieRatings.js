@@ -37,6 +37,11 @@ return (
     <button id="3" onClick={(event) => handleClick(event)}>star3</button>
     <button id="4" onClick={(event) => handleClick(event)}>star4</button>
     <button id="5" onClick={(event) => handleClick(event)}>star5</button>
+    <button id="6" onClick={(event) => handleClick(event)}>star6</button>
+    <button id="7" onClick={(event) => handleClick(event)}>star7</button>
+    <button id="8" onClick={(event) => handleClick(event)}>star8</button>
+    <button id="9" onClick={(event) => handleClick(event)}>star9</button>
+    <button id="10" onClick={(event) => handleClick(event)}>star10</button>
   </section>
   )
 
