@@ -138,8 +138,9 @@ html {
   background: rgb(122, 25, 167);
   clip-path: polygon(10% 78%, 0 91%, 0 0, 100% 0, 100% 78%, 94% 89%, 86% 80%, 75% 90%, 63% 79%, 50% 92%, 34% 82%, 21% 92%);
   background-image: linear-gradient(#a12fff, #7226ff);
+  }
 }
-}
+
 .user-info {
   border-radius: 10px;
   box-shadow: 0 1.5rem 4rem rgba($color-black, .15);
@@ -222,12 +223,23 @@ html {
   color: black;
   font-size: 2.5em;
   font-weight: 600;
-  margin-left: 1%;
+  margin: 1%;
 }
 
 .header-div {
+  align-items: center;
   background-color: #7a49f2c7;
+  border: 7px dotted black;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
 }
+
+.header-username {
+  font-size: 3em;
+}
+
 .userProfile-container {
   align-items: center;
   background-color: #7a49f2c7;
@@ -258,11 +270,9 @@ html {
     }
 }
 
-h1 {
-  background-color: #7a49f2c7;
+.header-app-name {
   font-family: 'Roboto Slab', serif;
-  // border: 2px solid black;
-  font-size: 10em;
+  font-size: 9em;
   text-align-last: center;
 }
 
@@ -275,18 +285,16 @@ h1 {
 }
 
 .moviesContainer {
-  // background-color: #0000009e;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
   overflow-x: scroll;
   overflow-y: hidden;
-  padding: 5%
+  padding: 1%;
 }
 
 .moviesContainer-movieCard-cardContainer {
   align-items: center;
-  // background-color: slategrey;
   background: linear-gradient(#6e8194, #f7f3f3);
   border-radius: 22px;
   box-shadow: 10px 10px 5px #393636a8;
@@ -320,7 +328,7 @@ h1 {
 
 .movieCard-btn {
   @extend %button-styling;
-  background-color: #7a49f2;
+  background-color: #7a49f2c7;
   border-radius: 3px;
   box-shadow: 2px 2px 2px 2px #00000063;
   font-size: 2.5em;
@@ -346,7 +354,76 @@ h4 {
   display: none;
 }
 
-.showPage-container {
-  margin: 20%;
-  background-color: aqua;
+.showPage-image-container {
+  display: flex;
+  position: absolute;
+  width: 100%;
+}
+
+.section-showPage-image {
+  animation: slowIn 2s;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 95vh;
+  width: 100%;
+}
+
+@keyframes slowIn {
+  0% {
+    transform: scale(0.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.showPage-info-container {
+  animation-duration: 3s;
+  animation-name: slideIn;
+  background-color: #7a49f2c7;
+  border-radius: 13px;
+  // color: white;
+  display: block;
+  font-family: 'Roboto Slab', serif;
+  margin: 12% 27% 0 17%;
+  padding: 1%;
+  position: relative;
+  width: 65%;
+}
+
+@keyframes slideIn {
+  from {
+    margin-left: 100%;
+    width: 65%; 
+  }
+
+  to {
+    margin-left: 17%;
+    width: 65%;
+  }
+}
+
+.showPage-container-title {
+  font-size: 4em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.showPage-container-release,
+.showPage-container-averageRating {
+  font-size: 2em;
+  margin-bottom: 2%;
+}
+
+.showPage-container-overview {
+  font-size: 2em;
+  font-weight: 600;
+  margin-bottom: 2%;
+}
+
+span {
+  font-weight: 700;
+  margin-right: 1%;
+  text-decoration: underline;
+  text-transform: uppercase;
 }
