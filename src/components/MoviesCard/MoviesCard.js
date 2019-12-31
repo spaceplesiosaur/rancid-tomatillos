@@ -17,6 +17,7 @@ export default class MoviesCard extends Component {
     this.setState({ showPageOpen: true })
   }
 
+
   render() {
     return (
       (this.state.showPageOpen)
@@ -27,12 +28,13 @@ export default class MoviesCard extends Component {
           <h4>Average Movie Rating: {this.props.average_rating}</h4>
           <button className="movieCard-btn">Add Rating</button>
           <button className="movieCard-btn" onClick={(e) => this.redirect(e)}>See More</button>
-          <MovieRatings />
+          <MovieRatings
+            movieId ={this.props.id}
+          />
         </section>
     )
   }
 }
-
 
 
 MoviesCard.propTypes = {

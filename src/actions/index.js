@@ -3,8 +3,16 @@ export const addMovies = movies => ({
     movies
 });
 
+export const getRatings = ratings => ({
+  type: 'GET_RATINGS',
+  ratings
+})
+
+export const addRating = rating => ({
+  type: 'ADD_RATING',
+  rating
+})
 export const getUser = user => ({
     type: 'ADD_USER',
     user
 })
-

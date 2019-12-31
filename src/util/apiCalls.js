@@ -13,8 +13,23 @@ export const fetchUser = async (email, password) => {
             'Content-Type': 'application/json'
         }
     };
-        
+
     const response = await fetch('https://rancid-tomatillos.herokuapp.com/api/v1/login', options)
     const user = await response.json()
     return user;
+}
+
+export const postRating = async (userRating, userID) => {
+  const options = {
+      method: 'POST',
+      body: JSON.stringify(userRating),
+      headers: {
+          'Content-Type': 'application/json'
+      }
+  };
+
+  const post = await fetch(`https://rancid-tomatillos.herokuapp.com/api/v1/users/${userID}/ratings`, options)
+  const rating = await post.json()
+  console.log('RATING', rating)
+  return rating;
 }
