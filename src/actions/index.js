@@ -1,6 +1,6 @@
 export const addMovies = movies => ({
-    type: 'ADD_MOVIES',
-    movies
+  type: 'ADD_MOVIES',
+  movies
 });
 
 export const getRatings = ratings => ({
@@ -13,6 +13,11 @@ export const addRating = rating => ({
   rating
 })
 export const getUser = user => ({
-    type: 'ADD_USER',
-    user
+  type: 'ADD_USER',
+  user
+})
+
+export const removeRating = rating => ({
+  type: 'REMOVE_RATING',
+  rating
 })
