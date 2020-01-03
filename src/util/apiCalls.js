@@ -34,7 +34,7 @@ export const postRating = async (userRating, userID) => {
   return rating;
 }
 
-export const removeRating = async (userID) => {
+export const removeRating = async (userID, rating) => {
     const options = {
         method: 'DELETE',
         headers: {
@@ -42,8 +42,9 @@ export const removeRating = async (userID) => {
         }
     };
 
-    const response = await fetch(`https://rancid-tomatillos.herokuapp.com/api/v1/users/${userID}/ratings`, options);
-    if (!response.ok) {
-      throw new Error('Could not delete favorite.');
-  }
+    return fetch(`https://rancid-tomatillos.herokuapp.com/api/v1/users/${userID}/ratings/${rating}`, options).then(response => {
+        if (!response.ok) {
+          throw Error('There was a problem with the delete')
+        }
+    })
 }
