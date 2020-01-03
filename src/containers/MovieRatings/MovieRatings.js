@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { postRating } from '../../util/apiCalls';
-import { getMovieData } from '../../util/apiCalls';
+import { postRating, removeRating, getMovieData } from '../../util/apiCalls';
 import { addRating } from '../../actions/index';
 import '../App/App.scss';
 
@@ -16,7 +15,29 @@ export const MovieRatings = ({movieId, rating, user, allRatings}) => {
 
     return await postRating(userRating, user)
                 .then(data => rating(data))
-}
+  }
+
+  // const changeRating = async (rate) => {
+  //   return await removeRating(user, rating)
+  //   .then(data => console.log(data))
+  // }
+
+  // const handleDelete = async (e) => {
+  //   const rate = parseInt(e.target.id)
+  //   return await changeRating(rate)
+  // }
+
+  const handleDelete = (e) => {
+    e.preventDefault()
+    // const { allRatings, user } = props;
+    removeRating(rating, user)
+      .then(data => {
+          const postRating = { ...user, ratings: data.ratings };
+          allRatings(postRating);
+      });
+  }
+  
+
   const  handleClick = async (event) => {
     const rate = parseInt(event.target.id)
     return await setRating(rate)
@@ -29,21 +50,24 @@ export const MovieRatings = ({movieId, rating, user, allRatings}) => {
   }
 
 return (
-  checkAllRatings().length ?
-  <p>{`Your rating: ${checkAllRatings()[0].rating}`}</p> :
-  <section>
-    <button id="1" onClick={(event) => handleClick(event)}>star1</button>
-    <button id="2" onClick={(event) => handleClick(event)}>star2</button>
-    <button id="3" onClick={(event) => handleClick(event)}>star3</button>
-    <button id="4" onClick={(event) => handleClick(event)}>star4</button>
-    <button id="5" onClick={(event) => handleClick(event)}>star5</button>
-    <button id="6" onClick={(event) => handleClick(event)}>star6</button>
-    <button id="7" onClick={(event) => handleClick(event)}>star7</button>
-    <button id="8" onClick={(event) => handleClick(event)}>star8</button>
-    <button id="9" onClick={(event) => handleClick(event)}>star9</button>
-    <button id="10" onClick={(event) => handleClick(event)}>star10</button>
-  </section>
-  )
+  <>
+    <button className="movieCard-btn" onClick={(e) => handleDelete(e)}>Change Rating</button>
+      <section>
+      {checkAllRatings().length ?
+      <h4>{`Your rating: ${checkAllRatings()[0].rating}`}</h4> :
+        <button id="1" onClick={(event) => handleClick(event)}>star1</button>,
+        <button id="2" onClick={(event) => handleClick(event)}>star2</button>,
+        <button id="3" onClick={(event) => handleClick(event)}>star3</button>,
+        <button id="4" onClick={(event) => handleClick(event)}>star4</button>,
+        <button id="5" onClick={(event) => handleClick(event)}>star5</button>,
+        <button id="6" onClick={(event) => handleClick(event)}>star6</button>,
+        <button id="7" onClick={(event) => handleClick(event)}>star7</button>,
+        <button id="8" onClick={(event) => handleClick(event)}>star8</button>,
+        <button id="9" onClick={(event) => handleClick(event)}>star9</button>,
+        <button id="10" onClick={(event) => handleClick(event)}>star10</button>}
+      </section>
+  </>
+)
 
 }
 
