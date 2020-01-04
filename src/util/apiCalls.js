@@ -30,11 +30,10 @@ export const postRating = async (userRating, userID) => {
 
   const post = await fetch(`https://rancid-tomatillos.herokuapp.com/api/v1/users/${userID}/ratings`, options)
   const rating = await post.json()
-  console.log('RATING', rating)
   return rating;
 }
 
-export const removeRating = async (userID, rating) => {
+export const removeRating = (userID, ratingID) => {
     const options = {
         method: 'DELETE',
         headers: {
@@ -42,7 +41,7 @@ export const removeRating = async (userID, rating) => {
         }
     };
 
-    return fetch(`https://rancid-tomatillos.herokuapp.com/api/v1/users/${userID}/ratings/${rating}`, options).then(response => {
+    return fetch(`https://rancid-tomatillos.herokuapp.com/api/v1/users/${userID}/ratings/${ratingID}`, options).then(response => {
         if (!response.ok) {
           throw Error('There was a problem with the delete')
         }
