@@ -26,7 +26,6 @@ export default class MoviesCard extends Component {
           <h2 className="movieCard-cardContainer-title">{this.props.title}</h2>
           <img className="movieCard-cardContainer-poster" src={this.props.poster_path}alt="Official movie poster for film"></img>
           <h4>Average Movie Rating: {this.props.average_rating}</h4>
-          <button className="movieCard-btn">Add Rating</button>
           <button className="movieCard-btn" onClick={(e) => this.redirect(e)}>See More</button>
           <MovieRatings
             movieId ={this.props.id}
