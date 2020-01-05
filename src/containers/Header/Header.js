@@ -9,7 +9,7 @@ export const Header = ({user, logUserOut}) => {
     <div className="header-div">
       <h1 className="header-app-name">Rancid Tomatillos</h1>
       {console.log("USER", user.name)}
-     {!user.name ?
+     {!username ?
         <NavLink to='/login' className="login-btn">Login</NavLink> :
         <>
         <NavLink to='/' className="btn logout" onClick={logUserOut}>Logout</NavLink>
