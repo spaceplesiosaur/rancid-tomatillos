@@ -2,7 +2,7 @@ export const getMovieData = async (url) => {
     const response = await fetch(url)
     const data = await response.json()
     return data;
-}
+};
 
 export const fetchUser = async (email, password) => {
     const userLogin = { email: `${email}`, password: `${password}`};
@@ -17,7 +17,7 @@ export const fetchUser = async (email, password) => {
     const response = await fetch('https://rancid-tomatillos.herokuapp.com/api/v1/login', options)
     const user = await response.json()
     return user;
-}
+};
 
 export const postRating = async (userRating, userID) => {
   const options = {
@@ -31,21 +31,19 @@ export const postRating = async (userRating, userID) => {
   const post = await fetch(`https://rancid-tomatillos.herokuapp.com/api/v1/users/${userID}/ratings`, options)
   const rating = await post.json()
   return rating;
-}
+};
 
 export const fetchRatings = userID => {
-    return fetch(
-      `https://rancid-tomatillos.herokuapp.com/api/v1/users/${userID}/ratings`
-    ).then(response => {
+    return fetch(`https://rancid-tomatillos.herokuapp.com/api/v1/users/${userID}/ratings`).then(response => {
       if (!response.ok) {
-        throw Error('Something went wrong');
+        throw Error('There was a problem fetching all ratings');
       }
       return response.json();
     });
-  };
+};
 
 export const removeRating = (userID, ratingID) => {
-    console.log('apirating', ratingID)
+    
     const options = {
         method: 'DELETE',
         headers: {
@@ -58,4 +56,4 @@ export const removeRating = (userID, ratingID) => {
           throw Error('There was a problem with the delete')
         }
     })
-}
+};
