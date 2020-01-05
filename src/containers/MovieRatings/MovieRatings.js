@@ -15,7 +15,7 @@ export const MovieRatings = ({ movieId, rating, user, allRatings, deleteRating }
 
     return await postRating(userRating, user)
       .then(data => rating(data))
-  }
+  };
 
   const handleDelete = (event) => {
     event.preventDefault()
@@ -24,42 +24,36 @@ export const MovieRatings = ({ movieId, rating, user, allRatings, deleteRating }
       fetchRatings(user).then(ratingData => {
         deleteRating({ ratings: ratingData.ratings });
     });
-  })
+  });
 };
 
-const findUserRating = movieId => {
-  const userRatings = allRatings.map(rating => rating.movie_id);
-  if (userRatings.includes(movieId)) {
-    return allRatings.find(movie => movie.movie_id === movieId).rating;
-  } else {
-    return '...';
-  }
-};
-  
   const getRatingId = movieId => {
     const movieIds = allRatings.map(rating => rating.movie_id);
     if (movieIds.includes(movieId)) {
       return allRatings.find(movie => movie.movie_id === movieId).id;
     }
-  }
+  };
 
   const  handleClick = async (event) => {
     const rate = parseInt(event.target.id)
     return await setRating(rate)
-  }
+  };
 
-  const checkAllRatings = () => {
-     return allRatings.filter(singleRating => {
-      return singleRating.movie_id === movieId
-    })
-  }
+  const getUserRating = movieId => {
+    const userRatings = allRatings.map(rating => rating.movie_id);
+      if (userRatings.includes(movieId)) {
+        return allRatings.find(movie => movie.movie_id === movieId).rating;
+      } else {
+        return '...';
+    }
+  };
 
   return (
     <>
-    {findUserRating(movieId) !== '...' &&
+    {getUserRating(movieId) !== '...' &&
       <button className="movieCard-btn" onClick={(event) => handleDelete(event)}>Change Rating</button>}
-    {checkAllRatings().length ?
-    <h4>{`Your rating: ${checkAllRatings()[0].rating}`}</h4> :
+    {getUserRating(movieId) !== '...' ?
+    <h4>{`Your rating: ${getUserRating(movieId)}`}</h4> :
     <section className="rating-btn-section">
       <button className="rating-btn" id="1" onKeyUp={(event) => handleClick(event)}>star1</button>
       <button className="rating-btn" id="2" onClick={(event) => handleClick(event)}>star2</button>
