@@ -33,7 +33,19 @@ export const postRating = async (userRating, userID) => {
   return rating;
 }
 
+export const fetchRatings = userID => {
+    return fetch(
+      `https://rancid-tomatillos.herokuapp.com/api/v1/users/${userID}/ratings`
+    ).then(response => {
+      if (!response.ok) {
+        throw Error('Something went wrong');
+      }
+      return response.json();
+    });
+  };
+
 export const removeRating = (userID, ratingID) => {
+    console.log('apirating', ratingID)
     const options = {
         method: 'DELETE',
         headers: {
