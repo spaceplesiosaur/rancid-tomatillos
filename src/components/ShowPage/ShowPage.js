@@ -1,8 +1,9 @@
 import React from 'react';
 import MovieRatings from '../../containers/MovieRatings/MovieRatings'
+import { connect } from 'react-redux';
 import '../../containers/App/App.scss';
 
-const ShowPage = ({movie}) => {
+export const ShowPage = ({movie, user}) => {
   return (
     <>
     <section className="showPage-image-container">
@@ -13,12 +14,18 @@ const ShowPage = ({movie}) => {
       <p className="showPage-container-release"><span>Release Date:</span>{movie.release_date}</p>
       <p className="showPage-container-overview"><span>Synopsis:</span>{movie.overview}</p>
       <p className="showPage-container-averageRating"><span>Average Rating:</span>{movie.average_rating}</p>
+      {!user.name ?
+      null :
       <MovieRatings
-        movieId={movie.id}
-      />
+        movieId ={movie.id}
+      />}
     </section>
     </>
   )
 }
 
-export default ShowPage;
+export const mapStateToProps = (state) => ({
+  user: state.user
+})
+
+export default connect(mapStateToProps, null)(ShowPage)
