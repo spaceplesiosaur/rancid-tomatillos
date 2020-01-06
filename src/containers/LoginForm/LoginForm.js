@@ -44,8 +44,8 @@ export class LoginForm extends Component {
     return (
       <section className="section-form">
         <div className="section-form__header">
-          <img className="login_logo-text" src={textLogo} />
-          <img className="login_logo-image" alt="tomato logo" src={logo} />
+          <img className="logo-text" src={textLogo} />
+          <img className="logo-image" alt="tomato logo" src={logo} />
         <div className="user-info">
           <div className="user-info__form">
             <form className="loginForm">

@@ -9,8 +9,8 @@ export const Header = ({user, logUserOut}) => {
   const username = user.name;
   return(
     <div className="header-div">
-      <img className="header-text-logo" src={textLogo} />
-      <img className="logo_image" alt="tomato logo" src={logo} />
+      <img className="logo-text" src={textLogo} />
+      <img className="logo-image" alt="tomato logo" src={logo} />
       {console.log("USER", user.name)}
      {!username ?
         <NavLink to='/login' className="btn login-btn">Login</NavLink> :
