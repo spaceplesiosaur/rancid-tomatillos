@@ -16,3 +16,7 @@ export const getUser = user => ({
     type: 'ADD_USER',
     user
 })
+
+export const logOut = () => ({
+  type: 'LOG_OUT',
+})

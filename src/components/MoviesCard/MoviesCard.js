@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
 import MovieRatings from '../../containers/MovieRatings/MovieRatings'
 import '../../containers/App/App.scss';
 import PropTypes from 'prop-types';
 
-export default class MoviesCard extends Component {
+export class MoviesCard extends Component {
   constructor() {
     super()
     this.state = {
@@ -28,14 +29,21 @@ export default class MoviesCard extends Component {
           <h4>Average Movie Rating: {this.props.average_rating}</h4>
           <button className="movieCard-btn">Add Rating</button>
           <button className="movieCard-btn" onClick={(e) => this.redirect(e)}>See More</button>
+          {!this.props.user.name ?
+          null :
           <MovieRatings
             movieId ={this.props.id}
-          />
+          />}
         </section>
     )
   }
 }
 
+export const mapStateToProps = (state) => ({
+  user: state.user
+})
+
+export default connect(mapStateToProps, null)(MoviesCard)
 
 MoviesCard.propTypes = {
   average_rating: PropTypes.number,
