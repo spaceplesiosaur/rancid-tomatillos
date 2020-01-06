@@ -1,11 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { postRating } from '../../util/apiCalls';
-import { getMovieData } from '../../util/apiCalls';
-import { addRating } from '../../actions/index';
+import { postRating, removeRating, fetchRatings } from '../../util/apiCalls';
+import { addRating, deleteRating } from '../../actions/index';
+import PropTypes from 'prop-types';
 import '../App/App.scss';
 
-export const MovieRatings = ({movieId, rating, user, allRatings}) => {
+export const MovieRatings = ({ movieId, rating, user, allRatings, deleteRating }) => {
 
   const setRating = async (rate) => {
 
@@ -15,40 +15,66 @@ export const MovieRatings = ({movieId, rating, user, allRatings}) => {
     }
 
     return await postRating(userRating, user)
-                .then(data => rating(data))
-}
+      .then(data => rating(data))
+  };
+
+  const handleDelete = (event) => {
+    event.preventDefault()
+    removeRating(user, getRatingId(movieId))
+    .then(data => {
+      fetchRatings(user).then(ratingData => {
+        deleteRating({ ratings: ratingData.ratings });
+    });
+  });
+};
+
+  const getRatingId = movieId => {
+    const movieIds = allRatings.map(rating => rating.movie_id);
+    if (movieIds.includes(movieId)) {
+      return allRatings.find(movie => movie.movie_id === movieId).id;
+    }
+  };
+
   const  handleClick = async (event) => {
     const rate = parseInt(event.target.id)
     return await setRating(rate)
-  }
+  };
 
-  const checkAllRatings = () => {
-    return allRatings.filter(singleRating => {
-      return singleRating.movie_id === movieId
-    })
-  }
+  const getUserRating = movieId => {
+    const userRatings = allRatings.map(rating => rating.movie_id);
+      if (userRatings.includes(movieId)) {
+        return allRatings.find(movie => movie.movie_id === movieId).rating;
+      } else {
+        return '...';
+    }
+  };
 
-return (
-  checkAllRatings().length ?
-  <p>{`Your rating: ${checkAllRatings()[0].rating}`}</p> :
-  <section>
-    <button id="1" onClick={(event) => handleClick(event)}>star1</button>
-    <button id="2" onClick={(event) => handleClick(event)}>star2</button>
-    <button id="3" onClick={(event) => handleClick(event)}>star3</button>
-    <button id="4" onClick={(event) => handleClick(event)}>star4</button>
-    <button id="5" onClick={(event) => handleClick(event)}>star5</button>
-    <button id="6" onClick={(event) => handleClick(event)}>star6</button>
-    <button id="7" onClick={(event) => handleClick(event)}>star7</button>
-    <button id="8" onClick={(event) => handleClick(event)}>star8</button>
-    <button id="9" onClick={(event) => handleClick(event)}>star9</button>
-    <button id="10" onClick={(event) => handleClick(event)}>star10</button>
-  </section>
-  )
-
+  return (
+    <>
+    {getUserRating(movieId) !== '...' &&
+      <button className="movieCard-btn" onClick={(event) => handleDelete(event)}>Change Rating</button>}
+    {getUserRating(movieId) !== '...' ?
+    <h4>{`Your rating: ${getUserRating(movieId)}`}</h4> :
+    <section className="rating-btn-section">
+      <button className="rating-btn" id="1" onKeyUp={(event) => handleClick(event)}>star1</button>
+      <button className="rating-btn" id="2" onClick={(event) => handleClick(event)}>star2</button>
+      <button className="rating-btn" id="3" onClick={(event) => handleClick(event)}>star3</button>
+      <button className="rating-btn" id="4" onClick={(event) => handleClick(event)}>star4</button>
+      <button className="rating-btn" id="5" onClick={(event) => handleClick(event)}>star5</button>
+      <button className="rating-btn" id="6" onClick={(event) => handleClick(event)}>star6</button>
+      <button className="rating-btn" id="7" onClick={(event) => handleClick(event)}>star7</button>
+      <button className="rating-btn" id="8" onClick={(event) => handleClick(event)}>star8</button>
+      <button className="rating-btn" id="9" onClick={(event) => handleClick(event)}>star9</button>
+      <button className="rating-btn" id="10" onClick={(event) => handleClick(event)}>star10</button>
+    </section>}
+    </>
+    )
+  
 }
 
 export const mapDispatchToProps = dispatch => ({
-  rating: ratingData => dispatch(addRating(ratingData))
+  rating: ratingData => dispatch(addRating(ratingData)),
+  deleteRating: ratingData => dispatch(deleteRating(ratingData)),
 });
 
 export const mapStateToProps = state => ({
@@ -57,3 +83,11 @@ export const mapStateToProps = state => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(MovieRatings);
+
+MovieRatings.propTypes = {
+  movieId: PropTypes.number,
+  rating: PropTypes.func,
+  user: PropTypes.number,
+  allRatings: PropTypes.array,
+  deleteRating: PropTypes.func
+}

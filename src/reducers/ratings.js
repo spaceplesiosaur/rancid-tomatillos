@@ -4,6 +4,8 @@ export const ratings = (state = [], action) => {
       return [...action.ratings]
     case 'ADD_RATING' :
       return [...state, action.rating.rating]
+    case 'REMOVE_RATING' :
+      return action.rating.ratings;
     default:
       return state;
   }

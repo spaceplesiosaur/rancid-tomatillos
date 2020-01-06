@@ -33,9 +33,7 @@ export class MoviesContainer extends Component {
 
   render() {
     return (
-
           <>
-            <h1>Rancid Tomatillos</h1>
              <section className="moviesContainer">
                {this.displayCards()}
              </section>
