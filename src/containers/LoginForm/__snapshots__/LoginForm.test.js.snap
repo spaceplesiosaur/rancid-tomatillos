@@ -44,6 +44,7 @@ exports[`LoginForm should render with correct data 1`] = `
             >
               <i
                 className="fa fa-eye-slash password-icon"
+                id="pwIconFirstHalf"
                 onClick={[Function]}
               />
               <input
@@ -63,6 +64,7 @@ exports[`LoginForm should render with correct data 1`] = `
               </label>
               <i
                 className="fa fa-eye password-icon"
+                id="pwIconSecondHalf"
                 onClick={[Function]}
               />
               <a
@@ -125,6 +127,7 @@ exports[`LoginForm should render with correct data when isPasswordShown is true 
             >
               <i
                 className="fa fa-eye password-icon"
+                id="pwIconFirstHalf"
                 onClick={[Function]}
               />
               <input
@@ -144,6 +147,7 @@ exports[`LoginForm should render with correct data when isPasswordShown is true 
               </label>
               <i
                 className="fa fa-eye-slash password-icon"
+                id="pwIconSecondHalf"
                 onClick={[Function]}
               />
               <a
@@ -160,4 +164,10 @@ exports[`LoginForm should render with correct data when isPasswordShown is true 
     </div>
   </div>
 </section>
+`;
+
+exports[`LoginForm should render with correct data when loggedIn is true 1`] = `
+<Redirect
+  to="/"
+/>
 `;
