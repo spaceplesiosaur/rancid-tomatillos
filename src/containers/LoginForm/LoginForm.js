@@ -64,7 +64,9 @@ export class LoginForm extends Component {
                 </label>
                 <div className="loginForm__group">
                   <i
-                      className={`fa ${isPasswordShown ? "fa-eye" : "fa-eye-slash"} password-icon`} onClick={this.togglePasswordVisibility} />
+                    className={`fa ${isPasswordShown ? "fa-eye" : "fa-eye-slash"} password-icon`} onClick={this.togglePasswordVisibility}
+                    id="pwIconFirstHalf"
+                    />
                   <input
                     name="password"
                     value={this.state.password}
@@ -79,7 +81,9 @@ export class LoginForm extends Component {
                     className="loginForm__label">password
                   </label>
                   <i
-                  className={`fa ${isPasswordShown ? "fa-eye-slash" : "fa-eye"} password-icon`} onClick={this.togglePasswordVisibility} />
+                  className={`fa ${isPasswordShown ? "fa-eye-slash" : "fa-eye"} password-icon`} onClick={this.togglePasswordVisibility}
+                  id="pwIconSecondHalf"
+                  />
                   <a className="btn btn-grey" href='/login' onClick={(e)=> this.handleSubmit(e)}>Login &rarr;</a>
                 </div>
               </div>

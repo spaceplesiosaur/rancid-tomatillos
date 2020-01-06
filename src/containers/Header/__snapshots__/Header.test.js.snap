@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header should match the snapshot with correct data 1`] = `
+<div
+  className="header-div"
+>
+  <h1
+    className="header-app-name"
+  >
+    Rancid Tomatillos
+  </h1>
+  <NavLink
+    className="btn logout"
+    onClick={[MockFunction]}
+    to="/"
+  >
+    Logout
+  </NavLink>
+  <h2
+    className="header-username"
+  >
+    Hello, Diana!
+  </h2>
+</div>
+`;
+
+exports[`Header should match the snapshot with correct data when user is logged out 1`] = `
+<div
+  className="header-div"
+>
+  <h1
+    className="header-app-name"
+  >
+    Rancid Tomatillos
+  </h1>
+  <NavLink
+    className="login-btn"
+    to="/login"
+  >
+    Login
+  </NavLink>
+</div>
+`;

@@ -1,8 +1,9 @@
 import React from 'react';
 import MovieRatings from '../../containers/MovieRatings/MovieRatings'
+import { connect } from 'react-redux';
 import '../../containers/App/App.scss';
 
-const ShowPage = ({movie}) => {
+export const ShowPage = ({movie, user}) => {
   return (
       <section className="showPage__image-container"> 
         <img className="showPage__image" src={movie.backdrop_path} alt="movie cover backdrop"></img>
@@ -17,4 +18,8 @@ const ShowPage = ({movie}) => {
   )
 }
 
-export default ShowPage;
+export const mapStateToProps = (state) => ({
+  user: state.user
+})
+
+export default connect(mapStateToProps, null)(ShowPage)

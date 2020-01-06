@@ -4,7 +4,7 @@ exports[`App should render with correct data 1`] = `
 <main
   className="app-main"
 >
-  <Connect(Home) />
+  <Connect(Header) />
   <Route
     path="/login"
     render={[Function]}

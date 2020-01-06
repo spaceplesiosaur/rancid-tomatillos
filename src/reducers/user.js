@@ -2,7 +2,9 @@ export const user = (state = {}, action) => {
   switch(action.type){
     case 'ADD_USER' :
       return action.user.user;
-      default:
+    case "LOG_OUT" :
+      return {}
+    default:
       return state;
 
   }

@@ -21,4 +21,14 @@ describe('actions', () => {
          const result = actions.getUser(user);
          expect(result).toEqual(expectedAction)
     });
+
+    it('should have a type of REMOVE_RATING', () => {
+        const rating = {};
+        const expectedAction = {
+            type: 'REMOVE_RATING',
+            rating
+        };
+         const result = actions.deleteRating(rating);
+         expect(result).toEqual(expectedAction)
+    });
 });
