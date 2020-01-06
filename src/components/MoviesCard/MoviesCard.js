@@ -45,8 +45,8 @@ export const mapStateToProps = (state) => ({
 export default connect(mapStateToProps, null)(MoviesCard)
 
 MoviesCard.propTypes = {
-  average_rating: PropTypes.number,
-  id: PropTypes.number,
+  average_rating: PropTypes.string,
+  id: PropTypes.string,
   backdrop_path: PropTypes.string,
   overview: PropTypes.string,
   poster_path: PropTypes.string,
