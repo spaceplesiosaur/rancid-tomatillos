@@ -4,6 +4,10 @@ import { shallow } from 'enzyme';
 import { LoginForm } from './LoginForm';
 import { Provider } from 'react-redux';
 
+import { fetchUser } from '../../util/apiCalls';
+
+jest.mock('../../util/apiCalls')
+
 describe('LoginForm', () => {
   let wrapper;
   let mockEvent
@@ -29,6 +33,12 @@ describe('LoginForm', () => {
     expect(wrapper).toMatchSnapshot()
   })
 
+  it('should render with correct data when loggedIn is true', () => {
+    wrapper.setState({loggedIn: true})
+
+    expect(wrapper).toMatchSnapshot()
+  })
+
   it('should call handleChange when input value is changed', () => {
 
     wrapper.instance().handleChange = jest.fn()
@@ -39,6 +49,14 @@ describe('LoginForm', () => {
 
   })
 
+  it('should change state when handleChange is called', () => {
+
+    wrapper.setState({email: ''})
+
+    wrapper.instance().handleChange(mockEvent)
+
+    expect(wrapper.state('email')).toEqual(mockEvent.target.value)
+  })
 
   it('should call handleSubmit when button is clicked', () => {
 
@@ -50,13 +68,35 @@ describe('LoginForm', () => {
 
   })
 
-  it('should change state when handleChange is called', () => {
+  it('should call getUser when handleSubmit runs', () => {
+    const mockUser = {email: 'diane@turing.io', name: 'Diane', id: 7}
+    fetchUser.mockImplementation(() => {
+      return Promise.resolve(mockUser)
+    })
+    const mockGetUser = jest.fn()
+    const wrapper = shallow(
+        <LoginForm
+        getUser={mockGetUser}
+        />
+    )
 
-    wrapper.setState({email: ''})
+    await wrapper.instance().handleSubmit(mockEvent);
 
-    wrapper.instance().handleChange(mockEvent)
+    expect(mockeGetUser).toHaveBeenCalledWith(mockUser)
+  })
 
-    expect(wrapper.state('email')).toEqual(mockEvent.target.value)
+  it('should set loggedIn to be true when handleSubmit runs', () => {
+    const mockUser = {email: 'diane@turing.io', name: 'Diane', id: 7}
+    fetchUser.mockImplementation(() => {
+      return Promise.resolve(mockUser)
+    })
+    const mockGetUser = jest.fn()
+
+    expect(wrapper.state('loggedIn')).toEqual(false)
+
+    await wrapper.instance().handleSubmit(mockEvent);
+
+    expect(wrapper.state('loggedIn')).toEqual(true)
   })
 
   it('should toggle isPasswordShown in state when togglePasswordVisibility is called', () => {
