@@ -4,11 +4,15 @@ exports[`Header should match the snapshot with correct data 1`] = `
 <div
   className="header-div"
 >
-  <h1
-    className="header-app-name"
-  >
-    Rancid Tomatillos
-  </h1>
+  <img
+    className="header-text-logo"
+    src="text-logo-RT.png"
+  />
+  <img
+    alt="tomato logo"
+    className="logo_image"
+    src="tomatoe-logo copy.png"
+  />
   <NavLink
     className="btn logout"
     onClick={[MockFunction]}
@@ -28,13 +32,17 @@ exports[`Header should match the snapshot with correct data when user is logged 
 <div
   className="header-div"
 >
-  <h1
-    className="header-app-name"
-  >
-    Rancid Tomatillos
-  </h1>
+  <img
+    className="header-text-logo"
+    src="text-logo-RT.png"
+  />
+  <img
+    alt="tomato logo"
+    className="logo_image"
+    src="tomatoe-logo copy.png"
+  />
   <NavLink
-    className="login-btn"
+    className="btn login-btn"
     to="/login"
   >
     Login
