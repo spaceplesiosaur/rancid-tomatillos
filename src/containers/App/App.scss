@@ -137,7 +137,7 @@ html {
     background: #7a19a7;
     -webkit-clip-path: polygon(10% 78%, 0 91%, 0 0, 100% 0, 100% 78%, 94% 89%, 86% 80%, 75% 90%, 63% 79%, 50% 92%, 34% 82%, 21% 92%);
     clip-path: polygon(10% 78%, 0 91%, 0 0, 100% 0, 100% 78%, 94% 89%, 86% 80%, 75% 90%, 63% 79%, 50% 92%, 34% 82%, 21% 92%);
-    background-image: linear-gradient(#a12fff, #7226ff);
+    background-image: linear-gradient(#7a19a7, #7226ff);
   }
 }
 
@@ -150,7 +150,7 @@ html {
 
   &__form {
     padding: 3.5rem;
-    background-image: linear-gradient(#9162ff, #6b4afd);
+    // background-image: linear-gradient(#9162ff, #6b4afd);
   }
 }
 
@@ -233,7 +233,7 @@ html {
   flex-wrap: wrap;
   justify-content: space-evenly;
   padding-bottom: 2rem;
-  background-color: #9d2bff;
+  background-color: #7a19a7;
   border-bottom: none;
 }
 
