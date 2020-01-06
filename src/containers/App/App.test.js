@@ -76,7 +76,9 @@ describe('App', () => {
             overview: "In Jumanji: The Next Level, the gang is back but the game has changed. As they return to rescue one of their own, the players will have to brave parts unknown from arid deserts to snowy mountains, to escape the world's most dangerous game.",
             average_rating: 7
           }
-        ]
+        ],
+        user: {email: 'diane@turing.io', name: 'Diane', id: 7},
+        ratings: [{}, {}]
       };
 
       const expected = {
