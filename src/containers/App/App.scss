@@ -132,13 +132,12 @@ html {
 .section-form {
 
   &__header {
-  padding: 15rem;
-  top: 0;
-  width: 100%;
-  height: 85vh;
-  background: rgb(122, 25, 167);
-  clip-path: polygon(10% 78%, 0 91%, 0 0, 100% 0, 100% 78%, 94% 89%, 86% 80%, 75% 90%, 63% 79%, 50% 92%, 34% 82%, 21% 92%);
-  background-image: linear-gradient(#a12fff, #7226ff);
+    padding: 1rem;
+    top: 0;
+    background: #7a19a7;
+    -webkit-clip-path: polygon(10% 78%, 0 91%, 0 0, 100% 0, 100% 78%, 94% 89%, 86% 80%, 75% 90%, 63% 79%, 50% 92%, 34% 82%, 21% 92%);
+    clip-path: polygon(10% 78%, 0 91%, 0 0, 100% 0, 100% 78%, 94% 89%, 86% 80%, 75% 90%, 63% 79%, 50% 92%, 34% 82%, 21% 92%);
+    background-image: linear-gradient(#a12fff, #7226ff);
   }
 }
 
@@ -233,7 +232,9 @@ html {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  margin-bottom: 5rem;
+  padding-bottom: 2rem;
+  background-color: #9d2bff;
+  border-bottom: none;
 }
 
 .logo_image {
