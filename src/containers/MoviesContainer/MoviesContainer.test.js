@@ -1,6 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { MoviesContainer, mapStateToProps, mapDispatchToProps } from './MoviesContainer';
+import { getRatings } from '../../actions/index';
 
 describe('MoviesContainer', () => {
     let wrapper;
@@ -63,12 +64,29 @@ describe('MoviesContainer', () => {
         it('should return the user data from the store', () => {
 
             const mockUser = {
-                user = {
-                    {
-                        
-                    }
-                }
-            }
+                user: {email: 'diane@turing.io', name: 'Diane', id: 7},
+                ratings: [{}, {}]
+            };
+
+            const expected = {
+                user: {email: 'diane@turing.io', name: 'Diane', id: 7}
+            };
+            const mappedProps = mapStateToProps(mockUser);
+        
+            expect(mappedProps).toEqual(expected);
         })
     });
+
+    describe('mapDispatchToProps', () => {
+        it('calls dispatch with getRatings when getRatings is called', () => {
+           
+           const mockDispatch = jest.fn();
+           const actionToDispatch = getRatings([{}]);
+    
+           const mappedProps = mapDispatchToProps(mockDispatch);
+           mappedProps.getRatings([{}]);
+     
+           expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
+        });
+      });
 });
