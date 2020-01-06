@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import { shallow } from 'enzyme';
-import ShowPage from './ShowPage';
+import { ShowPage } from './ShowPage';
 
 
 describe('ShowPage', () => {

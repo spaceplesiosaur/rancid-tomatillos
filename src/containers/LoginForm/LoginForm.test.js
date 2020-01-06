@@ -20,7 +20,7 @@ describe('LoginForm', () => {
         />
     )
 
-    mockEvent = {target: {name: 'email', value: 'diana@turing.io'}}
+    mockEvent = {target: {name: 'email', value: 'diana@turing.io'}, preventDefault: jest.fn()}
   })
 
   it('should render with correct data', () => {
@@ -68,7 +68,7 @@ describe('LoginForm', () => {
 
   })
 
-  it('should call getUser when handleSubmit runs', () => {
+  it('should call getUser when handleSubmit runs', async () => {
     const mockUser = {email: 'diane@turing.io', name: 'Diane', id: 7}
     fetchUser.mockImplementation(() => {
       return Promise.resolve(mockUser)
@@ -82,10 +82,10 @@ describe('LoginForm', () => {
 
     await wrapper.instance().handleSubmit(mockEvent);
 
-    expect(mockeGetUser).toHaveBeenCalledWith(mockUser)
+    expect(mockGetUser).toHaveBeenCalledWith(mockUser)
   })
 
-  it('should set loggedIn to be true when handleSubmit runs', () => {
+  it('should set loggedIn to be true when handleSubmit runs', async () => {
     const mockUser = {email: 'diane@turing.io', name: 'Diane', id: 7}
     fetchUser.mockImplementation(() => {
       return Promise.resolve(mockUser)
@@ -116,7 +116,11 @@ describe('LoginForm', () => {
     wrapper.instance().togglePasswordVisibility = jest.fn()
     wrapper.instance().forceUpdate();
 
-    wrapper.find("i").simulate('click')
+    wrapper.find("#pwIconFirstHalf").simulate('click')
+
+    expect(wrapper.instance().togglePasswordVisibility).toHaveBeenCalled()
+
+    wrapper.find("#pwIconSecondHalf").simulate('click')
 
     expect(wrapper.instance().togglePasswordVisibility).toHaveBeenCalled()
 

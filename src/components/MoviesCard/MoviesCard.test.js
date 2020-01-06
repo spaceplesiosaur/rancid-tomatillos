@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import MoviesCard from './MoviesCard';
+import { MoviesCard } from './MoviesCard';
 
 describe('MoviesCard', () => {
     const wrapper = shallow(<MoviesCard
