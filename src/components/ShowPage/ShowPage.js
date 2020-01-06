@@ -12,7 +12,11 @@ export const ShowPage = ({movie, user}) => {
           <p className="showPage-container-release"><span>Release Date:</span>{movie.release_date}</p>
           <p className="showPage-container-overview"><span>Synopsis:</span>{movie.overview}</p>
           <p className="showPage-container-averageRating"><span>Average Rating:</span>{movie.average_rating}</p>
-          <MovieRatings />
+        {!user.name ?
+          null :
+          <MovieRatings 
+            movieId ={movie.id}
+          />}
         </div>
       </section>
   )
