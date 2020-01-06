@@ -1,3 +1,80 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`MovieRatings should render with correct data 1`] = `undefined`;
+exports[`MovieRatings should render with correct data 1`] = `
+<Fragment>
+  <section
+    className="rating-btn-section"
+  >
+    <button
+      className="rating-btn"
+      id="1"
+      onKeyUp={[Function]}
+    >
+      star1
+    </button>
+    <button
+      className="rating-btn"
+      id="2"
+      onClick={[Function]}
+    >
+      star2
+    </button>
+    <button
+      className="rating-btn"
+      id="3"
+      onClick={[Function]}
+    >
+      star3
+    </button>
+    <button
+      className="rating-btn"
+      id="4"
+      onClick={[Function]}
+    >
+      star4
+    </button>
+    <button
+      className="rating-btn"
+      id="5"
+      onClick={[Function]}
+    >
+      star5
+    </button>
+    <button
+      className="rating-btn"
+      id="6"
+      onClick={[Function]}
+    >
+      star6
+    </button>
+    <button
+      className="rating-btn"
+      id="7"
+      onClick={[Function]}
+    >
+      star7
+    </button>
+    <button
+      className="rating-btn"
+      id="8"
+      onClick={[Function]}
+    >
+      star8
+    </button>
+    <button
+      className="rating-btn"
+      id="9"
+      onClick={[Function]}
+    >
+      star9
+    </button>
+    <button
+      className="rating-btn"
+      id="10"
+      onClick={[Function]}
+    >
+      star10
+    </button>
+  </section>
+</Fragment>
+`;
