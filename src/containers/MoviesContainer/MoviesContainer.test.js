@@ -59,5 +59,16 @@ describe('MoviesContainer', () => {
         
               expect(mappedProps).toEqual(expected);
         });
+
+        it('should return the user data from the store', () => {
+
+            const mockUser = {
+                user = {
+                    {
+                        
+                    }
+                }
+            }
+        })
     });
 });
