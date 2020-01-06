@@ -20,7 +20,7 @@ export class App extends Component {
   render() {
     return (
       <main className="app-main">
-        <Header />
+        <Route exact path='/' render={() => <Header /> } />
         <Route path='/login' render={() => <LoginForm />} />
         <Route exact path='/' render={() => <MoviesContainer />} />
         <Route path='/movies/:id' render={({match}) => {
