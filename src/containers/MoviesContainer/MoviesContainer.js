@@ -5,13 +5,11 @@ import { getRatings } from '../../actions/index';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import '../App/App.scss';
-// import UserProfile from '../UserProfile/UserProfile';
 
 export class MoviesContainer extends Component {
   constructor () {
     super()
     this.state = {
-
     }
   }
 
@@ -41,8 +39,7 @@ export class MoviesContainer extends Component {
 
     )
   }
-}
-
+};
 
 export const mapStateToProps = state => ({
   movies: state.movies,
