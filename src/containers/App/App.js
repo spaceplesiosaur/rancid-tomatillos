@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import LoginForm from '../LoginForm/LoginForm';
 import Header from '../../containers/Header/Header'
 import { getMovieData } from '../../util/apiCalls'
-import UserProfile from '../UserProfile/UserProfile';
 import MoviesContainer from '../MoviesContainer/MoviesContainer';
 import { addMovies } from '../../actions/index';
 import { Route } from 'react-router-dom'
@@ -29,12 +28,9 @@ export class App extends Component {
           const selectedShowpage = this.props.movies.find(movie => {
             return movie.id === parseInt(match.params.id)
           });
-
-          // {console.log('SHOWPAGE', selectedShowpage)}
           return (!selectedShowpage) ? null : <ShowPage movie={selectedShowpage} />
         }}
         />
-
       </main>
     )
   }
