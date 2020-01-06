@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { logOut } from '../../actions/index'
 import { NavLink } from 'react-router-dom';
 import logo from '../../util/images/tomatoe-logo copy.png';
-import textLogo from '../../util/images/text-logo-RT.png';
+import textLogo from '../../util/images/rancid-tom-white.png';
 
 export const Header = ({user, logUserOut}) => {
   const username = user.name;

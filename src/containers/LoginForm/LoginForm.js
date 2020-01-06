@@ -5,6 +5,8 @@ import { fetchUser } from '../../util/apiCalls';
 import { connect } from 'react-redux';
 import { getUser } from '../../actions/index';
 import PropTypes from 'prop-types';
+import logo from '../../util/images/tomatoe-logo copy.png';
+import textLogo from '../../util/images/rancid-tom-white.png';
 
 export class LoginForm extends Component {
   constructor() {
@@ -45,6 +47,8 @@ export class LoginForm extends Component {
         <div className="user-info">
           <div className="user-info__form">
             <form className="loginForm">
+                <img className="header-text-logo" src={textLogo} />
+                <img className="logo_image" alt="tomato logo" src={logo} />
               <h1 className="heading">
                 Please login!
               </h1>
