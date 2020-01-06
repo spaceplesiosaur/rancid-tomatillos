@@ -1,6 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { Header } from './Header';
+import { logOut } from '../../actions/index'
+import { Header, mapDispatchToProps } from './Header';
 
 describe('Header', () => {
   let wrapper;
@@ -35,5 +36,17 @@ describe('Header', () => {
 
     expect(logOutMock).toHaveBeenCalled()
 
+  })
+
+  describe('mapDispatchToProps', () => {
+    it('should call dispatch with the correct action when logUserOut is called', () => {
+      const mockDispatch = jest.fn();
+      const dispatchedAction = logOut();
+
+      const mappedProps = mapDispatchToProps(mockDispatch);
+      mappedProps.logUserOut()
+
+      expect(mockDispatch).toHaveBeenCalledWith(dispatchedAction)
+    })
   })
 });
