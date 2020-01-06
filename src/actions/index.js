@@ -22,3 +22,7 @@ export const deleteRating = rating => ({
   type: 'REMOVE_RATING',
   rating
 });
+
+export const logOut = () => ({
+  type: 'LOG_OUT',
+})

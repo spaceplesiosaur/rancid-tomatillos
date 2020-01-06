@@ -86,8 +86,8 @@ export default connect(mapStateToProps, mapDispatchToProps)(MovieRatings);
 
 MovieRatings.propTypes = {
   movieId: PropTypes.number,
-  rating: PropTypes.number,
-  user: PropTypes.object,
-  allRatings: PropTypes.func,
+  rating: PropTypes.func,
+  user: PropTypes.number,
+  allRatings: PropTypes.array,
   deleteRating: PropTypes.func
 }
