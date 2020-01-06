@@ -2,9 +2,6 @@
 
 exports[`MoviesContainer should take a snapshot of the data coming in 1`] = `
 <Fragment>
-  <h1>
-    Rancid Tomatillos
-  </h1>
   <section
     className="moviesContainer"
   >
