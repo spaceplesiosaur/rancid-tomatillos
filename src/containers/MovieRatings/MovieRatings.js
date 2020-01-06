@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { postRating, removeRating, fetchRatings } from '../../util/apiCalls';
 import { addRating, deleteRating } from '../../actions/index';
+import PropTypes from 'prop-types';
 import '../App/App.scss';
 
 export const MovieRatings = ({ movieId, rating, user, allRatings, deleteRating }) => {
@@ -82,3 +83,11 @@ export const mapStateToProps = state => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(MovieRatings);
+
+MovieRatings.propTypes = {
+  movieId: PropTypes.number,
+  rating: PropTypes.number,
+  user: PropTypes.object,
+  allRatings: PropTypes.func,
+  deleteRating: PropTypes.func
+}
