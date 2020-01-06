@@ -49,20 +49,12 @@ describe('ratings', () => {
     });
     
     it('should update state when a rating is deleted with REMOVE_RATING action', () => {
-        
-        // const InitialState = [{
-        //     id: 118,
-        //     user_id: 7,
-        //     movie_id: 20,
-        //     rating: 2,
-        //     created_at: '2020-01-02T23:21:56.186Z',
-        //     updated_at: '2020-01-02T23:21:56.186Z'
-        // }];
-    
-        
+       
         const action = {
             type: 'REMOVE_RATING',
-            rating: [{}]
+            rating: {
+                ratings:  [{}]
+            }     
         };
         
         const expectedState = [{}]
