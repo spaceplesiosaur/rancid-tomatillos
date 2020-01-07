@@ -5,13 +5,11 @@ import { getRatings } from '../../actions/index';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import '../App/App.scss';
-// import UserProfile from '../UserProfile/UserProfile';
 
 export class MoviesContainer extends Component {
   constructor () {
     super()
     this.state = {
-
     }
   }
 
@@ -19,7 +17,7 @@ export class MoviesContainer extends Component {
     return this.props.user.id ?
     getMovieData(`https://rancid-tomatillos.herokuapp.com/api/v1/users/${this.props.user.id}/ratings`)
       .then(data => this.props.getRatings(data.ratings)) : null
-    }
+  };
 
   displayCards = () => {
     return this.props.movies.map(movie => {
@@ -29,20 +27,19 @@ export class MoviesContainer extends Component {
         key={movie.id}
       />
       )
-    })}
+    })
+  };
 
   render() {
     return (
-          <>
-             <section className="moviesContainer">
-               {this.displayCards()}
-             </section>
-          </>
-
+      <>
+        <section className="moviesContainer">
+          {this.displayCards()}
+        </section>
+      </>
     )
-  }
-}
-
+  };
+};
 
 export const mapStateToProps = state => ({
   movies: state.movies,
