@@ -17,7 +17,7 @@ export class MoviesContainer extends Component {
     return this.props.user.id ?
     getMovieData(`https://rancid-tomatillos.herokuapp.com/api/v1/users/${this.props.user.id}/ratings`)
       .then(data => this.props.getRatings(data.ratings)) : null
-    }
+  };
 
   displayCards = () => {
     return this.props.movies.map(movie => {
@@ -27,18 +27,18 @@ export class MoviesContainer extends Component {
         key={movie.id}
       />
       )
-    })}
+    })
+  };
 
   render() {
     return (
-          <>
-             <section className="moviesContainer">
-               {this.displayCards()}
-             </section>
-          </>
-
+      <>
+        <section className="moviesContainer">
+          {this.displayCards()}
+        </section>
+      </>
     )
-  }
+  };
 };
 
 export const mapStateToProps = state => ({
