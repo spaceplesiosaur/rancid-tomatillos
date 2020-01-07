@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import { shallow } from 'enzyme';
-import { MovieRatings } from './MovieRatings';
+import { MovieRatings, handleDelete } from './MovieRatings';
 
 
 describe('MovieRatings', () => {
@@ -11,7 +11,7 @@ describe('MovieRatings', () => {
 
     wrapper = shallow(
         <MovieRatings
-        movieId={2}
+        movieId={14}
         rating={2}
         user={{id: 7, name: 'Diana', email: "diana@turing.io"}}
         allRatings={[{
@@ -47,5 +47,15 @@ describe('MovieRatings', () => {
   it('should render with correct data', () => {
     expect(wrapper).toMatchSnapshot()
   })
+
+  it('should call handleDelete when Change Rating button is clicked', () => {
+
+    wrapper.instance().handleDelete = jest.fn()
+    wrapper.find('.movieCard-btn').simulate('click')
+
+    expect(wrapper.instance().handleDelete).toHaveBeenCalled()
+  })
+
+  
 
 })
