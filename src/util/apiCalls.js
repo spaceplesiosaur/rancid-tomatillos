@@ -1,8 +1,7 @@
 export const getMovieData = async (url) => {
     const response = await fetch(url)
     const data = await response.json()
-    {
-      if (!data.ok) {
+      if (!response.ok) {
         throw Error('Error fetching movies');
       }
     return data;
@@ -20,6 +19,9 @@ export const fetchUser = async (email, password) => {
 
     const response = await fetch('https://rancid-tomatillos.herokuapp.com/api/v1/login', options)
     const user = await response.json()
+    if (!response.ok) {
+      throw Error('Error fetching user');
+    }
     return user;
 };
 
@@ -34,6 +36,9 @@ export const postRating = async (userRating, userID) => {
 
   const post = await fetch(`https://rancid-tomatillos.herokuapp.com/api/v1/users/${userID}/ratings`, options)
   const rating = await post.json()
+  if (!post.ok) {
+    throw Error('Error fetching rating');
+  }
   return rating;
 };
 
@@ -43,6 +48,9 @@ export const fetchRatings = userID => {
         throw Error('There was a problem fetching all ratings');
       }
       return response.json();
+      // if (!response.ok) {
+      //   throw Error('Error fetching ratings');
+      // }
     });
 };
 
@@ -59,5 +67,6 @@ export const removeRating = (userID, ratingID) => {
         if (!response.ok) {
           throw Error('There was a problem with the delete')
         }
+        return "It's deleted!"
     })
 };
