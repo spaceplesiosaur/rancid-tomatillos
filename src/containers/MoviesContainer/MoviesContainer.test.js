@@ -2,6 +2,9 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { MoviesContainer, mapStateToProps, mapDispatchToProps } from './MoviesContainer';
 import { getRatings } from '../../actions/index';
+import { getMovieData } from '../../util/apiCalls';
+
+jest.mock('../../util/apiCalls')
 
 describe('MoviesContainer', () => {
     let wrapper;
@@ -27,36 +30,44 @@ describe('MoviesContainer', () => {
 
     describe('componentDidUpdate', () => {
 
-      it.skip('should call getRatings when component updates', () => {
-        
-        const wrapper = shallow(
-          <MoviesContainer getRatings={jest.fn()}/>
-        );
+        it('should call getRatings when component updates', async () => {
+          
+          const mockUser = {email: 'diane@turing.io', name: 'Diane', id: 7}  
+          const mockGetRatings = jest.fn()
+          getMovieData.mockImplementation(() => {
+              return Promise.resolve(mockRatings)
+          })  
 
-        let mockRatings= [
-              {
-                id: 118,
-                user_id: 7,
-                movie_id: 20,
-                rating: 2,
-                created_at: "2020-01-02T23:21:56.186Z",
-                updated_at: "2020-01-02T23:21:56.186Z"
-              },
-              {
-                id: 111,
-                user_id: 7,
-                movie_id: 13,
-                rating: 3,
-                created_at: "2019-12-31T23:52:36.923Z",
-                updated_at: "2019-12-31T23:52:36.923Z"
-              }
-            ]
-
-          wrapper.instance().componentDidUpdate()
-
-          expect(wrapper.instance().props.getRatings).toHaveBeenCalledWith(mockRatings)
-      });       
-    });
+          const wrapper = shallow(
+            <MoviesContainer user={mockUser} movies={mockMovies} getRatings={mockGetRatings}/>
+          );
+  
+          let mockRatings= [
+                {
+                  id: 118,
+                  user_id: 7,
+                  movie_id: 20,
+                  rating: 2,
+                  created_at: "2020-01-02T23:21:56.186Z",
+                  updated_at: "2020-01-02T23:21:56.186Z"
+                },
+                {
+                  id: 111,
+                  user_id: 7,
+                  movie_id: 13,
+                  rating: 3,
+                  created_at: "2019-12-31T23:52:36.923Z",
+                  updated_at: "2019-12-31T23:52:36.923Z"
+                }
+              ]
+  
+            await wrapper.instance().componentDidUpdate()
+          //  await wrapper.instance().mockGetMovieData()
+  
+  
+            expect(mockGetRatings).toHaveBeenCalledWith(mockRatings)
+        });       
+      });
 
     describe('mapStateToProps', () => {
       it('should return the movies data from the store', () => {
