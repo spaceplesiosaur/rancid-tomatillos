@@ -1,7 +1,8 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import { shallow } from 'enzyme';
-import { LoginForm } from './LoginForm';
+import { getUser } from '../../actions/index';
+import { LoginForm, mapDispatchToProps } from './LoginForm';
 import { Provider } from 'react-redux';
 
 import { fetchUser } from '../../util/apiCalls';
@@ -11,6 +12,7 @@ jest.mock('../../util/apiCalls')
 describe('LoginForm', () => {
   let wrapper;
   let mockEvent
+  let mockEvent2
 
   beforeEach(() => {
 
@@ -21,6 +23,7 @@ describe('LoginForm', () => {
     )
 
     mockEvent = {target: {name: 'email', value: 'diana@turing.io'}, preventDefault: jest.fn()}
+    mockEvent2 = {target: {name: 'password', value: '111111'}, preventDefault: jest.fn()}
   })
 
   it('should render with correct data', () => {
@@ -46,6 +49,10 @@ describe('LoginForm', () => {
     wrapper.find("#email").simulate('change', mockEvent)
 
     expect(wrapper.instance().handleChange).toHaveBeenCalledWith(mockEvent)
+
+    wrapper.find("#password").simulate('change', mockEvent2)
+
+    expect(wrapper.instance().handleChange).toHaveBeenCalledWith(mockEvent2)
 
   })
 
@@ -87,9 +94,11 @@ describe('LoginForm', () => {
 
   it('should set loggedIn to be true when handleSubmit runs', async () => {
     const mockUser = {email: 'diane@turing.io', name: 'Diane', id: 7}
+
     fetchUser.mockImplementation(() => {
       return Promise.resolve(mockUser)
     })
+
     const mockGetUser = jest.fn()
 
     expect(wrapper.state('loggedIn')).toEqual(false)
@@ -124,5 +133,18 @@ describe('LoginForm', () => {
 
     expect(wrapper.instance().togglePasswordVisibility).toHaveBeenCalled()
 
+  })
+
+  describe('mapDispatchToProps', () => {
+    it('should call dispatch with the correct action when getUser is called', () => {
+      const mockDispatch = jest.fn();
+      const mockUser = {email: 'diane@turing.io', name: 'Diane', id: 7}
+      const dispatchedAction = getUser(mockUser);
+
+      const mappedProps = mapDispatchToProps(mockDispatch);
+      mappedProps.getUser(mockUser)
+
+      expect(mockDispatch).toHaveBeenCalledWith(dispatchedAction)
+    })
   })
 })
