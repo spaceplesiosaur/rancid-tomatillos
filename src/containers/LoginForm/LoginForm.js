@@ -3,10 +3,11 @@ import '../App/App.scss';
 import { Redirect } from 'react-router-dom';
 import { fetchUser } from '../../util/apiCalls';
 import { connect } from 'react-redux';
-import { getUser } from '../../actions/index';
+import { getUser, setError } from '../../actions/index';
 import PropTypes from 'prop-types';
 import logo from '../../util/images/tomatoe-logo copy.png';
 import textLogo from '../../util/images/rancid-tom-white.png';
+import { bindActionCreators } from 'redux';
 
 export class LoginForm extends Component {
   constructor() {
@@ -15,7 +16,8 @@ export class LoginForm extends Component {
       email: '',
       password: '',
       loggedIn: false,
-      isPasswordShown: false
+      isPasswordShown: false,
+      loginError: false
     }
   }
 
@@ -28,12 +30,18 @@ export class LoginForm extends Component {
     this.setState({[e.target.name] : e.target.value })
   }
 
+
   handleSubmit = (e) => {
-    const { email, password } = this.state
+    const { setError } = this.props;
+    const { email, password } = this.state;
     e.preventDefault()
-    fetchUser(email, password)
-    .then(user => this.props.getUser(user))
-    .then(this.setState({ loggedIn: true}))
+    try{
+      fetchUser(email, password)
+        .then(user => this.props.getUser(user))
+        .then(this.setState({ loggedIn: true }))
+    } catch ({ message }) {
+    setError(message)
+    }
   }
 
   render() {
@@ -41,6 +49,7 @@ export class LoginForm extends Component {
       return <Redirect to="/" />;
     }
     const { isPasswordShown } = this.state;
+    const { errMsg } = this.props;
     return (
       <section className="section-form">
         <div className="section-form__header">
@@ -52,6 +61,7 @@ export class LoginForm extends Component {
               <h1 className="heading">
                 Please login!
               </h1>
+                {errMsg && <p className='login-error'>{errMsg}</p> }
               <div className="loginForm__group">
                 <input
                   name="email"
@@ -94,18 +104,24 @@ export class LoginForm extends Component {
             </form>
           </div>
         </div>
-        </div>
+       </div>
       </section>
 
     )
   }
 }
 
-const mapDispatchToProps = dispatch => ({
-  getUser: user => dispatch(getUser(user))
+export const mapStateToProps = ({ errMsg }) => ({
+  errMsg
+})
+
+export const mapDispatchToProps = dispatch => ({
+  getUser: user => dispatch(getUser(user)),
+  setError: message => dispatch(setError(message))
 });
 
-export default connect(null, mapDispatchToProps)(LoginForm);
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);
 
 
 LoginForm.propTypes = {
