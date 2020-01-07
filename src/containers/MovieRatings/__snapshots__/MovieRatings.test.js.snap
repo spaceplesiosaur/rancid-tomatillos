@@ -13,3 +13,82 @@ exports[`MovieRatings should render with correct data 1`] = `
   </h4>
 </Fragment>
 `;
+
+exports[`MovieRatings should render with correct data when there is no rating 1`] = `
+<Fragment>
+  <section
+    className="rating-btn-section"
+  >
+    <button
+      className="rating-btn"
+      data-id="1"
+      onClick={[Function]}
+    >
+      star1
+    </button>
+    <button
+      className="rating-btn"
+      data-id="2"
+      onClick={[Function]}
+    >
+      star2
+    </button>
+    <button
+      className="rating-btn"
+      data-id="3"
+      onClick={[Function]}
+    >
+      star3
+    </button>
+    <button
+      className="rating-btn"
+      data-id="4"
+      onClick={[Function]}
+    >
+      star4
+    </button>
+    <button
+      className="rating-btn"
+      data-id="5"
+      onClick={[Function]}
+    >
+      star5
+    </button>
+    <button
+      className="rating-btn"
+      data-id="6"
+      onClick={[Function]}
+    >
+      star6
+    </button>
+    <button
+      className="rating-btn"
+      data-id="7"
+      onClick={[Function]}
+    >
+      star7
+    </button>
+    <button
+      className="rating-btn"
+      data-id="8"
+      onClick={[Function]}
+    >
+      star8
+    </button>
+    <button
+      className="rating-btn"
+      data-id="9"
+      onClick={[Function]}
+    >
+      star9
+    </button>
+    <button
+      className="rating-btn"
+      data-id="10"
+      onClick={[Function]}
+    >
+      star10
+    </button>
+  </section>
+</Fragment>
+`;

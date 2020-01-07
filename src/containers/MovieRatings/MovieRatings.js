@@ -10,47 +10,47 @@ export class MovieRatings extends Component{
     super({ movieId, rating, user, allRatings, deleteRating })
   }
 
-setRating = async (rate) => {
+  setRating = async (rate) => {
 
-    const userRating = {
-      movie_id: this.props.movieId,
-      rating: rate
-    }
+      const userRating = {
+        movie_id: this.props.movieId,
+        rating: rate
+      }
 
-    return await postRating(userRating, this.props.user)
-      .then(data => this.props.rating(data))
-  };
+      return await postRating(userRating, this.props.user)
+        .then(data => this.props.rating(data))
+    };
 
-handleDelete = () => {
-    // event.preventDefault()
-    removeRating(this.props.user, this.getRatingId(this.props.movieId))
-    .then(data => {
-      fetchRatings(this.props.user).then(ratingData => {
+  handleDelete = () => {
+      return removeRating(this.props.user, this.getRatingId(this.props.movieId))
+      .then(data => {
+        return fetchRatings(this.props.user)
+      }).then(ratingData => {
         this.props.deleteRating({ ratings: ratingData.ratings });
-    });
-  });
-};
+      });
 
-getRatingId = movieId => {
-    const movieIds = this.props.allRatings.map(rating => rating.movie_id);
-    if (movieIds.includes(movieId)) {
-      return this.props.allRatings.find(movie => movie.movie_id === movieId).id;
-    }
   };
 
-handleClick = async (event) => {
-    const rate = parseInt(event.target.id)
-    return await this.setRating(rate)
-  };
+  getRatingId = movieId => {
+      const movieIds = this.props.allRatings.map(rating => rating.movie_id);
+      if (movieIds.includes(movieId)) {
+        return this.props.allRatings.find(movie => movie.movie_id === movieId).id;
+      }
+    };
 
-getUserRating = movieId => {
-    const userRatings = this.props.allRatings.map(rating => rating.movie_id);
-      if (userRatings.includes(movieId)) {
-        return this.props.allRatings.find(movie => movie.movie_id === movieId).rating;
-      } else {
-        return '...';
-    }
-  };
+  handleClick = async (event) => {
+      const rate = parseInt(event.target.getAttribute("data-id"))
+      return await this.setRating(rate)
+    };
+
+  getUserRating = movieId => {
+      const userRatings = this.props.allRatings.map(rating => rating.movie_id);
+        if (userRatings.includes(movieId)) {
+          return this.props.allRatings.find(movie => movie.movie_id === movieId).rating;
+        } else {
+          return '...';
+        }
+    };
 
   render() {
     return (
@@ -60,22 +60,23 @@ getUserRating = movieId => {
     {this.getUserRating(this.props.movieId) !== '...' ?
     <h4>{`Your rating: ${this.getUserRating(this.props.movieId)}`}</h4> :
     <section className="rating-btn-section">
-      <button className="rating-btn" id="1" onKeyUp={(event) => this.handleClick(event)}>star1</button>
-      <button className="rating-btn" id="2" onClick={(event) => this.handleClick(event)}>star2</button>
-      <button className="rating-btn" id="3" onClick={(event) => this.handleClick(event)}>star3</button>
-      <button className="rating-btn" id="4" onClick={(event) => this.handleClick(event)}>star4</button>
-      <button className="rating-btn" id="5" onClick={(event) => this.handleClick(event)}>star5</button>
-      <button className="rating-btn" id="6" onClick={(event) => this.handleClick(event)}>star6</button>
-      <button className="rating-btn" id="7" onClick={(event) => this.handleClick(event)}>star7</button>
-      <button className="rating-btn" id="8" onClick={(event) => this.handleClick(event)}>star8</button>
-      <button className="rating-btn" id="9" onClick={(event) => this.handleClick(event)}>star9</button>
-      <button className="rating-btn" id="10" onClick={(event) => this.handleClick(event)}>star10</button>
+      <button className="rating-btn" data-id="1" onClick={(event) => this.handleClick(event)}>star1</button>
+      <button className="rating-btn" data-id="2" onClick={(event) => this.handleClick(event)}>star2</button>
+      <button className="rating-btn" data-id="3" onClick={(event) => this.handleClick(event)}>star3</button>
+      <button className="rating-btn" data-id="4" onClick={(event) => this.handleClick(event)}>star4</button>
+      <button className="rating-btn" data-id="5" onClick={(event) => this.handleClick(event)}>star5</button>
+      <button className="rating-btn" data-id="6" onClick={(event) => this.handleClick(event)}>star6</button>
+      <button className="rating-btn" data-id="7" onClick={(event) => this.handleClick(event)}>star7</button>
+      <button className="rating-btn" data-id="8" onClick={(event) => this.handleClick(event)}>star8</button>
+      <button className="rating-btn" data-id="9" onClick={(event) => this.handleClick(event)}>star9</button>
+      <button className="rating-btn" data-id="10" onClick={(event) => this.handleClick(event)}>star10</button>
     </section>}
     </>
     )
+  }
 
 }
-}
+
 
 export const mapDispatchToProps = dispatch => ({
   rating: ratingData => dispatch(addRating(ratingData)),
