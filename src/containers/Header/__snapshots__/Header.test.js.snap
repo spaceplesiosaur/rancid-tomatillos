@@ -5,12 +5,12 @@ exports[`Header should match the snapshot with correct data 1`] = `
   className="header-div"
 >
   <img
-    className="header-text-logo"
-    src="text-logo-RT.png"
+    className="logo-text"
+    src="rancid-tom-white.png"
   />
   <img
     alt="tomato logo"
-    className="logo_image"
+    className="logo-image"
     src="tomatoe-logo copy.png"
   />
   <NavLink
@@ -33,12 +33,12 @@ exports[`Header should match the snapshot with correct data when user is logged 
   className="header-div"
 >
   <img
-    className="header-text-logo"
-    src="text-logo-RT.png"
+    className="logo-text"
+    src="rancid-tom-white.png"
   />
   <img
     alt="tomato logo"
-    className="logo_image"
+    className="logo-image"
     src="tomatoe-logo copy.png"
   />
   <NavLink

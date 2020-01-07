@@ -4,6 +4,7 @@ export const getMovieData = async (url) => {
     return data;
 };
 
+
 export const fetchUser = async (email, password) => {
     const userLogin = { email: `${email}`, password: `${password}`};
     const options = {
@@ -15,8 +16,10 @@ export const fetchUser = async (email, password) => {
     };
 
     const response = await fetch('https://rancid-tomatillos.herokuapp.com/api/v1/login', options)
-    const user = await response.json()
-    return user;
+    if(!response.ok){
+        throw new Error('oops! please check your username and password are correct. ')
+    }
+    return response.json();
 };
 
 export const postRating = async (userRating, userID) => {
@@ -42,18 +45,19 @@ export const fetchRatings = userID => {
     });
 };
 
-export const removeRating = (userID, ratingID) => {
-    
-    const options = {
-        method: 'DELETE',
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    };
 
-    return fetch(`https://rancid-tomatillos.herokuapp.com/api/v1/users/${userID}/ratings/${ratingID}`, options).then(response => {
+export const removeRating = async (userID, ratingID) => {
+    const url = `https://rancid-tomatillos.herokuapp.com/api/v1/users/${userID}/ratings/${ratingID}`;
+        const options = {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        };
+        const response = await fetch(url, options);
         if (!response.ok) {
-          throw Error('There was a problem with the delete')
+            throw Error('There was changing your rate')
         }
-    })
+        return response.json()
+
 };

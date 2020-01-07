@@ -4,7 +4,11 @@ exports[`App should render with correct data 1`] = `
 <main
   className="app-main"
 >
-  <Connect(Header) />
+  <Route
+    exact={true}
+    path="/"
+    render={[Function]}
+  />
   <Route
     path="/login"
     render={[Function]}
