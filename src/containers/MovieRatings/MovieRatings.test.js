@@ -2,7 +2,8 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import { shallow } from 'enzyme';
 import { postRating, removeRating, fetchRatings } from '../../util/apiCalls';
-import { MovieRatings, handleDelete } from './MovieRatings';
+import { addRating, deleteRating } from '../../actions/index';
+import { MovieRatings, handleDelete, mapDispatchToProps, mapStateToProps } from './MovieRatings';
 
 jest.mock('../../util/apiCalls')
 
@@ -184,7 +185,7 @@ describe('MovieRatings', () => {
     wrapper.instance().handleClick = jest.fn()
 
     wrapper.instance().forceUpdate()
-    
+
     wrapper.find('[data-id="1"]').simulate("click")
     wrapper.find('[data-id="2"]').simulate("click")
     wrapper.find('[data-id="3"]').simulate("click")
@@ -198,4 +199,80 @@ describe('MovieRatings', () => {
 
     expect(wrapper.instance().handleClick).toHaveBeenCalledTimes(10)
   })
+
+  describe('mapDispatchToProps', () => {
+    it('calls dispatch with the correct action when rating is called', () => {
+
+      const mockDispatch = jest.fn();
+      const dispatchedAction = addRating({
+      movie_id: 14,
+      rating: 4
+    });
+
+      const mappedProps = mapDispatchToProps(mockDispatch);
+      mappedProps.rating({
+      movie_id: 14,
+      rating: 4
+    });
+
+      expect(mockDispatch).toHaveBeenCalledWith(dispatchedAction);
+    });
+
+ it('calls dispatch with the correct action when deleteRating is called', () => {
+
+      const mockDispatch = jest.fn();
+      const dispatchedAction = deleteRating();
+
+      const mappedProps = mapDispatchToProps(mockDispatch);
+      mappedProps.deleteRating();
+
+      expect(mockDispatch).toHaveBeenCalledWith(dispatchedAction);
+    });
+  });
+
+  describe('mapStateToProps', () => {
+    it('should return an object with the rankings array and userID', () => {
+
+	const mockUser = {email: 'Diana@turing.io', id: 7, name: 'Diana'}
+  const mockRankings = [{
+      "id": 118,
+      "user_id": 7,
+      "movie_id": 20,
+      "rating": 2,
+      "created_at": "2020-01-02T23:21:56.186Z",
+      "updated_at": "2020-01-02T23:21:56.186Z"
+  },
+  {
+      "id": 108,
+      "user_id": 7,
+      "movie_id": 14,
+      "rating": 4,
+      "created_at": "2019-12-30T21:29:51.243Z",
+      "updated_at": "2019-12-30T21:29:51.243Z"
+  },
+  {
+      "id": 110,
+      "user_id": 7,
+      "movie_id": 18,
+      "rating": 5,
+      "created_at": "2019-12-31T21:39:21.783Z",
+      "updated_at": "2019-12-31T21:39:21.783Z"
+  }]
+      const mockState = {
+        user: mockUser,
+	      ratings: mockRankings,
+	      movies: [{movie1: 'movieData'}, {movie2: 'movieData2'}]
+      };
+
+      const expected = {
+        allRatings: mockRankings,
+	      user: mockUser.id
+      };
+
+      const mappedProps = mapStateToProps(mockState);
+
+      expect(mappedProps).toEqual(expected);
+    });
+  });
+
 })
