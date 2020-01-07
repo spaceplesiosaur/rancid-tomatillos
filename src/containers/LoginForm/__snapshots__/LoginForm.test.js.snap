@@ -7,6 +7,15 @@ exports[`LoginForm should render with correct data 1`] = `
   <div
     className="section-form__header"
   >
+    <img
+      className="logo-text"
+      src="rancid-tom-white.png"
+    />
+    <img
+      alt="tomato logo"
+      className="logo-image"
+      src="tomatoe-logo copy.png"
+    />
     <div
       className="user-info"
     >
@@ -90,6 +99,15 @@ exports[`LoginForm should render with correct data when isPasswordShown is true 
   <div
     className="section-form__header"
   >
+    <img
+      className="logo-text"
+      src="rancid-tom-white.png"
+    />
+    <img
+      alt="tomato logo"
+      className="logo-image"
+      src="tomatoe-logo copy.png"
+    />
     <div
       className="user-info"
     >

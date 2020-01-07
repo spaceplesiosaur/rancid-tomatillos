@@ -6,8 +6,8 @@ import PropTypes from 'prop-types';
 import '../App/App.scss';
 
 export class MovieRatings extends Component{
-  constructor({ movieId, rating, user, allRatings, deleteRating }) {
-    super({ movieId, rating, user, allRatings, deleteRating })
+  constructor({ movieId }) {
+    super({ movieId })
   }
 
   setRating = async (rate) => {
@@ -32,7 +32,8 @@ export class MovieRatings extends Component{
   };
 
   getRatingId = movieId => {
-      const movieIds = this.props.allRatings.map(rating => rating.movie_id);
+    const { allRatings } = this.props;
+    const movieIds = allRatings.map(rating => rating.movie_id);
       if (movieIds.includes(movieId)) {
         return this.props.allRatings.find(movie => movie.movie_id === movieId).id;
       }
@@ -92,8 +93,8 @@ export default connect(mapStateToProps, mapDispatchToProps)(MovieRatings);
 
 MovieRatings.propTypes = {
   movieId: PropTypes.number,
-  rating: PropTypes.func,
-  user: PropTypes.number,
+  rating: PropTypes.number,
+  user: PropTypes.object,
   allRatings: PropTypes.array,
   deleteRating: PropTypes.func
 }

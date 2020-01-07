@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
 import LoginForm from '../LoginForm/LoginForm';
 import Header from '../../containers/Header/Header'
 import { getMovieData } from '../../util/apiCalls'
 import MoviesContainer from '../MoviesContainer/MoviesContainer';
-import { addMovies } from '../../actions/index';
+import { addMovies, setError } from '../../actions/index';
 import { Route } from 'react-router-dom'
 import ShowPage from '../../components/ShowPage/ShowPage';
 import './App.scss';
@@ -20,7 +21,7 @@ export class App extends Component {
   render() {
     return (
       <main className="app-main">
-        <Header />
+        <Route exact path='/' render={() => <Header /> } />
         <Route path='/login' render={() => <LoginForm />} />
         <Route exact path='/' render={() => <MoviesContainer />} />
         <Route path='/movies/:id' render={({match}) => {
@@ -35,13 +36,18 @@ export class App extends Component {
   }
 }
 
-export const mapStateToProps = state => ({
+const mapStateToProps = state => ({
   movies: state.movies
+  
 })
 
-export const mapDispatchToProps = dispatch => ({
-  addMovies: data => dispatch(addMovies(data))
-})
+export const mapDispatchToProps = dispatch => (
+  bindActionCreators({
+    addMovies,
+    setError
+  }, dispatch)
+);
+
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
 
