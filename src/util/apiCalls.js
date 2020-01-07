@@ -1,6 +1,10 @@
 export const getMovieData = async (url) => {
     const response = await fetch(url)
     const data = await response.json()
+    {
+      if (!data.ok) {
+        throw Error('Error fetching movies');
+      }
     return data;
 };
 
@@ -43,7 +47,7 @@ export const fetchRatings = userID => {
 };
 
 export const removeRating = (userID, ratingID) => {
-    
+
     const options = {
         method: 'DELETE',
         headers: {

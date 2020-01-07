@@ -45,9 +45,22 @@ describe('getMovieData', () => {
   it('should return the correct data in the correct format', () => {
     expect(getMovieData('https://rancid-tomatillos.herokuapp.com/api/v1/movies')).resolves.toEqual(mockMovies)
   })
+
+  it('should not return data when the response is not ok', () => {
+    window.fetch = jest.fn().mockImplementation(() => {
+      return Promise.resolve({
+        ok: false,
+        json: () => {
+          return Promise.resolve(mockMovies)
+        }
+      })
+    })
+
+    expect(getMovieData('https://rancid-tomatillos.herokuapp.com/api/v1/movies')).rejects.toEqual(Error('Error fetching movies'))
+  })
 })
 
-describe('fetchMovies', () => {
+describe('fetchUser', () => {
 
   let mockUser;
   let mockOptions;
@@ -91,3 +104,15 @@ describe('fetchMovies', () => {
     expect(fetchUser(mockUser.email, mockUser.password)).resolves.toEqual(mockUserLoginObject)
   })
 })
+
+// describe('postRating', () => {
+//
+// })
+//
+// describe('fetchRatings', () => {
+//
+// })
+//
+// describe('removeRating', () => {
+//
+// })
