@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
 import LoginForm from '../LoginForm/LoginForm';
 import Header from '../../containers/Header/Header'
 import { getMovieData } from '../../util/apiCalls'
 import MoviesContainer from '../MoviesContainer/MoviesContainer';
-import { addMovies } from '../../actions/index';
+import { addMovies, setError } from '../../actions/index';
 import { Route } from 'react-router-dom'
 import ShowPage from '../../components/ShowPage/ShowPage';
 import './App.scss';
@@ -39,9 +40,13 @@ const mapStateToProps = state => ({
   movies: state.movies
 })
 
-const mapDispatchToProps = dispatch => ({
-  addMovies: data => dispatch(addMovies(data))
-})
+export const mapDispatchToProps = dispatch => (
+  bindActionCreators({
+    addMovies,
+    setError
+  }, dispatch)
+);
+
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
 

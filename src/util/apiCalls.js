@@ -15,8 +15,10 @@ export const fetchUser = async (email, password) => {
     };
 
     const response = await fetch('https://rancid-tomatillos.herokuapp.com/api/v1/login', options)
-    const user = await response.json()
-    return user;
+    if(!response.ok){
+        throw new Error('Incorrect unsername or password')
+    }
+    return response.json();
 };
 
 export const postRating = async (userRating, userID) => {
