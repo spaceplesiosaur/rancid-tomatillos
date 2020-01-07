@@ -47,7 +47,7 @@ export const fetchRatings = userID => {
 
 
 export const removeRating = async (userID, ratingID) => {
-    const url = `https://the-screening-room-db.herokuapp.com/api/v1/users/${userID}/moviefavorites/${ratingID}`;
+    const url = `https://rancid-tomatillos.herokuapp.com/api/v1/users/${userID}/ratings/${ratingID}`;
         const options = {
             method: "DELETE",
             headers: {
