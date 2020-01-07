@@ -27,6 +27,7 @@ export const logOut = () => ({
   type: 'LOG_OUT',
 })
 
-export const setError = () => ({
-  type: 'HAS_ERROR'
+export const setError = (message) => ({
+  type: 'HAS_ERROR',
+  message
 })

@@ -7,7 +7,6 @@ import { getUser, setError } from '../../actions/index';
 import PropTypes from 'prop-types';
 import logo from '../../util/images/tomatoe-logo copy.png';
 import textLogo from '../../util/images/rancid-tom-white.png';
-import { bindActionCreators } from 'redux';
 
 export class LoginForm extends Component {
   constructor() {
@@ -30,21 +29,20 @@ export class LoginForm extends Component {
     this.setState({[e.target.name] : e.target.value })
   }
 
-
-  handleSubmit = (e) => {
-    const { setError } = this.props;
+  handleSubmit = async (e) => {
+    const { setError, getUser } = this.props;
     const { email, password } = this.state;
     e.preventDefault()
     try{
-      fetchUser(email, password)
-        .then(user => this.props.getUser(user))
-        .then(this.setState({ loggedIn: true }))
+      let user = await fetchUser(email, password)
+       getUser(user)
+       this.setState({ loggedIn: true })
     } catch ({ message }) {
-    setError(message)
+      setError(message)
     }
   }
 
-  render() {
+  render() { 
       if(this.state.loggedIn){
       return <Redirect to="/" />;
     }
@@ -114,6 +112,7 @@ export class LoginForm extends Component {
 export const mapStateToProps = ({ errMsg }) => ({
   errMsg
 })
+
 
 export const mapDispatchToProps = dispatch => ({
   getUser: user => dispatch(getUser(user)),
