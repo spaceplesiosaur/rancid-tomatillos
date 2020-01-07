@@ -94,9 +94,11 @@ describe('LoginForm', () => {
 
   it('should set loggedIn to be true when handleSubmit runs', async () => {
     const mockUser = {email: 'diane@turing.io', name: 'Diane', id: 7}
+
     fetchUser.mockImplementation(() => {
       return Promise.resolve(mockUser)
     })
+
     const mockGetUser = jest.fn()
 
     expect(wrapper.state('loggedIn')).toEqual(false)

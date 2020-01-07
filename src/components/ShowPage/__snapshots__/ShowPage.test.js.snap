@@ -1,18 +1,16 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ShowPage should render with correct data 1`] = `
-<Fragment>
-  <section
-    className="showPage-image-container"
-  >
-    <img
-      alt="movie cover backdrop"
-      className="section-showPage-image"
-      src="https://image.tmdb.org/t/p/original//zTxHf9iIOCqRbxvl8W5QYKrsMLq.jpg"
-    />
-  </section>
-  <section
-    className="showPage-info-container"
+<section
+  className="showPage__image-container"
+>
+  <img
+    alt="movie cover backdrop"
+    className="showPage__image"
+    src="https://image.tmdb.org/t/p/original//zTxHf9iIOCqRbxvl8W5QYKrsMLq.jpg"
+  />
+  <div
+    className="showPage__image-info-container"
   >
     <h3
       className="showPage-container-title"
@@ -46,6 +44,6 @@ exports[`ShowPage should render with correct data 1`] = `
     <Connect(MovieRatings)
       movieId={1}
     />
-  </section>
-</Fragment>
+  </div>
+</section>
 `;
