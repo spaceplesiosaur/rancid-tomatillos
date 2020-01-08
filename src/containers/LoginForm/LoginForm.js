@@ -29,19 +29,15 @@ export class LoginForm extends Component {
     this.setState({[e.target.name] : e.target.value })
   }
 
-  handleSubmit = async (e) => {
-    const { setError, getUser } = this.props;
-    const { email, password } = this.state;
+  handleSubmit = (e) => {
+    const { email, password } = this.state
     e.preventDefault()
-    try{
-      let user = await fetchUser(email, password)
-       getUser(user)
-       this.setState({ loggedIn: true })
-    } catch ({ message }) {
-      setError(message)
-    }
+    fetchUser(email, password)
+      .then(user => this.props.getUser(user))
+      .then(this.setState({ loggedIn: true }))
+      .catch(message => setError(message))
   }
-
+  
   render() { 
       if(this.state.loggedIn){
       return <Redirect to="/" />;

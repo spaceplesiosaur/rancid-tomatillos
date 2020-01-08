@@ -6,6 +6,5 @@ export const user = (state = {}, action) => {
       return {}
     default:
       return state;
-
   }
-}
+};

@@ -7,7 +7,6 @@ export const getMovieData = async (url) => {
     return data;
 };
 
-
 export const fetchUser = async (email, password) => {
     const userLogin = { email: `${email}`, password: `${password}`};
     const options = {
@@ -19,13 +18,11 @@ export const fetchUser = async (email, password) => {
     };
 
     const response = await fetch('https://rancid-tomatillos.herokuapp.com/api/v1/login', options)
-
     const user = await response.json()
     if (!response.ok) {
-      throw Error('oops! please check your username and password are correct.');
+      throw Error('Error fetching user');
     }
     return user;
-
 };
 
 export const postRating = async (userRating, userID) => {

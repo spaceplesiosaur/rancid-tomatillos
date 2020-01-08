@@ -1,3 +1,4 @@
+/* eslint-disable arrow-parens */
 export const addMovies = movies => ({
   type: 'ADD_MOVIES',
   movies
@@ -25,9 +26,9 @@ export const deleteRating = rating => ({
 
 export const logOut = () => ({
   type: 'LOG_OUT',
-})
+});
 
 export const setError = (message) => ({
   type: 'HAS_ERROR',
   message
-})
+});

@@ -1,36 +1,35 @@
+/* eslint-disable no-undef */
 import { user } from './user';
 
 describe('user', () => {
-    it('should return the initial state', () => {
-        const expected = {};
+  it('should return the initial state', () => {
+    const expected = {};
 
-        const result = user(undefined, {});
-        expect(result).toEqual(expected);
-    });
+    const result = user(undefined, {});
+    expect(result).toEqual(expected);
+  });
 
-    it('should return the correct state with action type ADD_USER', () => {
+  it('should return the correct state with action type ADD_USER', () => {
+    const action = {
+      type: 'ADD_USER',
+      user: {
+        user: { name: 'Diana', email: 'diana@turing.io', password: '111111' },
+      },
+    };
 
-        const action = {
-          type: 'ADD_USER',
-          user: {
-            user:  {name: 'Diana', email: 'diana@turing.io', password: '111111'}
-          }
-        };
+    const result = user({}, action);
+    const expectedState = { name: 'Diana', email: 'diana@turing.io', password: '111111' };
 
-          const result = user({}, action)
-          const expectedState =  {name: 'Diana', email: 'diana@turing.io', password: '111111'}
+    expect(result).toEqual(expectedState);
+  });
+  it('should return the correct state with action type LOG_OUT', () => {
+    const action = {
+      type: 'LOG_OUT',
+    };
 
-          expect(result).toEqual(expectedState)
-    });
-    it('should return the correct state with action type LOG_OUT', () => {
+    const result = user({}, action);
+    const expectedState = {};
 
-      const action = {
-        type: 'LOG_OUT'
-      };
-
-        const result = user({}, action)
-        const expectedState =  {}
-
-        expect(result).toEqual(expectedState)
-    });
+    expect(result).toEqual(expectedState);
+  });
 });

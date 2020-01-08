@@ -1,6 +1,7 @@
+/* eslint-disable no-undef */
 import React from 'react';
 import { shallow } from 'enzyme';
-import { logOut } from '../../actions/index'
+import { logOut } from '../../actions/index';
 import { Header, mapDispatchToProps, mapStateToProps } from './Header';
 
 describe('Header', () => {
@@ -11,7 +12,7 @@ describe('Header', () => {
       user={{id: 7, name: 'Diana', email: "diana@turing.io"}}
       logUserOut={jest.fn()}
     />);
-  })
+  });
   it('should match the snapshot with correct data', () => {
 
     expect(wrapper).toMatchSnapshot();
@@ -28,15 +29,14 @@ describe('Header', () => {
   it('should call logUserOut when button is clicked', () => {
     const logOutMock = jest.fn()
     const wrapper = shallow(<Header
-      user={{id: 7, name: 'Diana', email: "diana@turing.io"}}
+      user={{ id: 7, name: 'Diana', email: 'diana@turing.io' }}
       logUserOut={logOutMock}
     />);
 
-    wrapper.find(".logout").simulate('click')
+    wrapper.find('.logout').simulate('click');
 
-    expect(logOutMock).toHaveBeenCalled()
-
-  })
+    expect(logOutMock).toHaveBeenCalled();
+  });
 
   describe('mapDispatchToProps', () => {
     it('should call dispatch with the correct action when logUserOut is called', () => {
@@ -44,26 +44,26 @@ describe('Header', () => {
       const dispatchedAction = logOut();
 
       const mappedProps = mapDispatchToProps(mockDispatch);
-      mappedProps.logUserOut()
+      mappedProps.logUserOut();
 
-      expect(mockDispatch).toHaveBeenCalledWith(dispatchedAction)
-    })
-  })
+      expect(mockDispatch).toHaveBeenCalledWith(dispatchedAction);
+    });
+  });
 
   describe('mapStateToProps', () => {
     it('should return the user object ', () => {
       const mockState = {
-        user: {email: 'diane@turing.io', name: 'Diane', id: 7},
+        user: { email: 'diane@turing.io', name: 'Diane', id: 7 },
         movies: [{}, {}, {}],
-        ratings: [{}, {}, {}]
+        ratings: [{}, {}, {}],
       };
       const expected = {
-        user: {email: 'diane@turing.io', name: 'Diane', id: 7}
+        user: { email: 'diane@turing.io', name: 'Diane', id: 7 },
       };
 
       const mappedProps = mapStateToProps(mockState);
 
       expect(mappedProps).toEqual(expected);
-    })
-  })
+    });
+  });
 });
