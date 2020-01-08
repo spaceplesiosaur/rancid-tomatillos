@@ -42,11 +42,11 @@ Build a React App that pulls movie information from an API and uses Redux to sto
 
 ## Demo
 
-App Logged Out:
+
 
 ![Rancid Tomatillos App](https://media.giphy.com/media/W4ztfC4RixiCQhUy4p/giphy.gif)
 
-App Logged In:
+
 ![Rancid Tomatillos App](https://media.giphy.com/media/SvM8n3rwxeBRuMrVJ9/giphy.gif)
 
 
