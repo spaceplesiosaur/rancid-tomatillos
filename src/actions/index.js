@@ -27,3 +27,8 @@ export const deleteRating = rating => ({
 export const logOut = () => ({
   type: 'LOG_OUT',
 });
+
+export const setError = (message) => ({
+  type: 'HAS_ERROR',
+  message
+});

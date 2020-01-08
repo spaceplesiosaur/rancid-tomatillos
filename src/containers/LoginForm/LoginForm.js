@@ -3,8 +3,10 @@ import '../App/App.scss';
 import { Redirect } from 'react-router-dom';
 import { fetchUser } from '../../util/apiCalls';
 import { connect } from 'react-redux';
-import { getUser } from '../../actions/index';
+import { getUser, setError } from '../../actions/index';
 import PropTypes from 'prop-types';
+import logo from '../../util/images/tomatoe-logo copy.png';
+import textLogo from '../../util/images/rancid-tom-white.png';
 
 export class LoginForm extends Component {
   constructor() {
@@ -13,7 +15,8 @@ export class LoginForm extends Component {
       email: '',
       password: '',
       loggedIn: false,
-      isPasswordShown: false
+      isPasswordShown: false,
+      loginError: false
     }
   }
 
@@ -26,28 +29,37 @@ export class LoginForm extends Component {
     this.setState({[e.target.name] : e.target.value })
   }
 
-  handleSubmit = (e) => {
-    const { email, password } = this.state
+  handleSubmit = async (e) => {
+    const { setError, getUser } = this.props;
+    const { email, password } = this.state;
     e.preventDefault()
-    fetchUser(email, password)
-    .then(user => this.props.getUser(user))
-    .then(this.setState({ loggedIn: true}))
+    try{
+      let user = await fetchUser(email, password)
+       getUser(user)
+       this.setState({ loggedIn: true })
+    } catch ({ message }) {
+      setError(message)
+    }
   }
 
-  render() {
+  render() { 
       if(this.state.loggedIn){
       return <Redirect to="/" />;
     }
     const { isPasswordShown } = this.state;
+    const { errMsg } = this.props;
     return (
       <section className="section-form">
         <div className="section-form__header">
+          <img className="logo-text" src={textLogo} />
+          <img className="logo-image" alt="tomato logo" src={logo} />
         <div className="user-info">
           <div className="user-info__form">
             <form className="loginForm">
               <h1 className="heading">
                 Please login!
               </h1>
+                {errMsg && <p className='login-error'>{errMsg}</p> }
               <div className="loginForm__group">
                 <input
                   name="email"
@@ -90,18 +102,25 @@ export class LoginForm extends Component {
             </form>
           </div>
         </div>
-        </div>
+       </div>
       </section>
 
     )
   }
 }
 
+export const mapStateToProps = ({ errMsg }) => ({
+  errMsg
+})
+
+
 export const mapDispatchToProps = dispatch => ({
-  getUser: user => dispatch(getUser(user))
+  getUser: user => dispatch(getUser(user)),
+  setError: message => dispatch(setError(message))
 });
 
-export default connect(null, mapDispatchToProps)(LoginForm);
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);
 
 
 LoginForm.propTypes = {
