@@ -49,7 +49,7 @@ export class App extends Component {
 }
 
 // eslint-disable-next-line arrow-parens
-const mapStateToProps = state => ({
+export const mapStateToProps = state => ({
   movies: state.movies,
 });
 

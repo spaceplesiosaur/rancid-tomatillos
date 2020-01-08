@@ -5,11 +5,6 @@ exports[`App should render with correct data 1`] = `
   className="app-main"
 >
   <Route
-    exact={true}
-    path="/"
-    render={[Function]}
-  />
-  <Route
     path="/login"
     render={[Function]}
   />
