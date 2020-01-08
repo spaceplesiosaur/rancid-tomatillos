@@ -1,12 +1,16 @@
 /* eslint-disable no-undef */
 import { getMovieData } from './apiCalls';
 import { fetchUser } from './apiCalls';
+import { postRating } from './apiCalls';
+import { fetchRatings } from './apiCalls';
+import { removeRating } from './apiCalls';
 
 describe('getMovieData', () => {
   let mockMovies;
 
   beforeEach(() => {
-    mockMovies: {
+    mockMovies = {
+      movies:
       [
         {
           id: 1,
@@ -44,11 +48,24 @@ describe('getMovieData', () => {
   });
 
   it('should return the correct data in the correct format', () => {
-    expect(getMovieData('https://rancid-tomatillos.herokuapp.com/api/v1/movies')).resolves.toEqual(mockMovies);
-  });
-});
+    expect(getMovieData('https://rancid-tomatillos.herokuapp.com/api/v1/movies')).resolves.toEqual(mockMovies)
+  })
 
-describe('fetchMovies', () => {
+  it('should not return data when the response is not ok', () => {
+    window.fetch = jest.fn().mockImplementation(() => {
+      return Promise.resolve({
+        ok: false,
+        json: () => {
+          return Promise.resolve(mockMovies)
+        }
+      })
+    })
+    expect(getMovieData('https://rancid-tomatillos.herokuapp.com/api/v1/movies')).rejects.toEqual(Error('Error fetching movies'))
+  })
+})
+
+
+describe('fetchUser', () => {
 
   let mockUser;
   let mockOptions;
@@ -89,6 +106,211 @@ describe('fetchMovies', () => {
   });
 
   it('should return the posted user', () => {
-    expect(fetchUser(mockUser.email, mockUser.password)).resolves.toEqual(mockUserLoginObject);
+
+    expect(fetchUser(mockUser.email, mockUser.password)).resolves.toEqual(mockUserLoginObject)
   });
-});
+
+  it('should return an error when the response is not ok', () => {
+    window.fetch = jest.fn().mockImplementation(() => {
+      return Promise.resolve({
+        ok: false,
+        json: () => {
+          return Promise.resolve(mockUserLoginObject)
+        }
+      })
+    })
+    expect(fetchUser(mockUser.email, mockUser.password)).rejects.toEqual(Error('Error fetching user'))
+  })
+})
+
+describe('postRating', () => {
+  let mockRating;
+  let mockRatingOptions;
+  let mockUser;
+
+  beforeEach(() => {
+    mockRating = {
+      movie_id: 2,
+      rating: 5
+    }
+    mockUser = {
+      email: 'diana@turing.io',
+      password: '111111',
+      id: 7
+    }
+    mockRatingOptions = {
+        method: 'POST',
+        body: JSON.stringify(mockRating),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+      }
+    window.fetch = jest.fn().mockImplementation(() => {
+      return Promise.resolve({
+        ok: true,
+        json: () => {
+          return Promise.resolve(mockRating)
+        }
+      })
+    })
+  })
+
+  it('should be passed down the correct url', () => {
+    let options = mockRatingOptions;
+    postRating(mockRating, mockUser.id)
+    expect(window.fetch).toHaveBeenCalledWith(`https://rancid-tomatillos.herokuapp.com/api/v1/users/7/ratings`, mockRatingOptions)
+  })
+
+  it('should return the posted rating', () => {
+    expect(postRating(mockRating, mockUser.id)).resolves.toEqual(mockRating)
+  })
+
+  it('should return an error if the response is not ok', () => {
+    window.fetch = jest.fn().mockImplementation(() => {
+      return Promise.resolve({
+        ok: false,
+        json: () => {
+          return Promise.resolve(mockRating)
+        }
+      })
+    })
+    expect(postRating(mockRating, mockUser.id)).rejects.toEqual(Error('Error fetching rating'))
+  })
+})
+
+describe('fetchRatings', () => {
+
+  let mockRatingList;
+  let mockUser;
+
+  beforeEach(() => {
+
+    mockUser = {
+      email: 'diana@turing.io',
+      password: '111111',
+      id: 7
+    }
+
+    mockRatingList = {ratings: [
+      {
+        id: 118,
+        user_id: 7,
+        movie_id: 20,
+        rating: 2,
+        created_at: "2020-01-02T23:21:56.186Z",
+        updated_at: "2020-01-02T23:21:56.186Z"
+    },
+    {
+        id: 108,
+        user_id: 7,
+        movie_id: 14,
+        rating: 4,
+        created_at: "2019-12-30T21:29:51.243Z",
+        updated_at: "2019-12-30T21:29:51.243Z"
+    },
+    {
+        id: 110,
+        user_id: 7,
+        movie_id: 18,
+        rating: 5,
+        created_at: "2019-12-31T21:39:21.783Z",
+        updated_at: "2019-12-31T21:39:21.783Z"
+    }]}
+
+    window.fetch = jest.fn().mockImplementation(() => {
+      return Promise.resolve({
+        ok: true,
+        json: () => {
+          return Promise.resolve(mockRatingList)
+        }
+      })
+    })
+
+  })
+
+  it('should be passed down the correct URL', () => {
+    fetchRatings(mockUser.id)
+    expect(window.fetch).toHaveBeenCalledWith(`https://rancid-tomatillos.herokuapp.com/api/v1/users/7/ratings`)
+  })
+
+  it('should resolve to the list of ratings', () => {
+    expect(fetchRatings(mockUser.id)).resolves.toEqual(mockRatingList)
+  })
+
+  it('should throw an error if the response is not ok', () => {
+    window.fetch = jest.fn().mockImplementation(() => {
+      return Promise.resolve({
+        ok: false,
+        json: () => {
+          return Promise.resolve(mockRatingList)
+        }
+      })
+    })
+    expect(fetchRatings(mockUser.id)).rejects.toEqual(Error('There was a problem fetching all ratings'))
+  })
+})
+
+describe('removeRating', () => {
+
+  let mockRating;
+  let mockDeleteOptions;
+  let mockRatingObject;
+  let mockUser;
+
+  beforeEach(() => {
+
+    mockUser = {
+      email: 'diana@turing.io',
+      password: '111111',
+      id: 7
+    }
+
+    mockRatingObject = {rating: {
+        id: 118,
+        user_id: 7,
+        movie_id: 20,
+        rating: 2,
+        created_at: "2020-01-02T23:21:56.186Z",
+        updated_at: "2020-01-02T23:21:56.186Z"
+    }}
+
+    mockDeleteOptions = {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    };
+    window.fetch = jest.fn().mockImplementation(() => {
+      return Promise.resolve({
+        ok: true,
+        json: () => {
+          return Promise.resolve("It's deleted!")
+        }
+      })
+    })
+  })
+
+  it('should be passed down the correct URL', () => {
+    let options = mockDeleteOptions;
+    removeRating(mockUser.id, mockRatingObject.rating.id)
+    expect(window.fetch).toHaveBeenCalledWith(`https://rancid-tomatillos.herokuapp.com/api/v1/users/7/ratings/118`, mockDeleteOptions)
+  })
+
+  it('should return the object that was deleted', () => {
+    expect(removeRating(mockUser.id, mockRatingObject.id)).resolves.toEqual("It's deleted!")
+  })
+
+  it('should throw an error if the response is not ok', () => {
+    window.fetch = jest.fn().mockImplementation(() => {
+      return Promise.resolve({
+        ok: false,
+        json: () => {
+          return Promise.resolve("It's deleted!")
+        }
+      })
+    })
+
+    expect(removeRating(mockUser.id, mockRatingObject.id)).rejects.toEqual(Error('There was a problem with the delete'))
+  })
+})
+
