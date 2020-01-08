@@ -30,8 +30,8 @@ describe('getMovieData', () => {
           overview: "All is not calm, all is not mild...when a murderous elf is destroyed by Rudolf on Christmas Eve, the reindeer forces the tiny psychopath's corrupted soul into an Elf on the Shelf doll.  But before Rudolf can bury the accursed avatar, it is shipped to the home of the Coleman family, who begin to disappear one by one...",
           average_rating: 4,
         },
-      ];
-    }
+      ],
+    };
     window.fetch = jest.fn().mockImplementation(() => {
       return Promise.resolve({
         ok: true,

@@ -68,7 +68,7 @@ describe('MoviesContainer', () => {
 
       expect(mockGetRatings).toHaveBeenCalledWith(mockRatings.ratings);
     });       
-
+  });
   describe('mapStateToProps', () => {
     it('should return the movies data from the store', () => {
       const mockState = {
@@ -81,10 +81,10 @@ describe('MoviesContainer', () => {
             release_date: '2019-12-04',
             overview: 'In Jumanji: The Next Level, the gang is back but the game has changed...',
             average_rating: 7
-          }
-        ]
+          },
+        ],
       };
-        
+
       const expected = {
         movies: [
           {
@@ -95,10 +95,10 @@ describe('MoviesContainer', () => {
             release_date: '2019-12-04',
             overview: 'In Jumanji: The Next Level, the gang is back but the game has changed...',
             average_rating: 7
-          }
-        ]
+          },
+        ],
       };
-        
+
       const mappedProps = mapStateToProps(mockState);
     
       expect(mappedProps).toEqual(expected);
@@ -132,4 +132,4 @@ describe('MoviesContainer', () => {
       expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
     });
   });
-}):
+});

@@ -61,16 +61,16 @@ export class MovieRatings extends Component{
     {this.getUserRating(this.props.movieId) !== '...' ?
     <h4>{`Your rating: ${this.getUserRating(this.props.movieId)}`}</h4> :
     <section className="rating-btn-section">
-      <button className="rating-btn" data-id="1" onClick={(event) => this.handleClick(event)}>star1</button>
-      <button className="rating-btn" data-id="2" onClick={(event) => this.handleClick(event)}>star2</button>
-      <button className="rating-btn" data-id="3" onClick={(event) => this.handleClick(event)}>star3</button>
-      <button className="rating-btn" data-id="4" onClick={(event) => this.handleClick(event)}>star4</button>
-      <button className="rating-btn" data-id="5" onClick={(event) => this.handleClick(event)}>star5</button>
-      <button className="rating-btn" data-id="6" onClick={(event) => this.handleClick(event)}>star6</button>
-      <button className="rating-btn" data-id="7" onClick={(event) => this.handleClick(event)}>star7</button>
-      <button className="rating-btn" data-id="8" onClick={(event) => this.handleClick(event)}>star8</button>
-      <button className="rating-btn" data-id="9" onClick={(event) => this.handleClick(event)}>star9</button>
-      <button className="rating-btn" data-id="10" onClick={(event) => this.handleClick(event)}>star10</button>
+      <button className="rating-btn" data-id="1" onClick={(event) => this.handleClick(event)}>1</button>
+      <button className="rating-btn" data-id="2" onClick={(event) => this.handleClick(event)}>2</button>
+      <button className="rating-btn" data-id="3" onClick={(event) => this.handleClick(event)}>3</button>
+      <button className="rating-btn" data-id="4" onClick={(event) => this.handleClick(event)}>4</button>
+      <button className="rating-btn" data-id="5" onClick={(event) => this.handleClick(event)}>5</button>
+      <button className="rating-btn" data-id="6" onClick={(event) => this.handleClick(event)}>6</button>
+      <button className="rating-btn" data-id="7" onClick={(event) => this.handleClick(event)}>7</button>
+      <button className="rating-btn" data-id="8" onClick={(event) => this.handleClick(event)}>8</button>
+      <button className="rating-btn" data-id="9" onClick={(event) => this.handleClick(event)}>9</button>
+      <button className="rating-btn" data-id="10" onClick={(event) => this.handleClick(event)}>10</button>
     </section>}
     </>
     )
