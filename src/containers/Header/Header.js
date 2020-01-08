@@ -14,7 +14,6 @@ export const Header = ({ user, logUserOut }) => {
     <div className="header-div">
       <img className="logo-text" src={textLogo} />
       <img className="logo-image" alt="tomato logo" src={logo} />
-      {console.log("USER", user.name)}
       {!username ?
        <NavLink to="/login" className="btn login-btn">Login</NavLink> : (
          <>

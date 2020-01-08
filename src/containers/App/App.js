@@ -20,20 +20,31 @@ export class App extends Component {
   render() {
     return (
       <main className="app-main">
-        <Route exact path="/" render={() => <Header />} />
-        <Route path="/login" render={() => <LoginForm />} />
-        <Route exact path="/" render={() => <MoviesContainer />} />
-        <Route
-          path="/movies/:id"
-          render={({ match }) => {
+        <Route path='/login' render={() => <LoginForm />} />
+        <Route exact path='/' render={() => {
+          return (
+            <>
+              <Header />
+              <MoviesContainer />
+            </>
+          );
+        }}
+        />
+        <Route path='/movies/:id'
+          render={({match}) => {
             const selectedShowpage = this.props.movies.find(movie => {
               return movie.id === parseInt(match.params.id)
             });
-            return (!selectedShowpage) ? null : <ShowPage movie={selectedShowpage} />
+            return (!selectedShowpage) ? null : (
+              <>
+                <Header />
+                <ShowPage movie={selectedShowpage} />
+              </>
+            );
           }}
         />
       </main>
-    );
+    )
   }
 }
 
